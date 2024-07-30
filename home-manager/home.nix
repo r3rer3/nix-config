@@ -464,6 +464,7 @@
     enable = true;
 
     pinentryPackage = pkgs.pinentry-curses;
+    defaultCacheTtl = 43200;
   };
 
   # Let home-manager install and manage itself
