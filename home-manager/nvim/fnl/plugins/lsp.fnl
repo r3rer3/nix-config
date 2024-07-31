@@ -157,6 +157,7 @@
       gotop (require :goto-preview)
       lspsaga (require :lspsaga)
       telescope (require :telescope.builtin)
+      navic (require :nvim-navic)
 
       get-default-settings (fn [server]
                              (. lspconfig server :document_config :default_config :settings))

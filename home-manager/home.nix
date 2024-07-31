@@ -160,6 +160,7 @@
     unityhub
 
     # utilities
+    nix-search-cli
     lm_sensors
     psensor
     glow
@@ -331,11 +332,11 @@
     matchBlocks = {
       "r3rer3-sourcehut" = {
         host = "*sr.ht";
-        identityFile = [ "~/.ssh/r3rer3-sourcehut" ];
+        identityFile = ["~/.ssh/r3rer3-sourcehut"];
       };
       "r3rer3-github" = {
         host = "github.com";
-        identityFile = [ "~/.ssh/r3rer3-github" ];
+        identityFile = ["~/.ssh/r3rer3-github"];
       };
     };
   };
@@ -474,10 +475,10 @@
     fontconfig = {
       enable = true;
       defaultFonts = {
-        emoji = [ "Noto Color Emoji" ];
-        monospace = [ "Iosevka" ];
-        sansSerif = [ "Inter" ];
-        serif = [ "Roboto Slab" ];
+        emoji = ["Noto Color Emoji"];
+        monospace = ["Iosevka"];
+        sansSerif = ["Inter"];
+        serif = ["Roboto Slab"
       };
     };
   };

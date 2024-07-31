@@ -73,5 +73,21 @@
         ];
       };
     };
+
+    devShells = forAllSystems (system: let
+      pkgs = nixpkgs.legacyPackages.${system};
+    in {
+      default = pkgs.mkShell {
+        packages = with pkgs; [
+          # nix lsp and formatter
+          nil
+          alejandra
+
+          # fennel lsp and formatter
+          fennel-ls
+          fnlfmt
+        ];
+      };
+    });
   };
 }
