@@ -1,8 +1,5 @@
 {
-  inputs,
   outputs,
-  lib,
-  config,
   pkgs,
   ...
 }: {
@@ -30,8 +27,6 @@
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
 
-      inputs.neovim-nightly-overlay.overlays.default
-
       # Or define it inline, for example:
       # (final: prev: {
       #   hi = final.hello.overrideAttrs (oldAttrs: {
@@ -54,6 +49,10 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+    # nix editor tooling
+    nil
+    alejandra
+
     # password manager
     _1password
     _1password-gui
@@ -67,6 +66,7 @@
     zoom-us
     rainbowstream
     redlib
+    element-desktop
 
     # reverse engineering and security
     ghidra
@@ -127,11 +127,13 @@
     termshot
 
     # fonts
+    fontconfig
     inter
     monaspace
     nerdfonts
     noto-fonts-emoji
     roboto
+    newcomputermodern
 
     # copy and paste utils for terminal
     wl-clipboard
@@ -400,6 +402,13 @@
       general = {
         pgp-provider = "gpg";
       };
+      viewer = {
+        pager = "less -R";
+      };
+      filters = {
+        "application/pgp" = "gpg --decrypt";
+        "text/plain" = "colorize";
+      };
     };
   };
 
@@ -478,7 +487,7 @@
         emoji = ["Noto Color Emoji"];
         monospace = ["Iosevka"];
         sansSerif = ["Inter"];
-        serif = ["Roboto Slab"
+        serif = ["Roboto Slab"];
       };
     };
   };

@@ -61,12 +61,12 @@
       nix-path = config.nix.nixPath;
 
       # CUDA Binary Cache
-      substituters = [
-        "https://cuda-maintainers.cachix.org"
-      ];
-      trusted-public-keys = [
-        "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
-      ];
+      # substituters = [
+      #   "https://cuda-maintainers.cachix.org"
+      # ];
+      # trusted-public-keys = [
+      #   "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
+      # ];
     };
 
     # Opinionated: disable channels
@@ -135,6 +135,7 @@
     opengl = {
       enable = true;
       driSupport = true;
+      driSupport32Bit = true;
     };
 
     # config nvidia
@@ -146,7 +147,7 @@
       # Enable this if you have graphical corruption issues or application crashes after waking
       # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead
       # of just the bare essentials.
-      powerManagement.enable = false;
+      powerManagement.enable = true;
 
       # Fine-grained power management. Turns off GPU when not in use.
       # Experimental and only works on modern Nvidia GPUs (Turing or newer).
@@ -165,7 +166,7 @@
       # accessible via `nvidia-settings`.
       nvidiaSettings = true;
 
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
+      package = config.boot.kernelPackages.nvidiaPackages.latest;
     };
   };
 
@@ -189,6 +190,13 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+
+  # enable printer auto-discovery
+  services.avahi = {
+    enable = true;
+    nssmdns = true;
+    openFirewall = true;
+  };
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
@@ -225,6 +233,15 @@
   # install partition manager
   programs.partition-manager.enable = true;
 
+  # be able to run appimage programs
+  programs.appimage = {
+    enable = true;
+    binfmt = true;
+  };
+
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  environment.sessionVariables.WLR_NO_HARDWARE_CURSORS = "1";
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -232,19 +249,6 @@
     curl
     wget
     unzip
-    gcc
-    libclang
-    libllvm
-    llvmPackages.bintools
-    gnumake
-    cmake
-    automake
-    autoconf
-    autogen
-    m4
-    cudaPackages.cudatoolkit
-    cudaPackages.cudnn
-    cudaPackages.cutensor
     home-manager
     nix-doc
   ];
@@ -304,14 +308,13 @@
   virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = ["r3rer3"];
 
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  networking.firewall = {
+    enable = true;
+
+    extraCommands = ''
+    '';
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

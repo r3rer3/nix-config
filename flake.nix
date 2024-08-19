@@ -13,9 +13,6 @@
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-24.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
-    # use latest neovim version
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay/3ad9c1eae733e9ba5cc73c6833e3d62dbc12df9e";
   };
 
   outputs = {
@@ -67,7 +64,10 @@
     homeConfigurations = {
       "r3rer3@r3rer3-linux" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = {inherit inputs outputs;};
+        extraSpecialArgs = {
+          inherit inputs outputs;
+          pkgs-unstable = inputs.nixpkgs-unstable.legacyPackages.x86_64-linux;
+        };
         modules = [
           ./home-manager/home.nix
         ];

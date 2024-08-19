@@ -11,6 +11,7 @@
       nvim = "nvim --startuptime /tmp/nvim-startuptime";
       tv = " tidy-viewer";
       bu = "btc-utils";
+      wee = "TERM=tmux-256color weechat";
     };
 
     functions = let

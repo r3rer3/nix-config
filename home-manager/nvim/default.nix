@@ -1,12 +1,14 @@
 {
-  lib,
   config,
   pkgs,
+  pkgs-unstable,
   ...
 }: {
   programs.neovim = {
     enable = true;
     defaultEditor = true;
+
+    package = pkgs-unstable.neovim-unwrapped;
 
     viAlias = true;
     vimAlias = true;
@@ -44,7 +46,15 @@
       nvim-treesitter-textobjects
       nvim-ts-context-commentstring
       nvim-ts-autotag
-      rainbow-delimiters-nvim
+      (pkgs.vimUtils.buildVimPlugin {
+        name = "rainbow-delimiters-nvim";
+        src = pkgs.fetchFromGitHub {
+          owner = "HiPhish";
+          repo = "rainbow-delimiters.nvim";
+          rev = "master";
+          hash = "sha256-m84mpHgaMUQczvcMWY9aT7OcKnwOuafJO0AHXXAa9NM=";
+        };
+      })
 
       # lsp
       nvim-lspconfig
@@ -344,7 +354,7 @@
           owner = "mrcjkb";
           repo = "rustaceanvim";
           rev = "master";
-          hash = "sha256-KlkWIOJYFH+Z9YQPSqh0lkuwejH+PuYXcUAJa0hKmFo=";
+          hash = "sha256-OYfeJuo4FZUBdW9wGGCT0lZGYr/ur1uy8frcyUJMF3k=";
         };
       })
 
@@ -355,20 +365,12 @@
           owner = "ray-x";
           repo = "go.nvim";
           rev = "master";
-          hash = "sha256-OXsdo+kvNZGCoSuz0b9ORofYhnzNpjL1Fug7IKc5hlo=";
+          hash = "sha256-LNK+tXaTlcN5LHrQ6TOQVhjfnPaOXCp6sA2FooiI/+0=";
         };
       })
 
       # haskell
-      (pkgs.vimUtils.buildVimPlugin {
-        name = "haskell-tools-nvim";
-        src = pkgs.fetchFromGitHub {
-          owner = "mrcjkb";
-          repo = "haskell-tools.nvim";
-          rev = "master";
-          hash = "sha256-Jgaa3hVPjCfPqzyEtD2gDDS3S2bJkLD3wJJZD38A5HQ=";
-        };
-      })
+      pkgs.vimPlugins.haskell-tools-nvim
 
       # coq
       (pkgs.vimUtils.buildVimPlugin {
