@@ -52,7 +52,7 @@
           owner = "HiPhish";
           repo = "rainbow-delimiters.nvim";
           rev = "master";
-          hash = "sha256-m84mpHgaMUQczvcMWY9aT7OcKnwOuafJO0AHXXAa9NM=";
+          hash = "sha256-3Wovs/DREnbch7BtkmQeTXsb91AbZdb+N8TAVikbd88=";
         };
       })
 
@@ -75,7 +75,7 @@
           owner = "onsails";
           repo = "lspkind.nvim";
           rev = "master";
-          hash = "sha256-1KK6JhQUtA5mxwRSKU5e3pTQzZwaoAjzycBLx5X/xlA=";
+          hash = "sha256-1KK6JhQUtA5mxwRSKU5e3pTQzZwaoAjzycBLx5X/xlB=";
         };
       })
       (pkgs.vimUtils.buildVimPlugin {
@@ -154,7 +154,7 @@
           owner = "gpanders";
           repo = "nvim-parinfer";
           rev = "master";
-          hash = "sha256-diwLtmch8LzaX7FIwBNy78n3iY7VnqMC1n0ep8k5kWE=";
+          hash = "sha256-diwLtmch8LzaX7FIwBNy78n3iY7VnqMC1n0ep8k5kWF=";
         };
       })
 
@@ -182,7 +182,7 @@
           owner = "lukas-reineke";
           repo = "indent-blankline.nvim";
           rev = "master";
-          hash = "sha256-PSsXBB2KOFPJJ1O8fpTvsVe2A0/wU6Ae9dN/UemraZM=";
+          hash = "sha256-PSsXBB2KOFPJJ1O8fpTvsVe2A0/wU6Ae9dN/UemraZN=";
         };
       })
 
@@ -309,7 +309,7 @@
           owner = "hrsh7th";
           repo = "nvim-cmp";
           rev = "main";
-          hash = "sha256-jc4fQBaAuL4XhHljVU3sdaEyQCnHbI+gwNOTnGHk0qM=";
+          hash = "sha256-jc4fQBaAuL4XhHljVU3sdaEyQCnHbI+gwNOTnGHk0qN=";
         };
       })
       cmp-buffer
@@ -343,7 +343,7 @@
           owner = "p00f";
           repo = "clangd_extensions.nvim";
           rev = "main";
-          hash = "sha256-D7wibK3aRDcrB/Fhw8b2QUnmXxjzgpQZI6ar4vlSgvg=";
+          hash = "sha256-N2YPu2Oa5KBkL8GSp9Al+rxhtNgu7YtxtMuy5BIcnOY=";
         };
       })
 
@@ -354,7 +354,7 @@
           owner = "mrcjkb";
           repo = "rustaceanvim";
           rev = "master";
-          hash = "sha256-OYfeJuo4FZUBdW9wGGCT0lZGYr/ur1uy8frcyUJMF3k=";
+          hash = "sha256-/dHe5cK8aReCyQgnfAjfQ+S3iojVZs+mFUNzeePxOAA=";
         };
       })
 

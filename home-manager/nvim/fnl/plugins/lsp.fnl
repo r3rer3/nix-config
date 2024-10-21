@@ -157,6 +157,9 @@
                 null-ls.builtins.diagnostics.write_good
                 null-ls.builtins.code_actions.statix])
 
+; to avoid conflicts with zls
+(set vim.g.zig_fmt_autosave 0)
+
 (let [map vim.keymap.set
       {: nvim_create_user_command : nvim_create_autocmd} vim.api
       lspconfig (require :lspconfig)
@@ -391,6 +394,10 @@
                                           (= :lean vim.bo.filetype)
                                           nil
                                           (vim.lsp.buf.format {:async true}))))})
+  (nvim_create_user_command :ToggleInlayHints
+                            (fn []
+                              (vim.lsp.inlay_hint.enable (not (vim.lsp.inlay_hint.is_enabled))))
+                            {})
   ((. (require :fidget) :setup) {})
   (map :n :<leader>3 :<cmd>Outline<CR> {:desc "Toggle Outline"})
   ((. (require :outline) :setup) {})

@@ -129,6 +129,8 @@
 
   # Hardware
   hardware = {
+    ledger.enable = true;
+
     # enable graphics driver
     # graphics.enable = true; # will be available in 24.11
     # will be deprecated in 24.11
@@ -203,6 +205,7 @@
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
+
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
@@ -251,6 +254,7 @@
     unzip
     home-manager
     nix-doc
+    pavucontrol
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -307,6 +311,12 @@
   # virtual box
   virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = ["r3rer3"];
+
+  # vpn
+  services.mullvad-vpn = {
+    enable = true;
+    package = pkgs.mullvad-vpn;
+  };
 
   # Open ports in the firewall.
   networking.firewall = {

@@ -73,7 +73,7 @@
     charles
     iaito
     radare2
-    ida-free
+    # ida-free
     imhex
     qFlipper
     wireshark
@@ -160,8 +160,11 @@
     cura
     freecad
     unityhub
+    kicad
 
     # utilities
+    dig
+    dasel
     nix-search-cli
     lm_sensors
     psensor
@@ -248,9 +251,6 @@
     # programming languages
     luajit
     luajitPackages.fennel
-
-    # VPNs
-    mullvad-vpn
 
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
