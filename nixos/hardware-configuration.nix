@@ -12,11 +12,12 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
+  boot.kernelPackages = pkgs.unstable.linuxPackages_latest;
   boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod"];
   boot.initrd.kernelModules = [];
   boot.kernelModules = ["kvm-amd"];
   boot.extraModulePackages = [];
-  boot.kernelParams = ["modprobe.blacklist=amdgpu"];
+  boot.kernelParams = ["modprobe.blacklist=amdgpu" "nvidia-drm.fbdev=1"];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/adc68734-5ad4-4b6d-8437-a73de6cc29e0";
