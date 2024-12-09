@@ -64,7 +64,11 @@
                                   :completion {:callSnippet :Replace}}}}
                 {1 :marksman}
                 {1 :mdx_analyzer}
-                {1 :nil_ls}
+                {1 :nixd
+                 :settings {:nixd {:nixpkgs {:expr "import <nixpkgs> { }"}
+                                   :formatting {:command {1 :alejandra}}
+                                   :options {:nixos {:expr "(builtins.getFlake \"/home/r3rer3/Projects/nix-config\").nixosConfigurations.r3rer3-linux.options"}
+                                             :home-manager {:expr "(builtins.getFlake \"/home/r3rer3/Projects/nix-config\").homeConfigurations.\"r3rer3@r3rer3-linux\".options"}}}}}
                 {1 :nginx_language_server}
                 {1 :nim_langserver}
                 {1 :ocamllsp}
@@ -125,7 +129,7 @@
 
 (local null-ls (require :null-ls))
 
-(local linters [null-ls.builtins.formatting.alejandra
+(local linters [; null-ls.builtins.formatting.alejandra
                 null-ls.builtins.formatting.asmfmt
                 null-ls.builtins.formatting.black
                 null-ls.builtins.formatting.isort
@@ -315,11 +319,11 @@
                                        :buffer bufnr
                                        :noremap true}]
                              (base-on-attach client bufnr)
-                             (map :n :<leader>hs ht.hoogle.hoogle_signature
-                                  opts)
+                             (map :n :<localleader>hs
+                                  ht.hoogle.hoogle_signature opts)
                              (map :n :K vim.lsp.buf.hover opts)
-                             (map :n :<leader>hr ht.repl.toggle opts)
-                             (map :n :<leader>hf
+                             (map :n :<localleader>hr ht.repl.toggle opts)
+                             (map :n :<localleader>hf
                                   (fn []
                                     (ht.repl.toggle (vim.api.nvim_buf_get_name 0)))
                                   opts)

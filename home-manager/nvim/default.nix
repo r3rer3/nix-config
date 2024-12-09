@@ -309,7 +309,7 @@
           owner = "hrsh7th";
           repo = "nvim-cmp";
           rev = "main";
-          hash = "sha256-jc4fQBaAuL4XhHljVU3sdaEyQCnHbI+gwNOTnGHk0qN=";
+          hash = "sha256-+0nflL0WCaxPuJgUviELhbXASNYYl/SKZ+nz70sEAXU=";
         };
       })
       cmp-buffer
@@ -354,7 +354,7 @@
           owner = "mrcjkb";
           repo = "rustaceanvim";
           rev = "master";
-          hash = "sha256-/dHe5cK8aReCyQgnfAjfQ+S3iojVZs+mFUNzeePxOAA=";
+          hash = "sha256-2t2fiqMlOWy48TXpqWbVJfwEQnT+G9BubOd7SVBQSWw=";
         };
       })
 

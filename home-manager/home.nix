@@ -52,6 +52,7 @@
     # nix editor tooling
     nil
     alejandra
+    nixd
 
     # password manager
     _1password
@@ -128,6 +129,7 @@
 
     # fonts
     fontconfig
+    freetype
     inter
     monaspace
     nerdfonts
@@ -304,6 +306,7 @@
   #  /etc/profiles/per-user/r3rer3/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
+    FREETYPE_PROPERTIES = "truetype:interpreter-version=40 cff:no-stem-darkening=0 autofitter:no-stem-darkening=0";
   };
 
   programs.awscli = {

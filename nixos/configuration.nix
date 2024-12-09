@@ -60,13 +60,16 @@
       # Workaround for https://github.com/NixOS/nix/issues/9574
       nix-path = config.nix.nixPath;
 
-      # CUDA Binary Cache
-      # substituters = [
-      #   "https://cuda-maintainers.cachix.org"
-      # ];
-      # trusted-public-keys = [
-      #   "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
-      # ];
+      auto-optimise-store = true;
+
+      trusted-users = ["r3rer3"];
+
+      substituters = [
+        "https://nix-community.cachix.org"
+      ];
+      trusted-public-keys = [
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      ];
     };
 
     # Opinionated: disable channels
@@ -255,6 +258,8 @@
     home-manager
     nix-doc
     pavucontrol
+
+    fhs-env
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
