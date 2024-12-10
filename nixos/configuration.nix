@@ -86,7 +86,7 @@
     };
 
     extraOptions = ''
-      plugin-files = ${pkgs.nix-doc}/lib/libnix_doc_plugin.so
+      # plugin-files = ${pkgs.nix-doc}/lib/libnix_doc_plugin.so
     '';
   };
 
@@ -135,13 +135,12 @@
     ledger.enable = true;
 
     # enable graphics driver
-    # graphics.enable = true; # will be available in 24.11
-    # will be deprecated in 24.11
-    opengl = {
+    graphics = {
       enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
+      enable32Bit = true;
     };
+
+    nvidia-container-toolkit.enable = true;
 
     # config nvidia
     nvidia = {
@@ -184,9 +183,11 @@
     # load "nvidia" driver for Xorg and Wayland
     videoDrivers = ["nvidia"];
 
-    # Configure keymap in X11
-    layout = "us";
-    xkbVariant = "";
+    xkb = {
+      variant = "";
+      # Configure keymap in X11
+      layout = "us";
+    };
   };
 
   # Enable the KDE Plasma Desktop Environment.
@@ -199,7 +200,7 @@
   # enable printer auto-discovery
   services.avahi = {
     enable = true;
-    nssmdns = true;
+    nssmdns4 = true;
     openFirewall = true;
   };
 
@@ -307,7 +308,6 @@
       setSocketVariable = true;
     };
   };
-  virtualisation.containers.cdi.dynamic.nvidia.enable = true;
 
   # virt-manager
   virtualisation.libvirtd.enable = true;
