@@ -55,7 +55,7 @@
     nixd
 
     # password manager
-    _1password
+    _1password-cli
     _1password-gui
 
     # communication
@@ -89,7 +89,7 @@
     # virtual machines
     qemu
     quickemu
-    quickgui
+    # quickgui
     virt-viewer
 
     # AI
@@ -145,7 +145,7 @@
     android-studio
 
     # decentralization
-    bisq-desktop
+    bisq2
     tor-browser
     onionshare
     trezor-suite
@@ -159,7 +159,7 @@
       cudaSupport = true;
     })
     prusa-slicer
-    cura
+    # cura
     freecad
     unityhub
     kicad
@@ -169,7 +169,7 @@
     dasel
     nix-search-cli
     lm_sensors
-    psensor
+    resources
     glow
     jql
     youki
@@ -469,9 +469,9 @@
     enable = true;
   };
 
-  services.flameshot = {
-    enable = true;
-  };
+  # services.flameshot = {
+  #   enable = true;
+  # };
 
   services.gpg-agent = {
     enable = true;

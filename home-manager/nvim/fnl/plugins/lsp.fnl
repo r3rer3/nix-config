@@ -83,7 +83,7 @@
                                               :yapf {:enabled false}}}}}
                 {1 :racket_langserver}
                 {1 :ruby_lsp}
-                {1 :ruff_lsp}
+                {1 :ruff}
                 {1 :reason_ls}
                 {1 :rescriptls}
                 {1 :solargraph}
@@ -96,7 +96,7 @@
                 {1 :taplo}
                 {1 :terraformls}
                 {1 :tflint}
-                {1 :tsserver}
+                {1 :ts_ls}
                 {1 :typst_lsp}
                 {1 :vale_ls}
                 {1 :veryl_ls}

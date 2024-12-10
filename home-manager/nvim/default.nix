@@ -52,7 +52,7 @@
           owner = "HiPhish";
           repo = "rainbow-delimiters.nvim";
           rev = "master";
-          hash = "sha256-3Wovs/DREnbch7BtkmQeTXsb91AbZdb+N8TAVikbd88=";
+          hash = "sha256-OAcrTGrbyYEXG8cT2oLSW4wtN29IyN4V85+QI21dLD0=";
         };
       })
 

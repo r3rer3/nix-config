@@ -7,7 +7,7 @@
   programs.alacritty = {
     enable = true;
     settings = {
-      shell.program = "${pkgs.fish}/bin/fish";
+      terminal.shell.program = "${pkgs.fish}/bin/fish";
 
       font = {
         # normal.family = "Monaspace Neon";
