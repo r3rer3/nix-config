@@ -259,6 +259,7 @@
     home-manager
     nix-doc
     pavucontrol
+    libreoffice-qt6
 
     fhs-env
   ];
