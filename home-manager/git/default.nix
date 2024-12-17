@@ -52,7 +52,7 @@
 
       fetch.prune = true;
 
-      init.defaultBranch = "main";
+      init.defaultBranch = "master";
 
       diff.tool = "nvimdiff";
       merge.tool = "nvimdiff";

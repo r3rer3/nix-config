@@ -1,6 +1,7 @@
 {
   outputs,
   pkgs,
+  pkgs-unstable,
   ...
 }: {
   # You can import other home-manager modules here
@@ -59,7 +60,6 @@
     _1password-gui
 
     # communication
-    whatsapp-for-linux
     weechat
     discord
     telegram-desktop
@@ -196,7 +196,7 @@
     igrep
     valgrind
     ngrok
-    supabase-cli
+    pkgs-unstable.supabase-cli
     netcat
     asciidoctor
     ast-grep

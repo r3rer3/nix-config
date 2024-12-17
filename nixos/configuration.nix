@@ -323,6 +323,10 @@
     package = pkgs.mullvad-vpn;
   };
 
+  services.udev = {
+    enable = true;
+  };
+
   # Open ports in the firewall.
   networking.firewall = {
     enable = true;
