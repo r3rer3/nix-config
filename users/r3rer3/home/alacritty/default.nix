@@ -13,7 +13,10 @@
         # normal.family = "Monaspace Neon";
         normal.family = "FiraCode Nerd Font";
         # normal.family = "JetBrainsMono Nerd Font";
-        size = 8.5;
+        size =
+          if pkgs.stdenv.isDarwin
+          then 11
+          else 8.5;
       };
 
       # catpuccin mocha

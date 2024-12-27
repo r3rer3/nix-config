@@ -52,7 +52,7 @@
           owner = "HiPhish";
           repo = "rainbow-delimiters.nvim";
           rev = "master";
-          hash = "sha256-OAcrTGrbyYEXG8cT2oLSW4wtN29IyN4V85+QI21dLD0=";
+          hash = "sha256-qDyEf+SflbDEweK5cZP/YZX4yAw0UGSTWgRai5RC8/I=";
         };
       })
 
@@ -354,7 +354,7 @@
           owner = "mrcjkb";
           repo = "rustaceanvim";
           rev = "master";
-          hash = "sha256-2t2fiqMlOWy48TXpqWbVJfwEQnT+G9BubOd7SVBQSWw=";
+          hash = "sha256-jUSCVtUGD1qlUVJcli73sdlp3j2LXXqoSyw9dhC4B/8=";
         };
       })
 
