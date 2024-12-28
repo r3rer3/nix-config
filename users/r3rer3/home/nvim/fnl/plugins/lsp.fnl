@@ -97,7 +97,7 @@
                 {1 :terraformls}
                 {1 :tflint}
                 {1 :ts_ls}
-                {1 :typst_lsp}
+                {1 :tinymist}
                 {1 :vale_ls}
                 {1 :veryl_ls}
                 {1 :vimls}
