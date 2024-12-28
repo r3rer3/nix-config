@@ -75,7 +75,7 @@
           owner = "onsails";
           repo = "lspkind.nvim";
           rev = "master";
-          hash = "sha256-1KK6JhQUtA5mxwRSKU5e3pTQzZwaoAjzycBLx5X/xlB=";
+          hash = "sha256-OCvKUBGuzwy8OWOL1x3Z3fo+0+GyBMI9TX41xSveqvE=";
         };
       })
       (pkgs.vimUtils.buildVimPlugin {
@@ -323,7 +323,7 @@
           owner = "hrsh7th";
           repo = "cmp-nvim-lsp";
           rev = "main";
-          hash = "sha256-CT1+Z4XJBVsl/RqvJeGmyitD6x7So0ylXvvef5jh7I8=";
+          hash = "sha256-iaihXNCF5bB5MdeoosD/kc3QtpA/QaIDZVLiLIurBSM=";
         };
       })
       (pkgs.vimUtils.buildVimPlugin {
