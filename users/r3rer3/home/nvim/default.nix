@@ -169,8 +169,62 @@
         };
       })
 
-      # copilot
-      copilot-vim
+      # improve the default vim.ui interfaces
+      (pkgs.vimUtils.buildVimPlugin {
+        name = "dressing.nvim";
+        src = pkgs.fetchFromGitHub {
+          owner = "stevearc";
+          repo = "dressing.nvim";
+          rev = "3a45525bb182730fe462325c99395529308f431e";
+          hash = "sha256-N4hB5wDgoqXrXxSfzDCrqmdDtdVvq+PtOS7FBPH7qXE=";
+        };
+      })
+
+      # UI Component Library for Neovim.
+      (pkgs.vimUtils.buildVimPlugin {
+        name = "nui.nvim";
+        src = pkgs.fetchFromGitHub {
+          owner = "MunifTanjim";
+          repo = "nui.nvim";
+          rev = "53e907ffe5eedebdca1cd503b00aa8692068ca46";
+          hash = "sha256-6U7E/i5FuNXQy+sF4C5DVxuTPqNKD5wxUgFohpOjm9Q=";
+        };
+      })
+
+      # embed images into any markup language
+      (pkgs.vimUtils.buildVimPlugin {
+        name = "img-clip.nvim";
+        src = pkgs.fetchFromGitHub {
+          owner = "HakonHarnes";
+          repo = "img-clip.nvim";
+          rev = "5ff183655ad98b5fc50c55c66540375bbd62438c";
+          hash = "sha256-Q4v4E8Iay6rXvtUsM5ULo1cnBYduzTw42kIgJlodq5U=";
+        };
+      })
+
+      # improve viewing Markdown files in Neovim
+      (pkgs.vimUtils.buildVimPlugin {
+        name = "render-markdown.nvim";
+        src = pkgs.fetchFromGitHub {
+          owner = "MeanderingProgrammer";
+          repo = "render-markdown.nvim";
+          rev = "ba6253d9673daf0cf394b87b2c2ecb7630944c7d";
+          hash = "sha256-Tw3lf9DJx/f+/GtlLA7FKPdd+fxzgFffhY3OotN+AFs=";
+        };
+      })
+
+      # AI
+      # copilot-vim
+      avante-nvim
+      # (pkgs.vimUtils.buildVimPlugin {
+      #   name = "avante.nvim";
+      #   src = pkgs.fetchFromGitHub {
+      #     owner = "yetone";
+      #     repo = "avante.nvim";
+      #     rev = "be92be6124f743c30ba4b52ded908d02cfb80a1b";
+      #     hash = "sha256-nFBdXDfNDThZVtu7VHo0DN0QCz9FarF6OU6Z55U5yfs=";
+      #   };
+      # })
 
       # preview markdown
       glow-nvim
