@@ -8,4 +8,6 @@
 ((. (require :avante_lib) :load))
 
 ((. (require :avante) :setup) {:claude {:model :claude-3-5-sonnet-latest
-                                        :max_tokens 8192}})
+                                        :max_tokens 8192
+                                        :api_key_name "cmd:op item get avante-anthropic-api-key --reveal --fields=credential"}
+                               })

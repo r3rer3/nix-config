@@ -214,17 +214,8 @@
       })
 
       # AI
-      # copilot-vim
-      avante-nvim
-      # (pkgs.vimUtils.buildVimPlugin {
-      #   name = "avante.nvim";
-      #   src = pkgs.fetchFromGitHub {
-      #     owner = "yetone";
-      #     repo = "avante.nvim";
-      #     rev = "be92be6124f743c30ba4b52ded908d02cfb80a1b";
-      #     hash = "sha256-nFBdXDfNDThZVtu7VHo0DN0QCz9FarF6OU6Z55U5yfs=";
-      #   };
-      # })
+      copilot-vim
+      pkgs-unstable.vimPlugins.avante-nvim
 
       # preview markdown
       glow-nvim

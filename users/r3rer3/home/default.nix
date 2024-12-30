@@ -60,6 +60,9 @@
       alejandra
       nixd
 
+      # password manager
+      _1password-cli
+
       # communication
       weechat
       discord
@@ -173,7 +176,6 @@
       if pkgs.stdenv.isLinux
       then [
         # password manager
-        _1password-cli
         _1password-gui
 
         # reverse engineering and security

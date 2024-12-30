@@ -2,7 +2,7 @@
 (vim.cmd "filetype plugin indent on")
 
 (let [opt vim.opt
-     config-dir (vim.fn.stdpath :config)]
+      config-dir (vim.fn.stdpath :config)]
 
   ; don't make a backup before overwriting a file
   (set opt.backup false)
