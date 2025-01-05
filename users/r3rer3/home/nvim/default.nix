@@ -398,8 +398,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "mrcjkb";
           repo = "rustaceanvim";
-          rev = "master";
-          hash = "sha256-1luijbPhL/6mXmUyxqxXlxJoQg1OjP6soj0qUpdocGA=";
+          rev = "bf3d8c7bcbf20a7e7f4af36c2d5390ca6ad43281";
+          hash = "sha256-AIWHuxGX8GMz7jhzb4eHMeb5qd9t/YAmWLnnMNO+npc=";
         };
       })
 
