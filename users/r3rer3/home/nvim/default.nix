@@ -57,8 +57,8 @@
       })
 
       # lsp
-      nvim-lspconfig
-      lspsaga-nvim
+      pkgs-unstable.vimPlugins.nvim-lspconfig
+      pkgs-unstable.vimPlugins.lspsaga-nvim
       goto-preview
       (pkgs.vimUtils.buildVimPlugin {
         name = "fidget-nvim";
@@ -66,7 +66,7 @@
           owner = "j-hui";
           repo = "fidget.nvim";
           rev = "main";
-          hash = "sha256-fjxdRN08BMU7jTWdhdzh8kW18ZURS9SJCwnTxuz6aFE=";
+          hash = "sha256-o0za2NxFtzHZa7PRIm9U/P1/fwJrxS1G79ukdGLhJ4Q=";
         };
       })
       (pkgs.vimUtils.buildVimPlugin {
@@ -399,7 +399,7 @@
           owner = "mrcjkb";
           repo = "rustaceanvim";
           rev = "master";
-          hash = "sha256-jUSCVtUGD1qlUVJcli73sdlp3j2LXXqoSyw9dhC4B/8=";
+          hash = "sha256-1luijbPhL/6mXmUyxqxXlxJoQg1OjP6soj0qUpdocGA=";
         };
       })
 
