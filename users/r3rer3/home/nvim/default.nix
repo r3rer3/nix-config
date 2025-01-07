@@ -215,7 +215,14 @@
 
       # AI
       copilot-vim
-      pkgs-unstable.vimPlugins.avante-nvim
+      (pkgs-unstable.vimPlugins.avante-nvim.overrideAttrs (oldAttrs: {
+        src = pkgs.fetchFromGitHub {
+          owner = "yetone";
+          repo = "avante.nvim";
+          rev = "main";
+          hash = "sha256-Z1fjMMQhWBVjp9xn9LQpINRbwC8hlvs2oQbTaaedJwc=";
+        };
+      }))
 
       # preview markdown
       glow-nvim
@@ -238,7 +245,7 @@
           owner = "folke";
           repo = "trouble.nvim";
           rev = "main";
-          hash = "sha256-db/riM3Kq+QgGUqRxJHA4HYXJE31276hrUrDj4UhC2g=";
+          hash = "sha256-JhnERZfma2JHFEn/DElVmrSU5KxM2asx3SJ+86lCfoo=";
         };
       })
 
