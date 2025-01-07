@@ -382,6 +382,7 @@
                                                        :silent true
                                                        :buffer bufnr})
                                                  nil)
+                                    :default_settings {:rust-analyzer {:files {:excludeDirs {1 :.direnv}}}}
                                     : capabilities}})
   (var format-enabled true)
   (nvim_create_user_command :ToggleAutoFormat
