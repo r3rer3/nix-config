@@ -234,7 +234,7 @@
           owner = "lukas-reineke";
           repo = "indent-blankline.nvim";
           rev = "master";
-          hash = "sha256-PSsXBB2KOFPJJ1O8fpTvsVe2A0/wU6Ae9dN/UemraZN=";
+          hash = "sha256-H3lUQZDvgj3a2STYeMUDiOYPe7rfsy08tJ4SlDd+LuE=";
         };
       })
 
