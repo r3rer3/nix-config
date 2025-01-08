@@ -93,7 +93,7 @@
           owner = "liuchengxu";
           repo = "vista.vim";
           rev = "master";
-          hash = "sha256-04HEuCBeWYghX70RqgthahGweFl7gkFBKeoGYiUa6j4=";
+          hash = "sha256-7k94AyzOx4Iqwu1Vns4i69/NR1uWlwouOB0UL9VsdL0=";
         };
       })
 
@@ -104,7 +104,7 @@
           owner = "nvimtools";
           repo = "none-ls.nvim";
           rev = "main";
-          hash = "sha256-ZA9MSpgRotndP9craRoLeId/kyi5Wi5aqxBrSvfLtME=";
+          hash = "sha256-R2M9bDGuokDWKoXjfDl4+CQk8NeTpMy2JRkhDyUPf94=";
         };
       })
 
@@ -112,7 +112,7 @@
       vim-illuminate
 
       # file tree
-      nvim-tree-lua
+      pkgs-unstable.vimPlugins.nvim-tree-lua
 
       # telescope
       telescope-nvim
@@ -125,7 +125,7 @@
       todo-comments-nvim
 
       # session manager
-      auto-session
+      pkgs-unstable.vimPlugins.auto-session
 
       # status line
       lualine-nvim
@@ -154,7 +154,7 @@
           owner = "gpanders";
           repo = "nvim-parinfer";
           rev = "master";
-          hash = "sha256-diwLtmch8LzaX7FIwBNy78n3iY7VnqMC1n0ep8k5kWF=";
+          hash = "sha256-diwLtmch8LzaX7FIwBNy78n3iY7VnqMC1n0ep8k5kWE=";
         };
       })
 
@@ -273,7 +273,7 @@
           owner = "windwp";
           repo = "nvim-autopairs";
           rev = "master";
-          hash = "sha256-2+r2SkCtLqKn6CxbEjvUEpsPL5G9KNOf7Q9lGMsolZs=";
+          hash = "sha256-3Q/49XeTxxaOvuO1O9i8PSCdqyampOcRRvEgiqLMtw8=";
         };
       })
 
@@ -361,14 +361,14 @@
           owner = "hrsh7th";
           repo = "nvim-cmp";
           rev = "main";
-          hash = "sha256-+0nflL0WCaxPuJgUviELhbXASNYYl/SKZ+nz70sEAXU=";
+          hash = "sha256-TmXpMgkPWXHn4+leojZg1V18wOiPDsKQeG1h8nGgVHo=";
         };
       })
-      cmp-buffer
-      cmp-rg
-      cmp-path
-      cmp-under-comparator
-      cmp_luasnip
+      pkgs-unstable.vimPlugins.cmp-buffer
+      pkgs-unstable.vimPlugins.cmp-rg
+      pkgs-unstable.vimPlugins.cmp-path
+      pkgs-unstable.vimPlugins.cmp-under-comparator
+      pkgs-unstable.vimPlugins.cmp_luasnip
       (pkgs.vimUtils.buildVimPlugin {
         name = "cmp-nvim-lsp";
         src = pkgs.fetchFromGitHub {
