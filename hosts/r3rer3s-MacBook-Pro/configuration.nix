@@ -36,6 +36,7 @@
       "chromium"
       "1password"
       "whatsapp"
+      "docker"
     ];
   };
 
