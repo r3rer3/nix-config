@@ -3,7 +3,6 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
   inputs,
-  outputs,
   lib,
   config,
   pkgs,
@@ -24,30 +23,6 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
-
-  nixpkgs = {
-    # You can add overlays here
-    overlays = [
-      # Add overlays your own flake exports (from overlays and pkgs dir):
-      outputs.overlays.additions
-      outputs.overlays.modifications
-      outputs.overlays.unstable-packages
-
-      # You can also add overlays exported from other flakes:
-      # neovim-nightly-overlay.overlays.default
-
-      # Or define it inline, for example:
-      # (final: prev: {
-      #   hi = final.hello.overrideAttrs (oldAttrs: {
-      #     patches = [ ./change-hello-to-hi.patch ];
-      #   });
-      # })
-    ];
-    # Configure your nixpkgs instance
-    config = {
-      allowUnfree = true;
-    };
-  };
 
   nix = let
     flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
@@ -232,6 +207,14 @@
     packages = with pkgs; [
       kdePackages.kate
     ];
+  };
+
+  # 1password
+  programs._1password = {enable = true;};
+  programs._1password-gui = {
+    enable = true;
+    # this makes system auth etc. work properly
+    polkitPolicyOwners = ["r3rer3"];
   };
 
   # install firefox.

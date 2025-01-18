@@ -1,5 +1,4 @@
 {username}: {
-  outputs,
   pkgs,
   pkgs-unstable,
   ...
@@ -20,34 +19,12 @@
     ./shell
   ];
 
-  nixpkgs = {
-    # You can add overlays here
-    overlays = [
-      # Add overlays your own flake exports (from overlays and pkgs dir):
-      outputs.overlays.additions
-      outputs.overlays.modifications
-      outputs.overlays.unstable-packages
-
-      # Or define it inline, for example:
-      # (final: prev: {
-      #   hi = final.hello.overrideAttrs (oldAttrs: {
-      #     patches = [ ./change-hello-to-hi.patch ];
-      #   });
-      # })
-    ];
-
-    # Configure your nixpkgs instance
-    config = {
-      allowUnfree = true;
-    };
-  };
-
   home = {
     inherit username;
     homeDirectory = "${
       if pkgs.stdenv.isDarwin
       then "/Users"
-      else "home"
+      else "/home"
     }/${username}";
   };
 
@@ -59,9 +36,6 @@
       nil
       alejandra
       nixd
-
-      # password manager
-      _1password-cli
 
       # communication
       weechat
@@ -175,9 +149,6 @@
     ++ (
       if pkgs.stdenv.isLinux
       then [
-        # password manager
-        _1password-gui
-
         # reverse engineering and security
         ghidra
         charles

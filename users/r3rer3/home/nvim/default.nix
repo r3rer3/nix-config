@@ -52,7 +52,7 @@
           owner = "HiPhish";
           repo = "rainbow-delimiters.nvim";
           rev = "master";
-          hash = "sha256-qDyEf+SflbDEweK5cZP/YZX4yAw0UGSTWgRai5RC8/I=";
+          hash = "sha256-zWHXYs3XdnoszqOFY3hA2L5mNn1a44OAeKv3lL3EMEw=";
         };
       })
 
@@ -220,7 +220,7 @@
           owner = "yetone";
           repo = "avante.nvim";
           rev = "main";
-          hash = "sha256-Z1fjMMQhWBVjp9xn9LQpINRbwC8hlvs2oQbTaaedJwc=";
+          hash = "sha256-0lsDNyzaAQ9JPH5Vs1wQ5h1eHO7nihr8K1FVEjRPYXE=";
         };
       }))
 
@@ -273,7 +273,7 @@
           owner = "windwp";
           repo = "nvim-autopairs";
           rev = "master";
-          hash = "sha256-3Q/49XeTxxaOvuO1O9i8PSCdqyampOcRRvEgiqLMtw8=";
+          hash = "sha256-wt0mEW43xSdEGVBXa+1LIwJPkTz7lqHZhTCg1nxKggs=";
         };
       })
 
@@ -406,7 +406,7 @@
           owner = "mrcjkb";
           repo = "rustaceanvim";
           rev = "master";
-          hash = "sha256-1luijbPhL/6mXmUyxqxXlxJoQg1OjP6soj0qUpdocGA=";
+          hash = "sha256-SWbHgGdAw3piHA6AaWfVDntwSiA9p6KrYv3pEV/z464=";
         };
       })
 

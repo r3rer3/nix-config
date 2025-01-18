@@ -14,6 +14,25 @@
   }: (import nix-pkgs {
     inherit system;
 
+    overlays = let
+      outputs = self.outputs;
+    in [
+      # Add overlays your own flake exports (from overlays and pkgs dir):
+      outputs.overlays.additions
+      outputs.overlays.modifications
+      outputs.overlays.unstable-packages
+
+      # You can also add overlays exported from other flakes:
+      # neovim-nightly-overlay.overlays.default
+
+      # Or define it inline, for example:
+      # (final: prev: {
+      #   hi = final.hello.overrideAttrs (oldAttrs: {
+      #     patches = [ ./change-hello-to-hi.patch ];
+      #   });
+      # })
+    ];
+
     config = {
       allowUnfree = true;
     };
@@ -29,16 +48,16 @@ in rec {
     (lib.nixosSystem rec {
       inherit system;
 
-      pkgs = makePkgs system;
+      pkgs = makePkgs {inherit system;};
 
       specialArgs = {
-        inherit self inputs users;
+        inherit inputs users;
         hostPlatform = system;
       };
 
       modules = [
         ./hosts/${hostname}/configuration.nix
-        inputs.home-manager.darwinModules.home-manager
+        inputs.home-manager.nixosModules.home-manager
         {
           home-manager.users =
             lib.genAttrs
@@ -52,6 +71,8 @@ in rec {
           home-manager.extraSpecialArgs = {
             inherit inputs;
             outputs = self.outputs;
+
+            inherit pkgs;
 
             pkgs-unstable = makePkgs {
               inherit system;
