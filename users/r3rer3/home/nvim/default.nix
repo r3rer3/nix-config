@@ -220,7 +220,7 @@
           owner = "yetone";
           repo = "avante.nvim";
           rev = "main";
-          hash = "sha256-0lsDNyzaAQ9JPH5Vs1wQ5h1eHO7nihr8K1FVEjRPYXE=";
+          hash = "sha256-V/K/EFuhVC/Z3F37tgAJfrfPgXsM31hZshJdZux+rwY=";
         };
       }))
 

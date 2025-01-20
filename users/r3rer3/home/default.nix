@@ -173,8 +173,6 @@
         virt-viewer
 
         # AI
-        gpt4all
-        lmstudio
         promptfoo
         aichat
         local-ai
@@ -185,7 +183,6 @@
         private-gpt
         tgpt
         shell-gpt
-        jan
 
         # audio
         ardour
