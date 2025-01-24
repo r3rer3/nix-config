@@ -154,7 +154,7 @@
         charles
         iaito
         radare2
-        # ida-free
+        ida-free
         imhex
         qFlipper
         wireshark

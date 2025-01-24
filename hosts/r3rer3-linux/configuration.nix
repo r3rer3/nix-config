@@ -264,6 +264,13 @@
   services.ollama = {
     enable = true;
     acceleration = "cuda";
+    environmentVariables = {
+      OLLAMA_MODELS = "/home/r3rer3/Projects/AdditionalProjects/ollama-models";
+    };
+  };
+  services.nextjs-ollama-llm-ui = {
+    enable = true;
+    port = 4233;
   };
 
   # tor and snowflake
