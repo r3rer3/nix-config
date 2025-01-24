@@ -260,14 +260,7 @@
   # flatpak
   services.flatpak.enable = true;
 
-  # ollama
-  services.ollama = {
-    enable = true;
-    acceleration = "cuda";
-    environmentVariables = {
-      OLLAMA_MODELS = "/home/r3rer3/Projects/AdditionalProjects/ollama-models";
-    };
-  };
+  # ollama ui
   services.nextjs-ollama-llm-ui = {
     enable = true;
     port = 4233;

@@ -407,6 +407,15 @@
     defaultCacheTtl = 43200;
   };
 
+  services.ollama = {
+    enable = true;
+
+    acceleration = "cuda";
+    environmentVariables = {
+      OLLAMA_MODELS = "/home/r3rer3/Projects/AdditionalProjects/ollama-models";
+    };
+  };
+
   programs.obs-studio.enable = pkgs.stdenv.isLinux;
 
   programs.rtorrent = {
