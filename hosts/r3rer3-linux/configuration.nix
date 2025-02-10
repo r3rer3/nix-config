@@ -203,7 +203,7 @@
   users.users.r3rer3 = {
     isNormalUser = true;
     description = "r3rer3";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "libvirtd"];
     packages = with pkgs; [
       kdePackages.kate
     ];

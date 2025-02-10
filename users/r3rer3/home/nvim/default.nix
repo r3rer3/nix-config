@@ -220,7 +220,7 @@
           owner = "yetone";
           repo = "avante.nvim";
           rev = "main";
-          hash = "sha256-PV7D2aiIiZA/5PSESy0QqVXsqDrhLcphaM6OiH+WKYU=";
+          hash = "sha256-8AJDApN1YPJF49pR6L9UabSzGdAosNZXw2xVahpHfuo=";
         };
       }))
 
@@ -289,6 +289,18 @@
           repo = "fzy-lua-native";
           rev = "d292979fd892bf86b149e5ee962ef7325c365204";
           hash = "sha256-zGehQsVhgWdN+YnWx4o4dCVMUSTBN5qiI93hyRgDrrU=";
+        };
+      })
+
+      # repl
+      (pkgs.vimUtils.buildVimPlugin {
+        name = "iron.nvim";
+
+        src = pkgs.fetchFromGitHub {
+          owner = "Vigemus";
+          repo = "iron.nvim";
+          rev = "master";
+          hash = "sha256-GAq1r2+zy/O9VHGSmBZKtz75kVsgKVTrOl6W/hMWlYg=";
         };
       })
 

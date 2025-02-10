@@ -8,4 +8,5 @@
 ((. (require :avante_lib) :load))
 
 ((. (require :avante) :setup) {:claude {:model :claude-3-5-sonnet-latest
-                                        :max_tokens 8192}})
+                                        :max_tokens 8192}
+                               :file_selector {:provider :telescope}})

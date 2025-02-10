@@ -38,7 +38,8 @@
                 {1 :cssmodules_ls}
                 {1 :dafny}
                 {1 :dhall_lsp_server}
-                {1 :denols}
+                {1 :denols
+                 :settings {:deno {:enable true :lint true :fmt true}}}
                 {1 :docker_compose_language_service}
                 {1 :dockerls}
                 {1 :dotls}
@@ -172,6 +173,14 @@
       lspsaga (require :lspsaga)
       telescope (require :telescope.builtin)
       navic (require :nvim-navic)
+      root_pattern_exclude (fn [opt]
+                             (let [lsputil (require :lspconfig.util)]
+                               (fn [fname]
+                                 (let [excluded_root ((lsputil.root_pattern opt.exclude) fname)
+                                       included_root ((lsputil.root_pattern opt.root) fname)]
+                                   (if excluded_root
+                                       nil
+                                       included_root)))))
       get-default-settings (fn [server]
                              (. lspconfig server :document_config
                                 :default_config :settings))
@@ -305,10 +314,16 @@
                         base-on-attach
                         (fn [client bufnr]
                           (base-on-attach client bufnr)
-                          (server.on-attach client bufnr)))]
-      ((. lspconfig name :setup) {: settings
-                                  : capabilities
-                                  :on_attach on-attach})))
+                          (server.on-attach client bufnr)))
+          config {: settings : capabilities :on_attach on-attach}]
+      (match name
+        :denols (set config.root_dir (lspconfig.util.root_pattern :deno.json))
+        :ts_ls (do
+                 (set config.root_dir
+                      (root_pattern_exclude {:root [:package.json]
+                                             :exclude [:deno.json :deno.jsonc]}))
+                 (set config.single_file_support false)))
+      ((. lspconfig name :setup) config)))
   (null-ls.setup {:sources available-linters})
   ((. (require :go) :setup))
   ((. (require :lean) :setup) {:mappings true :lsp {:on_attach base-on-attach}})

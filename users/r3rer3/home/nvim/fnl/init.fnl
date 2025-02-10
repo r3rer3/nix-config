@@ -33,3 +33,4 @@
 (require :plugins.terminal)
 (require :plugins.wilder)
 (require :plugins.which-key)
+(require :plugins.iron)
