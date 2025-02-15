@@ -79,6 +79,8 @@ in rec {
               nix-pkgs = inputs.nixpkgs-unstable;
             };
 
+            pkgs-mozilla = inputs.nixpkgs-mozilla.packages;
+
             lib = pkgs.lib.extend (_: _: inputs.home-manager.lib);
           };
         }

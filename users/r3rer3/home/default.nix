@@ -1,6 +1,7 @@
 {username}: {
   pkgs,
   pkgs-unstable,
+  pkgs-mozilla,
   ...
 }: {
   # You can import other home-manager modules here
@@ -149,6 +150,9 @@
     ++ (
       if pkgs.stdenv.isLinux
       then [
+        # nighly firefox
+        pkgs-mozilla.${stdenv.hostPlatform.system}.firefox-nightly-bin
+
         # reverse engineering and security
         ghidra
         charles
