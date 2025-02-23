@@ -69,6 +69,7 @@
       luajitPackages.fennel
 
       # utilities
+      duf
       dig
       dasel
       nix-search-cli
@@ -219,15 +220,16 @@
         wasabiwallet
         kubo
 
-        # 3D
+        # 3D and electronics
         (blender.override {
           cudaSupport = true;
         })
         prusa-slicer
-        # cura
-        freecad
+        pkgs-unstable.cura-appimage
+        freecad-wayland
         unityhub
         kicad
+        ngspice
 
         # utilities
         exfat
