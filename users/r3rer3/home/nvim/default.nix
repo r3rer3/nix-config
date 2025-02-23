@@ -220,7 +220,7 @@
           owner = "yetone";
           repo = "avante.nvim";
           rev = "main";
-          hash = "sha256-8AJDApN1YPJF49pR6L9UabSzGdAosNZXw2xVahpHfuo=";
+          hash = "sha256-BL78ggZhIeq4tP9bbNGEZvMH7P6KTfT8XQ1WcN5nRB8=";
         };
       }))
 
@@ -245,7 +245,7 @@
           owner = "folke";
           repo = "trouble.nvim";
           rev = "main";
-          hash = "sha256-JhnERZfma2JHFEn/DElVmrSU5KxM2asx3SJ+86lCfoo=";
+          hash = "sha256-au9wp88a0CutEf2f8Bi0vFTUR0zvQKgFX1vMVg4myGI=";
         };
       })
 

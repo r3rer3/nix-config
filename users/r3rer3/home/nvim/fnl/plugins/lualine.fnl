@@ -9,9 +9,9 @@
                                          {1 :navic :color_correction nil :navic_opts nil}]
                              :lualine_y [window]
                              :lualine_z [{1 "location" :color {:gui "none"}}]}
-                  :tabline {:lualine_a [{1 "buffers" 
-                                         :mode 4 
-                                         :buffers_color {:active {:gui "none"}} 
+                  :tabline {:lualine_a [{1 "buffers"
+                                         :mode 4
+                                         :buffers_color {:active {:gui "none"}}
                                          :filetype_names {:TelescopePrompt "Telescope"
                                                           :NvimTree "NvimTree"
                                                           :fzf "FZF"

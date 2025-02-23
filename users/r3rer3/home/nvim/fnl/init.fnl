@@ -10,6 +10,7 @@
 (require :plugins.alpha-nvim)
 (require :plugins.treesitter)
 (require :plugins.lsp)
+(require :plugins.trouble)
 (require :plugins.illuminate)
 (require :plugins.colorscheme)
 (require :plugins.file-tree)

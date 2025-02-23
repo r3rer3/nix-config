@@ -2,22 +2,22 @@
 
 (let [map vim.keymap.set]
   (map :t :jk "<C-\\><C-n>" {:desc "Exits terminal mode"})
-  (map [:n :t] :<leader>otr (fn []
-                              (var term-to-toggle "")
-                              (when (not= vim.v.count 0)
-                                (set term-to-toggle vim.v.count))
-                              (vim.api.nvim_command (.. term-to-toggle "ToggleTerm")))
+  (map [:n] :<leader>otr (fn []
+                           (var term-to-toggle "")
+                           (when (not= vim.v.count 0)
+                             (set term-to-toggle vim.v.count))
+                           (vim.api.nvim_command (.. term-to-toggle "ToggleTerm")))
        {:desc "Toggles terminal in a window"})
-  (map [:n :t] :<leader>ota (fn []
-                              (vim.api.nvim_command "ToggleTermToggleAll"))
+  (map [:n] :<leader>ota (fn []
+                           (vim.api.nvim_command "ToggleTermToggleAll"))
        {:desc "Toggles all terminals"})
-  (map [:n :t] :<leader>ott (fn []
-                              (vim.api.nvim_command "ToggleTerm direction=tab"))
+  (map [:n] :<leader>ott (fn []
+                           (vim.api.nvim_command "ToggleTerm direction=tab"))
        {:desc "Toggles terminal in a tab"})
-  (map [:n :t] :<leader>otn (fn []
-                              (var terminal-count 1)
-                              (set terminal-count (+ terminal-count 1))
-                              (vim.api.nvim_command (.. terminal-count "ToggleTerm"))))
+  (map [:n] :<leader>otn (fn []
+                           (var terminal-count 1)
+                           (set terminal-count (+ terminal-count 1))
+                           (vim.api.nvim_command (.. terminal-count "ToggleTerm"))))
 
   ; navigate splits when in terminal mode
   (map :t :<C-h> "<C-\\><C-n><C-W>h" {:desc "Goes to split to the left of current one"})
