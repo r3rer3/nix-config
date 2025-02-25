@@ -179,7 +179,7 @@
         promptfoo
         private-gpt
         gptcommit
-        shell-gpt
+        aichat
 
         # audio
         ardour
