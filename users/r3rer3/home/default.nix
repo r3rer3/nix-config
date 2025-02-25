@@ -68,6 +68,9 @@
       luajit
       luajitPackages.fennel
 
+      # terminals
+      pkgs-unstable.ghostty
+
       # utilities
       duf
       dig
