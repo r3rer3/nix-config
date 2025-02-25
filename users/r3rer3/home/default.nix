@@ -174,19 +174,11 @@
         # virtual machines
         qemu
         quickemu
-        # quickgui
-        virt-viewer
 
-        # AI
+        # AI tools
         promptfoo
-        aichat
-        local-ai
-        gorilla-cli
-        llm
-        gptscript
-        gptcommit
         private-gpt
-        tgpt
+        gptcommit
         shell-gpt
 
         # audio
