@@ -403,17 +403,18 @@
   (nvim_create_user_command :ToggleAutoFormat
                             (fn [] (set format-enabled (not format-enabled))) {})
   (nvim_create_autocmd :BufWritePre
-                       {:pattern "*"
+                       {:group (vim.api.nvim_create_augroup :LspFormatting
+                                                            {:clear true})
+                        :pattern "*"
                         :callback (fn []
                                     (when (and format-enabled
                                                (> (length (vim.lsp.buf_get_clients))
                                                   1))
-                                      ; greater than one to account for Copilot
                                       (if (= :go vim.bo.filetype)
                                           ((. (require :go.format) :goimport))
                                           (= :lean vim.bo.filetype)
                                           nil
-                                          (vim.lsp.buf.format {:async true}))))})
+                                          (vim.lsp.buf.format {:async false}))))})
   (nvim_create_user_command :ToggleInlayHints
                             (fn []
                               (vim.lsp.inlay_hint.enable (not (vim.lsp.inlay_hint.is_enabled))))
