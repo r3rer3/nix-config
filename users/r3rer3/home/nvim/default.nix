@@ -219,8 +219,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "yetone";
           repo = "avante.nvim";
-          rev = "d4e58f6a22ae424c9ade2146b29dc808a7e4c538";
-          hash = "sha256-4fI2u3qZOFadyqMYDJOCgiWrT3aRKVTmEgg7FuZJgGo=";
+          rev = "6bd966e8e24808b8a1c067fd18be22d60c4b032a";
+          hash = "sha256-7c6LSz1emLKwDN1xuEG2qdY+NBJOir8K0amdxQL/igQ=";
         };
       }))
 
@@ -410,6 +410,9 @@
           hash = "sha256-N2YPu2Oa5KBkL8GSp9Al+rxhtNgu7YtxtMuy5BIcnOY=";
         };
       })
+
+      # futhark
+      pkgs.vimPlugins.futhark-vim
 
       # rust
       (pkgs.vimUtils.buildVimPlugin {
