@@ -51,6 +51,7 @@
                 {1 :fennel_language_server
                  :settings {:fennel {:workspace {:library (vim.api.nvim_list_runtime_paths)}
                                      :diagnostics {:globals [:vim]}}}}
+                {1 :futhark_lsp}
                 {1 :gleam}
                 {1 :glsl_analyzer}
                 {1 :golangci_lint_ls}
