@@ -7,8 +7,8 @@
 
 ((. (require :avante_lib) :load))
 
-((. (require :avante) :setup) {:claude {:model :claude-3-7-sonnet-20250219
-                                        :disable_tools ["python"]
+((. (require :avante) :setup) {:claude {:model :claude-3-7-sonnet-latest
                                         :max_tokens 8192}
+                               :disabled_tools [:python]
                                :rag_service {:enabled true}
                                :file_selector {:provider :telescope}})

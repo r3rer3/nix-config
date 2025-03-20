@@ -215,13 +215,16 @@
 
       # AI
       copilot-vim
+      # pkgs-unstable.vimPlugins.avante-nvim
       (pkgs-unstable.vimPlugins.avante-nvim.overrideAttrs (oldAttrs: {
         src = pkgs.fetchFromGitHub {
           owner = "yetone";
           repo = "avante.nvim";
-          rev = "6bd966e8e24808b8a1c067fd18be22d60c4b032a";
-          hash = "sha256-7c6LSz1emLKwDN1xuEG2qdY+NBJOir8K0amdxQL/igQ=";
+          rev = "540cc53f0c30214e3e4b5688f030bb2d8277b8ce";
+          hash = "sha256-XmyRo20+VhyjP5CLgSy0Tr/7R031EJSmMEN/wK9JNk8=";
         };
+
+        nvimSkipModule = oldAttrs.nvimSkipModule ++ ["avante.providers.ollama" "avante.providers.vertex_claude"];
       }))
 
       # preview markdown
@@ -421,7 +424,7 @@
           owner = "mrcjkb";
           repo = "rustaceanvim";
           rev = "master";
-          hash = "sha256-SWbHgGdAw3piHA6AaWfVDntwSiA9p6KrYv3pEV/z464=";
+          hash = "sha256-JzAuyXdGMByqzVdBXqpO358MGYBqcvQzSMfeXbrgJJQ=";
         };
       })
 

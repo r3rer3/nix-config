@@ -222,7 +222,6 @@
         prusa-slicer
         pkgs-unstable.cura-appimage
         freecad-wayland
-        unityhub
         kicad
         ngspice
 
@@ -235,9 +234,6 @@
         youki
         lshw-gui
         dmidecode
-        protonmail-bridge
-        protonmail-bridge-gui
-        pomodoro-gtk
         ulauncher
         valgrind
         kubernetes
