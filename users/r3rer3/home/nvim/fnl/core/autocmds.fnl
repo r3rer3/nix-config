@@ -44,6 +44,9 @@
 ; CSS
 (add-new :css :css)
 
+; HTML
+(add-new :html :html)
+
 ; llvm
 (add-new :llvm [:*.ll] [:BufRead :BufNewFile]
          (fn [] (set vim.bo.filetype :llvm)))

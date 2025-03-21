@@ -1,6 +1,4 @@
-{
-  ...
-}: {
+{...}: {
   programs.newsboat = {
     enable = true;
 
@@ -27,7 +25,7 @@
       }
       {
         title = "Cryptology ePrint Archive";
-        url = "https://eprint.iacr.org/rss/rss.xm";
+        url = "https://eprint.iacr.org/rss/rss.xml";
       }
       {
         title = "Decentralized Thoughts";
