@@ -104,7 +104,7 @@
           owner = "nvimtools";
           repo = "none-ls.nvim";
           rev = "main";
-          hash = "sha256-R2M9bDGuokDWKoXjfDl4+CQk8NeTpMy2JRkhDyUPf94=";
+          hash = "sha256-KP/mS6HfVbPA5javQdj/x8qnYYk0G6oT0RZaPTAPseM=";
         };
       })
 
