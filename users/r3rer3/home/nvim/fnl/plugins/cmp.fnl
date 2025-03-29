@@ -47,7 +47,7 @@
                          :priority 2
                          :group_index 1}
                         {:name :path :priority 3 :group_index 1}
-                        {:name :buffer :priority 1 :group_index 2}
+                        {:name :buffer :priority 1 :group_index 2 :keyword_length 4}
                         {:name :rg :priority 2 :group_index 2}]
               :formatting {:format (lspkind.cmp_format {:mode :symbol_text
                                                         :maxwidth 50

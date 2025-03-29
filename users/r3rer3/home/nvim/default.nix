@@ -109,7 +109,7 @@
       })
 
       # highlight uses of word under the cursor
-      vim-illuminate
+      pkgs-unstable.vimPlugins.vim-illuminate
 
       # file tree
       pkgs-unstable.vimPlugins.nvim-tree-lua
@@ -317,7 +317,7 @@
           owner = "andymass";
           repo = "vim-matchup";
           rev = "master";
-          hash = "sha256-0w2IjpEM/+yvY6fRJfVkuCRYdcEVpLsVduDB+T13hG8=";
+          hash = "sha256-3arscLNZeriFB8aYg30suhbBIDg5y3WyHlnoVUrxUMc=";
         };
       })
 
@@ -370,15 +370,7 @@
       luasnip
 
       # completion
-      (pkgs.vimUtils.buildVimPlugin {
-        name = "nvim-cmp";
-        src = pkgs.fetchFromGitHub {
-          owner = "hrsh7th";
-          repo = "nvim-cmp";
-          rev = "main";
-          hash = "sha256-TmXpMgkPWXHn4+leojZg1V18wOiPDsKQeG1h8nGgVHo=";
-        };
-      })
+      pkgs-unstable.vimPlugins.nvim-cmp
       pkgs-unstable.vimPlugins.cmp-buffer
       pkgs-unstable.vimPlugins.cmp-rg
       pkgs-unstable.vimPlugins.cmp-path

@@ -153,7 +153,7 @@
   services.xserver = {
     # Enable the X11 windowing system.
     # You can disable this if you're only using the Wayland session.
-    enable = true;
+    enable = false;
 
     # load "nvidia" driver for Xorg and Wayland
     videoDrivers = ["nvidia"];

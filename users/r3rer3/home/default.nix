@@ -40,7 +40,7 @@
 
       # communication
       weechat
-      discord
+      pkgs-unstable.discord
       telegram-desktop
       signal-desktop
       zoom-us
