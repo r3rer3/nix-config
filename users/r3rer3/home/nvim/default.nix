@@ -224,7 +224,7 @@
           hash = "sha256-XmyRo20+VhyjP5CLgSy0Tr/7R031EJSmMEN/wK9JNk8=";
         };
 
-        nvimSkipModule = oldAttrs.nvimSkipModule ++ ["avante.providers.ollama" "avante.providers.vertex_claude"];
+        nvimSkipModules = oldAttrs.nvimSkipModules ++ ["avante.providers.ollama" "avante.providers.vertex_claude"];
       }))
 
       # preview markdown
