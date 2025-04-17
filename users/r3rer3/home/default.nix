@@ -63,6 +63,7 @@
       noto-fonts-emoji
       roboto
       newcomputermodern
+      eb-garamond
 
       # programming languages
       luajit
@@ -90,7 +91,6 @@
       mycli
       igrep
       ngrok
-      pkgs-unstable.supabase-cli
       netcat
       asciidoctor
       ast-grep
