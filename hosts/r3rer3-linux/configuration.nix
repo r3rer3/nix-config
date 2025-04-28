@@ -243,6 +243,8 @@
     nix-doc
     pavucontrol
     libreoffice-qt6
+    man-pages
+    man-pages-posix
 
     fhs-env
   ];

@@ -21,7 +21,7 @@
 (add-new :proto :proto)
 
 ; Typst
-(add-new :typst :typst)
+(add-new :typst [:*.typ] [:BufRead :BufNewFile] (fn [] (set vim.wo.wrap true)))
 
 ; TOML
 (add-new :toml :toml)
@@ -64,7 +64,7 @@
            (set vim.bo.shiftwidth 2)))
 
 ; C and C++
-(add-new :c_cpp [:c :cpp])
+(add-new :c_cpp [:c :cpp :cuda])
 
 ; Haskell
 (add-new :haskell :haskell)

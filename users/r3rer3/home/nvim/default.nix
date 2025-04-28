@@ -441,7 +441,18 @@
           owner = "whonore";
           repo = "Coqtail";
           rev = "main";
-          hash = "sha256-+7uBuycYKHxpUWVtq6V0/59bH5p8P5AOTMWl7LvUGZ4=";
+          hash = "sha256-M0IRi8osJ5oykgbbITYaQJIp1hZGldbX0c+ZPxaBUJI=";
+        };
+      })
+
+      # agda
+      (pkgs.vimUtils.buildVimPlugin {
+        name = "cornelis";
+        src = pkgs.fetchFromGitHub {
+          owner = "agda";
+          repo = "cornelis";
+          rev = "master";
+          hash = "sha256-dGS6De3EtTirgEMDMSjA+iBNc670W7pG4eA02Nq7Azo=";
         };
       })
 
