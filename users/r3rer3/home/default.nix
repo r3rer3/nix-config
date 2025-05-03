@@ -49,7 +49,7 @@
       element-desktop
 
       # organization
-      obsidian
+      pkgs-unstable.obsidian
 
       # music
       spotify
@@ -377,7 +377,7 @@
 
     extraConfig = ''
       IdentitiesOnly yes
-      PreferredAuthentications publickey
+      PreferredAuthentications publickey,password
     '';
 
     matchBlocks = {

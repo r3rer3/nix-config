@@ -215,16 +215,15 @@
 
       # AI
       copilot-vim
-      # pkgs-unstable.vimPlugins.avante-nvim
       (pkgs-unstable.vimPlugins.avante-nvim.overrideAttrs (oldAttrs: {
         src = pkgs.fetchFromGitHub {
           owner = "yetone";
           repo = "avante.nvim";
-          rev = "540cc53f0c30214e3e4b5688f030bb2d8277b8ce";
-          hash = "sha256-XmyRo20+VhyjP5CLgSy0Tr/7R031EJSmMEN/wK9JNk8=";
+          rev = "b028f32fbff4ec06ea586b3bc0e2c481450dd734";
+          hash = "sha256-piD3f3o8n1pHgQ+GegP7DQtgKXO/tj4NRmfnmIuG3n0=";
         };
 
-        nvimSkipModules = oldAttrs.nvimSkipModules ++ ["avante.providers.ollama" "avante.providers.vertex_claude"];
+        nvimSkipModules = oldAttrs.nvimSkipModules ++ ["avante.providers.ollama" "avante.providers.vertex_claude" "avante.providers.vertex" "avante.providers.gemini"];
       }))
 
       # preview markdown
