@@ -2,6 +2,7 @@
   config,
   pkgs,
   pkgs-unstable,
+  mcphub-nvim,
   ...
 }: {
   programs.neovim = {
@@ -225,6 +226,7 @@
 
         nvimSkipModules = oldAttrs.nvimSkipModules ++ ["avante.providers.ollama" "avante.providers.vertex_claude" "avante.providers.vertex" "avante.providers.gemini"];
       }))
+      mcphub-nvim."${pkgs.system}".default
 
       # preview markdown
       glow-nvim

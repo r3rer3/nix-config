@@ -2,6 +2,7 @@
   pkgs,
   pkgs-unstable,
   pkgs-mozilla,
+  mcphub,
   ...
 }: {
   # You can import other home-manager modules here
@@ -183,6 +184,7 @@
         private-gpt
         gptcommit
         aichat
+        mcphub."${pkgs.system}".default
 
         # audio
         ardour

@@ -27,6 +27,9 @@
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    mcphub-nvim.url = "github:ravitemer/mcphub.nvim";
+    mcphub.url = "github:ravitemer/mcp-hub";
   };
 
   outputs = {
