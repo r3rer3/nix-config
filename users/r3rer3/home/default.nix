@@ -185,6 +185,7 @@
         gptcommit
         aichat
         mcphub."${pkgs.system}".default
+        pkgs-unstable.claude-code
 
         # audio
         ardour
