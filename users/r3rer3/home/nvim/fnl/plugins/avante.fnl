@@ -9,10 +9,15 @@
 
 ((. (require :avante) :setup) {:claude {:model :claude-3-7-sonnet-latest
                                         :max_tokens 16384}
-                               :system_prompt (fn [] (let [hub ((. (require :mcphub) :get_hub_instance))]
-                                                       (hub:get_active_servers_prompt)))
-                               :custom_tools (fn [] (let [mcp_tool ((. (require :mcphub.extensions.avante) :mcp_tool))]
-                                                       [mcp_tool]))
+                               :behaviour {:enable_token_counting false}
+                               :system_prompt (fn []
+                                                (let [hub ((. (require :mcphub)
+                                                              :get_hub_instance))]
+                                                  (hub:get_active_servers_prompt)))
+                               :custom_tools (fn []
+                                               (let [mcp_tool ((. (require :mcphub.extensions.avante)
+                                                                  :mcp_tool))]
+                                                 [mcp_tool]))
                                :disabled_tools [:python
                                                 :list_files
                                                 :search_files
