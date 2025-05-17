@@ -74,6 +74,11 @@
       pkgs-unstable.ghostty
 
       # utilities
+      jless
+      macchina
+      miniserve
+      ouch
+      skim
       procs
       duf
       dig
@@ -82,6 +87,7 @@
       glow
       jql
       eva
+      fend
       httpie
       xh
       asciinema
