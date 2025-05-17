@@ -74,6 +74,7 @@
       pkgs-unstable.ghostty
 
       # utilities
+      procs
       duf
       dig
       dasel
