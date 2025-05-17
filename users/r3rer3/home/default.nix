@@ -297,6 +297,9 @@
     if pkgs.stdenv.isLinux
     then {
       FREETYPE_PROPERTIES = "truetype:interpreter-version=40 cff:no-stem-darkening=0 autofitter:no-stem-darkening=0";
+      MANPAGER=''
+sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat -p -lman'
+      '';
     }
     else {};
 

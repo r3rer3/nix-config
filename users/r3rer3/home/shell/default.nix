@@ -14,10 +14,17 @@
       wee = "TERM=tmux-256color weechat";
     };
 
+    shellAbbrs = {
+      "--help" = {
+        position = "anywhere";
+        expansion = "--help | bat -plhelp";
+      };
+    };
+    # abbr -a --position anywhere -- --help '--help | bat -plhelp'
+
     functions = let
       nix-your-shell = "${pkgs.nix-your-shell}/bin/nix-your-shell";
-    in
-    {
+    in {
       nix-shell = "${nix-your-shell} fish nix-shell -- $argv";
       nix = "${nix-your-shell} fish nix -- $argv";
     };

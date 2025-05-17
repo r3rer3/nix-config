@@ -14,6 +14,7 @@
   ];
 
   programs.fish.enable = true;
+
   environment.shells = [pkgs.fish];
 
   users.users = lib.genAttrs users (user: {
