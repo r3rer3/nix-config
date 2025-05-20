@@ -29,7 +29,7 @@
                                                 :delete_dir
                                                 :rename_dir
                                                 :bash]
-                               :rag_service {:enabled true}
+                               :rag_service {:enabled true :host_mount (.. (os.getenv :HOME) :/Projects)}
                                :file_selector {:provider :telescope}})
 
 ((. (require :mcphub) :setup) {:auto_approve false
