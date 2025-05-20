@@ -33,4 +33,4 @@
                                :file_selector {:provider :telescope}})
 
 ((. (require :mcphub) :setup) {:auto_approve false
-                               :extensions {:avante {:make_slash_commands true}}})
+                               :extensions {:avante {:enabled true :make_slash_commands true}}})
