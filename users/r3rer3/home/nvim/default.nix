@@ -47,15 +47,7 @@
       nvim-treesitter-textobjects
       nvim-ts-context-commentstring
       nvim-ts-autotag
-      (pkgs.vimUtils.buildVimPlugin {
-        name = "rainbow-delimiters-nvim";
-        src = pkgs.fetchFromGitHub {
-          owner = "HiPhish";
-          repo = "rainbow-delimiters.nvim";
-          rev = "master";
-          hash = "sha256-zWHXYs3XdnoszqOFY3hA2L5mNn1a44OAeKv3lL3EMEw=";
-        };
-      })
+      pkgs-unstable.vimPlugins.rainbow-delimiters-nvim
 
       # lsp
       pkgs-unstable.vimPlugins.nvim-lspconfig
@@ -79,8 +71,9 @@
           hash = "sha256-OCvKUBGuzwy8OWOL1x3Z3fo+0+GyBMI9TX41xSveqvE=";
         };
       })
-      (pkgs.vimUtils.buildVimPlugin {
+      (pkgs-unstable.vimUtils.buildVimPlugin {
         name = "outline.nvim";
+        doCheck = false;
         src = pkgs.fetchFromGitHub {
           owner = "hedyhli";
           repo = "outline.nvim";
@@ -105,7 +98,7 @@
           owner = "nvimtools";
           repo = "none-ls.nvim";
           rev = "main";
-          hash = "sha256-uvpvzSo+irdUK6vzfe2IAZwFAwJ76iJsWKE2AFBJJAc=";
+          hash = "sha256-wPZ+NsNzYCGDbE/NgK8qJsJOkCaiMcInXwqOqE0TKUY=";
         };
       })
 
@@ -232,26 +225,10 @@
       glow-nvim
 
       # indentation info
-      (pkgs.vimUtils.buildVimPlugin {
-        name = "indent-blankline";
-        src = pkgs.fetchFromGitHub {
-          owner = "lukas-reineke";
-          repo = "indent-blankline.nvim";
-          rev = "master";
-          hash = "sha256-H3lUQZDvgj3a2STYeMUDiOYPe7rfsy08tJ4SlDd+LuE=";
-        };
-      })
+      pkgs-unstable.vimPlugins.indent-blankline-nvim
 
       # pretty list for showing diagnostics, references, telescope results, quickfix and location lists
-      (pkgs.vimUtils.buildVimPlugin {
-        name = "trouble";
-        src = pkgs.fetchFromGitHub {
-          owner = "folke";
-          repo = "trouble.nvim";
-          rev = "main";
-          hash = "sha256-au9wp88a0CutEf2f8Bi0vFTUR0zvQKgFX1vMVg4myGI=";
-        };
-      })
+      pkgs-unstable.vimPlugins.trouble-nvim
 
       # colorizer / color highlighter
       (pkgs.vimUtils.buildVimPlugin {
@@ -271,15 +248,7 @@
       train-nvim
 
       # autopairs
-      (pkgs.vimUtils.buildVimPlugin {
-        name = "autopairs";
-        src = pkgs.fetchFromGitHub {
-          owner = "windwp";
-          repo = "nvim-autopairs";
-          rev = "master";
-          hash = "sha256-wt0mEW43xSdEGVBXa+1LIwJPkTz7lqHZhTCg1nxKggs=";
-        };
-      })
+      pkgs-unstable.vimPlugins.nvim-autopairs
 
       # remote plugin framework
       nvim-yarp
@@ -294,6 +263,8 @@
           rev = "d292979fd892bf86b149e5ee962ef7325c365204";
           hash = "sha256-zGehQsVhgWdN+YnWx4o4dCVMUSTBN5qiI93hyRgDrrU=";
         };
+
+        doCheck = false;
       })
 
       # repl
@@ -304,7 +275,7 @@
           owner = "Vigemus";
           repo = "iron.nvim";
           rev = "master";
-          hash = "sha256-iRbotTS4ZOY4b13fYEdlqPnU1MsxM5/SH1x8r64ncdk=";
+          hash = "sha256-1LqYsEU2XNDOreKmdq/hEszI/aeqFj3cwXUqE2RUYdo=";
         };
       })
 
@@ -312,15 +283,7 @@
       wilder-nvim
 
       # even better %
-      (pkgs.vimUtils.buildVimPlugin {
-        name = "vim-matchup";
-        src = pkgs.fetchFromGitHub {
-          owner = "andymass";
-          repo = "vim-matchup";
-          rev = "master";
-          hash = "sha256-3arscLNZeriFB8aYg30suhbBIDg5y3WyHlnoVUrxUMc=";
-        };
-      })
+      pkgs-unstable.vimPlugins.vim-matchup
 
       # collection of modules
       (pkgs.vimUtils.buildVimPlugin {
@@ -334,29 +297,13 @@
       })
 
       # which-key
-      (pkgs.vimUtils.buildVimPlugin {
-        name = "which-key";
-        src = pkgs.fetchFromGitHub {
-          owner = "folke";
-          repo = "which-key.nvim";
-          rev = "main";
-          hash = "sha256-nv9s4/ax2BoL9IQdk42uN7mxIVFYiTK+1FVvWDKRnGM=";
-        };
-      })
+      pkgs-unstable.vimPlugins.which-key-nvim
 
       # marks and bookmarks
       marks-nvim
 
       # terminal
-      (pkgs.vimUtils.buildVimPlugin {
-        name = "asyncrun";
-        src = pkgs.fetchFromGitHub {
-          owner = "skywind3000";
-          repo = "asyncrun.vim";
-          rev = "master";
-          hash = "sha256-mViw92okQyL7GqBx/M7j1B0JCmhOjoez4wVgjI35teQ=";
-        };
-      })
+      pkgs-unstable.vimPlugins.asyncrun-vim
       (pkgs.vimUtils.buildVimPlugin {
         name = "toggleterm";
         src = pkgs.fetchFromGitHub {
@@ -386,15 +333,7 @@
           hash = "sha256-iaihXNCF5bB5MdeoosD/kc3QtpA/QaIDZVLiLIurBSM=";
         };
       })
-      (pkgs.vimUtils.buildVimPlugin {
-        name = "cmp-nvim-lsp-signature-help";
-        src = pkgs.fetchFromGitHub {
-          owner = "hrsh7th";
-          repo = "cmp-nvim-lsp-signature-help";
-          rev = "main";
-          hash = "sha256-tLMhkmdehH3IDlIdqJq6GHpudY0G05Asjir6p4aONyI=";
-        };
-      })
+      pkgs-unstable.vimPlugins.cmp-nvim-lsp-signature-help
 
       # clang
       (pkgs.vimUtils.buildVimPlugin {
@@ -411,26 +350,10 @@
       pkgs.vimPlugins.futhark-vim
 
       # rust
-      (pkgs.vimUtils.buildVimPlugin {
-        name = "rustaceanvim";
-        src = pkgs.fetchFromGitHub {
-          owner = "mrcjkb";
-          repo = "rustaceanvim";
-          rev = "v6.0.0";
-          hash = "sha256-/2n1Jvh5CBt1NBdZVN+Xsf/OErXLXBHA2YfW5aLVkpY=";
-        };
-      })
+      pkgs-unstable.vimPlugins.rustaceanvim
 
       # golang
-      (pkgs.vimUtils.buildVimPlugin {
-        name = "go-nvim";
-        src = pkgs.fetchFromGitHub {
-          owner = "ray-x";
-          repo = "go.nvim";
-          rev = "master";
-          hash = "sha256-LNK+tXaTlcN5LHrQ6TOQVhjfnPaOXCp6sA2FooiI/+0=";
-        };
-      })
+      pkgs-unstable.vimPlugins.go-nvim
 
       # haskell
       pkgs-unstable.vimPlugins.haskell-tools-nvim
@@ -458,15 +381,7 @@
       })
 
       # lean4
-      (pkgs.vimUtils.buildVimPlugin {
-        name = "lean4-nvim";
-        src = pkgs.fetchFromGitHub {
-          owner = "Julian";
-          repo = "lean.nvim";
-          rev = "main";
-          hash = "sha256-yIfYuySk/bn3Zow+2yMsBOKjsNXtbxcfqHPG1t+TD+E=";
-        };
-      })
+      pkgs-unstable.vimPlugins.lean-nvim
 
       # brainfuck
       (pkgs.vimUtils.buildVimPlugin {
@@ -475,7 +390,7 @@
           owner = "q60";
           repo = "vim-brainfuck";
           rev = "master";
-          hash = "sha256-vHKxmgx6U3ithNknF7HY3Vvr11zWDYC3wsU1Xo1CRFM=";
+          hash = "sha256-X0N4iqc/m03wrgV4Lyn2ICBw8u1Vm8CilUxXkwHknFY=";
         };
       })
     ];

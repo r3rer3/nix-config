@@ -110,6 +110,15 @@
     };
   };
 
+  fonts.packages = (builtins.filter pkgs.lib.isDerivation (builtins.attrValues pkgs.nerd-fonts)) ++ (with pkgs; [
+    inter
+    monaspace
+    noto-fonts-emoji
+    roboto
+    newcomputermodern
+    eb-garamond
+  ]);
+
   # Hardware
   hardware = {
     ledger.enable = true;
