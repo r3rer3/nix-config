@@ -433,7 +433,7 @@
       })
 
       # haskell
-      pkgs.vimPlugins.haskell-tools-nvim
+      pkgs-unstable.vimPlugins.haskell-tools-nvim
 
       # coq
       (pkgs.vimUtils.buildVimPlugin {
