@@ -12,7 +12,7 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.kernelPackages = pkgs.unstable.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod"];
   boot.initrd.kernelModules = [];
   boot.kernelModules = ["kvm-amd"];
@@ -30,10 +30,10 @@
     options = ["fmask=0022" "dmask=0022"];
   };
 
- fileSystems."/home/r3rer3/Projects/AdditionalProjects" = {
-   device = "/dev/disk/by-uuid/ee3166a9-0498-41bb-b2a2-624e3699bd59";
-   fsType = "ext4";
- };
+  fileSystems."/home/r3rer3/Projects/AdditionalProjects" = {
+    device = "/dev/disk/by-uuid/ee3166a9-0498-41bb-b2a2-624e3699bd59";
+    fsType = "ext4";
+  };
 
   swapDevices = [];
 

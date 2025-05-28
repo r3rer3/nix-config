@@ -110,14 +110,16 @@
     };
   };
 
-  fonts.packages = (builtins.filter pkgs.lib.isDerivation (builtins.attrValues pkgs.nerd-fonts)) ++ (with pkgs; [
-    inter
-    monaspace
-    noto-fonts-emoji
-    roboto
-    newcomputermodern
-    eb-garamond
-  ]);
+  fonts.packages =
+    (builtins.filter pkgs.lib.isDerivation (builtins.attrValues pkgs.nerd-fonts))
+    ++ (with pkgs; [
+      inter
+      monaspace
+      noto-fonts-emoji
+      roboto
+      newcomputermodern
+      eb-garamond
+    ]);
 
   # Hardware
   hardware = {
@@ -157,9 +159,9 @@
 
       # Enable the Nvidia settings menu,
       # accessible via `nvidia-settings`.
-      nvidiaSettings = false;
+      nvidiaSettings = true;
 
-      package = config.boot.kernelPackages.nvidiaPackages.latest;
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
   };
 
@@ -312,10 +314,6 @@
   # virt-manager
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
-
-  # virtual box
-  virtualisation.virtualbox.host.enable = true;
-  users.extraGroups.vboxusers.members = ["r3rer3"];
 
   # vpn
   services.mullvad-vpn = {

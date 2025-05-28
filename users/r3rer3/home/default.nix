@@ -331,6 +331,10 @@
       bind-key x kill-pane
       set-option -g renumber-windows on
 
+      set-option -g status-interval 1
+      set-option -g automatic-rename on
+      set-option -g automatic-rename-format ' #{b:pane_current_path}'
+
       bind k select-pane -U
       bind j select-pane -D
       bind h select-pane -L
@@ -353,7 +357,13 @@
           set -g @continuum-save-interval '5' # minutes
         '';
       }
-      tmuxPlugins.catppuccin
+      {
+        plugin = tmuxPlugins.catppuccin;
+        extraConfig = ''
+          set -g @catppuccin_window_default_text "#W"
+          set -g @catppuccin_window_current_text "#W"
+        '';
+      }
     ];
   };
 
