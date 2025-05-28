@@ -176,9 +176,10 @@
         cutter
         yara
 
-        # virtual machines
+        # virtual machines or related
         qemu
         quickemu
+        wineWowPackages.stable
 
         # AI tools
         # promptfoo
