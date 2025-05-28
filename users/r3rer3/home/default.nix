@@ -67,6 +67,7 @@
       pkgs-unstable.ghostty
 
       # utilities
+      youplot
       jless
       macchina
       miniserve
