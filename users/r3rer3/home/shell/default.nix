@@ -20,7 +20,6 @@
         expansion = "--help | bat -plhelp";
       };
     };
-    # abbr -a --position anywhere -- --help '--help | bat -plhelp'
 
     functions = let
       nix-your-shell = "${pkgs.nix-your-shell}/bin/nix-your-shell";

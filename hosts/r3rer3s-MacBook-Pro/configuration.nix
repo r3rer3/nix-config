@@ -6,6 +6,8 @@
   users ? [],
   ...
 }: {
+  system.primaryUser = "r3rer3";
+
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
@@ -40,6 +42,18 @@
       "docker"
     ];
   };
+
+  # TODO duplicate with nixos
+  fonts.packages =
+    (builtins.filter pkgs.lib.isDerivation (builtins.attrValues pkgs.nerd-fonts))
+    ++ (with pkgs; [
+      inter
+      monaspace
+      noto-fonts-emoji
+      roboto
+      newcomputermodern
+      eb-garamond
+    ]);
 
   # Necessary for using flakes on this system.
   nix.settings.experimental-features = "nix-command flakes";

@@ -35,6 +35,7 @@
 
     config = {
       allowUnfree = true;
+      allowBroken = true;
     };
   });
 in rec {
@@ -124,10 +125,14 @@ in rec {
             inherit inputs;
             outputs = self.outputs;
 
+            pkgs = makePkgs {inherit system;};
             pkgs-unstable = makePkgs {
               inherit system;
               nix-pkgs = inputs.nixpkgs-unstable;
             };
+
+            mcphub-nvim = inputs.mcphub-nvim.packages;
+            mcphub = inputs.mcphub.packages;
 
             lib = pkgs.lib.extend (_: _: inputs.home-manager.lib);
           };

@@ -44,8 +44,7 @@
       weechat
       pkgs-unstable.discord-canary
       telegram-desktop
-      signal-desktop
-      zoom-us
+      pkgs-unstable.zoom-us
       rainbowstream
       redlib
       element-desktop
@@ -63,8 +62,13 @@
       luajit
       luajitPackages.fennel
 
-      # terminals
-      pkgs-unstable.ghostty
+      # ai tools
+      aichat
+      mcphub."${pkgs.system}".default
+      pkgs-unstable.claude-code
+
+      # virtual machines or related
+      qemu
 
       # utilities
       youplot
@@ -85,7 +89,6 @@
       httpie
       xh
       asciinema
-      postman
       neofetch
       pgcli
       iredis
@@ -159,6 +162,12 @@
         # nighly firefox
         pkgs-mozilla.${stdenv.hostPlatform.system}.firefox-nightly-bin
 
+        # messaging
+        signal-desktop
+
+        # terminals
+        pkgs-unstable.ghostty
+
         # reverse engineering and security
         ghidra
         charles
@@ -176,18 +185,10 @@
         cutter
         yara
 
-        # virtual machines or related
-        qemu
-        quickemu
-        wineWowPackages.stable
-
         # AI tools
         # promptfoo
         private-gpt
         gptcommit
-        aichat
-        mcphub."${pkgs.system}".default
-        pkgs-unstable.claude-code
 
         # audio
         ardour
@@ -227,6 +228,10 @@
         kicad
         ngspice
 
+        # virtual machines or related
+        quickemu
+        wineWowPackages.stable
+
         # utilities
         exfat
         figma-linux
@@ -249,7 +254,8 @@
         kdePackages.kcalc
         kdePackages.kdenlive
       ]
-      else []
+      else [
+      ]
     );
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -286,14 +292,18 @@
   #  /etc/profiles/per-user/r3rer3/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables =
-    if pkgs.stdenv.isLinux
-    then {
-      FREETYPE_PROPERTIES = "truetype:interpreter-version=40 cff:no-stem-darkening=0 autofitter:no-stem-darkening=0";
+    (
+      if pkgs.stdenv.isLinux
+      then {
+        FREETYPE_PROPERTIES = "truetype:interpreter-version=40 cff:no-stem-darkening=0 autofitter:no-stem-darkening=0";
+      }
+      else {}
+    )
+    // {
       MANPAGER = ''
         sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat -p -lman'
       '';
-    }
-    else {};
+    };
 
   programs.direnv = {
     enable = true;
@@ -420,7 +430,7 @@
   };
 
   services.ollama = {
-    enable = true;
+    enable = pkgs.stdenv.isLinux;
 
     acceleration = "cuda";
     environmentVariables = {

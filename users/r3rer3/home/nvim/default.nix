@@ -208,7 +208,7 @@
       })
 
       # AI
-      copilot-vim
+      pkgs-unstable.vimPlugins.copilot-vim
       (pkgs-unstable.vimPlugins.avante-nvim.overrideAttrs (oldAttrs: {
         src = pkgs.fetchFromGitHub {
           owner = "yetone";
