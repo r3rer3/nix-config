@@ -40,6 +40,7 @@
       "1password"
       "whatsapp"
       "docker"
+      "ghostty"
     ];
   };
 
