@@ -7,8 +7,7 @@
 
 ((. (require :avante_lib) :load))
 
-((. (require :avante) :setup) {:claude {:model :claude-3-7-sonnet-latest
-                                        :max_tokens 16384}
+((. (require :avante) :setup) {:providers {:claude {:model :claude-sonnet-4-20250514}}
                                :behaviour {:enable_token_counting false}
                                :system_prompt (fn []
                                                 (let [hub ((. (require :mcphub)
@@ -29,8 +28,11 @@
                                                 :delete_dir
                                                 :rename_dir
                                                 :bash]
-                               :rag_service {:enabled true :host_mount (.. (os.getenv :HOME) :/Projects)}
+                               :rag_service {:enabled true
+                                             :host_mount (.. (os.getenv :HOME)
+                                                             :/Projects)}
                                :file_selector {:provider :telescope}})
 
 ((. (require :mcphub) :setup) {:auto_approve false
-                               :extensions {:avante {:enabled true :make_slash_commands true}}})
+                               :extensions {:avante {:enabled true
+                                                     :make_slash_commands true}}})
