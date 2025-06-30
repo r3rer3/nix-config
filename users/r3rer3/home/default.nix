@@ -66,6 +66,7 @@
       aichat
       mcphub."${pkgs.system}".default
       pkgs-unstable.claude-code
+      pkgs-unstable.gemini-cli
 
       # virtual machines or related
       qemu
