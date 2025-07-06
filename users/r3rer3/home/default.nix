@@ -72,6 +72,7 @@
       qemu
 
       # utilities
+      neohtop
       youplot
       jless
       macchina
