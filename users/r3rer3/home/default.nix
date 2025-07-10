@@ -63,10 +63,13 @@
       luajitPackages.fennel
 
       # ai tools
-      aichat
       mcphub."${pkgs.system}".default
+      aichat
       pkgs-unstable.claude-code
       pkgs-unstable.gemini-cli
+      pkgs-unstable.mods
+      pkgs-unstable.codex
+      pkgs-unstable.opencode
 
       # virtual machines or related
       qemu
