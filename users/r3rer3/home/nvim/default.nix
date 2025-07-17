@@ -213,8 +213,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "yetone";
           repo = "avante.nvim";
-          rev = "0c6a8f5688cefb37259d3404f0403075e033a182";
-          hash = "sha256-zmYp9j20mWgZIRSkJGKj2HnEUCHfQEPBbows2xeBy4U=";
+          rev = "b4c9246461c1fed048cec22330bf36f5c0df2e8f";
+          hash = "sha256-ZX5B0GFTOpCYWRC6HWgg/P2fW7Dx4PSHDE/aAAqjTOc=";
         };
 
         nvimSkipModules = oldAttrs.nvimSkipModules ++ ["avante.providers.ollama" "avante.providers.vertex_claude" "avante.providers.vertex" "avante.providers.gemini"];
