@@ -64,10 +64,9 @@
 
       # ai tools
       mcphub."${pkgs.system}".default
-      aichat
+      pkgs-unstable.aichat
       pkgs-unstable.claude-code
       pkgs-unstable.gemini-cli
-      pkgs-unstable.mods
       pkgs-unstable.codex
       pkgs-unstable.opencode
 
