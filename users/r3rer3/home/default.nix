@@ -74,6 +74,7 @@
       qemu
 
       # utilities
+      pkgs-unstable.sshs
       neohtop
       youplot
       jless
