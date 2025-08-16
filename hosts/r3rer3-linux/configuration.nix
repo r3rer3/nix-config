@@ -165,6 +165,10 @@
     };
   };
 
+  # Trezor
+  # services.trezord.enable = true;
+  # services.trezord.emulator.enable = true;
+
   # X server
   services.xserver = {
     # Enable the X11 windowing system.

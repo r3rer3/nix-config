@@ -219,7 +219,8 @@
         bisq2
         tor-browser
         onionshare
-        trezor-suite
+        pkgs-unstable.trezor-suite
+        pkgs-unstable.trezor-udev-rules
         electrum
         sparrow
         wasabiwallet
