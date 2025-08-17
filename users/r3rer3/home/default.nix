@@ -74,6 +74,19 @@
       qemu
 
       # utilities
+      (pkgs.rustPlatform.buildRustPackage {
+        pname = "ttypr";
+        version = "0.3.5";
+
+        src = fetchFromGitHub {
+          owner = "hotellogical05";
+          repo = "ttypr";
+          rev = "main";
+          hash = "sha256-KWzxbJ7rOI1mFMF9rsZY8dMChsHn8FwoAhqLpbXci4s=";
+        };
+
+        cargoHash = "sha256-AInQub8TfmqqqG0Jq1dYXoiLwQ7nps+als0Vsq4z/NA=";
+      })
       pkgs-unstable.sshs
       neohtop
       youplot
