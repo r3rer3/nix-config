@@ -2,6 +2,10 @@
   programs.newsboat = {
     enable = true;
 
+    extraConfig = ''
+      delete-read-articles-on-quit yes
+    '';
+
     urls = [
       {
         title = "3Blue1Brown mailing list";
