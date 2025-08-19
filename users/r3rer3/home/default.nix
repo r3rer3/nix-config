@@ -88,6 +88,7 @@
         cargoHash = "sha256-AInQub8TfmqqqG0Jq1dYXoiLwQ7nps+als0Vsq4z/NA=";
       })
       pkgs-unstable.sshs
+      ffmpeg_6
       neohtop
       youplot
       jless
