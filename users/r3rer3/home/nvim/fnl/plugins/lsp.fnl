@@ -94,6 +94,7 @@
                 {1 :sorbet}
                 {1 :sqlls}
                 {1 :svelte}
+                {1 :postgres_lsp}
                 {1 :tailwindcss}
                 {1 :taplo}
                 {1 :terraformls}
