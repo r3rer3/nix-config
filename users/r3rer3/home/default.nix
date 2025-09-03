@@ -73,6 +73,10 @@
       # virtual machines or related
       qemu
 
+      # torrent
+      intermodal
+      transmission_4
+
       # utilities
       (pkgs.rustPlatform.buildRustPackage {
         pname = "ttypr";
