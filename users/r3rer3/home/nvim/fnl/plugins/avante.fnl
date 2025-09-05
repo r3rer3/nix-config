@@ -9,7 +9,8 @@
 
 ((. (require :avante) :setup) {:providers {:claude {:model :claude-sonnet-4-20250514}}
                                :auto_suggestions_provider :claude
-                               :behaviour {:enable_token_counting false}
+                               :behaviour {:enable_token_counting false
+                                           :auto_approve_tool_permissions false}
                                :system_prompt (fn []
                                                 (let [hub ((. (require :mcphub)
                                                               :get_hub_instance))]

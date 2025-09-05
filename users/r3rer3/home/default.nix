@@ -69,6 +69,7 @@
       pkgs-unstable.gemini-cli
       pkgs-unstable.codex
       pkgs-unstable.opencode
+      pkgs-unstable.cursor-cli
 
       # virtual machines or related
       qemu
