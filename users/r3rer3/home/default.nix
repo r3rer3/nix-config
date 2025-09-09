@@ -116,6 +116,7 @@
       asciinema
       neofetch
       pgcli
+      rainfrog
       iredis
       litecli
       mycli

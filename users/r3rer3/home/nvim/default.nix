@@ -158,8 +158,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "DanilaMihailov";
           repo = "beacon.nvim";
-          rev = "a786c9a89b2c739c69f9500a2f70f2586c06ec27";
-          hash = "sha256-qD0dwccNjhJ7xyM+yG8bSFUyPn7hHZyC0RBy3MW1hz0=";
+          rev = "098ff96c33874339d5e61656f3050dbd587d6bd5";
+          hash = "sha256-x/79mRkwwT+sNrnf8QqocsaQtM+Rx6BUvVj5Nnv5JDY=";
         };
       })
 
@@ -213,8 +213,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "yetone";
           repo = "avante.nvim";
-          rev = "4af25547dbe4517c7cb1d422c592d84c793c40fb";
-          hash = "sha256-yDMbmaBc8p0QH+F7gZq8cnxkaFQ2ClAV6vf1HU38yXM=";
+          rev = "099354c2533b281db08d96a39b869dd457795eb0";
+          hash = "sha256-j/c6+WSvTWeOuF8f8uRfeUF04dAx9puri+Q83knHiYQ=";
         };
 
         nvimSkipModules = oldAttrs.nvimSkipModules ++ ["avante.providers.ollama" "avante.providers.vertex_claude" "avante.providers.vertex" "avante.providers.gemini"];

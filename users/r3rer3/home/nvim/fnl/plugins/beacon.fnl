@@ -1,8 +1,6 @@
-(set vim.g.beacon_enable false)
-(set vim.g.beacon_timeout 1000)
-(set vim.g.beacon_size 50)
+((. (require :beacon) :setup))
 
 (vim.keymap.set :n :<leader>bb
                  (fn []
-                   (vim.api.nvim_command "Beacon"))
+                   ((. (require :beacon) :highlight_cursor)))
                 {:silent true :desc "Highlights where the cursor is"})
