@@ -1,4 +1,7 @@
-((. (require :flare) :setup) {:x_threshold 20 :y_threshold 10 :fade false})
+((. (require :flare) :setup) {:enabled false
+                              :x_threshold 20
+                              :y_threshold 10
+                              :fade false})
 
 (vim.keymap.set :n :<leader>bb
                 (fn []
