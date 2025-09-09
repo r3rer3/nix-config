@@ -1,6 +1,6 @@
-((. (require :specs) :setup))
+((. (require :flare) :setup) {:x_threshold 20 :y_threshold 10 :fade false})
 
 (vim.keymap.set :n :<leader>bb
                 (fn []
-                  ((. (require :specs) :show_specs)))
+                  ((. (require :flare) :cursor_moved) nil true))
                 {:silent true :desc "Highlights where the cursor is"})

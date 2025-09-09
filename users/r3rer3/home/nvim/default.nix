@@ -154,12 +154,12 @@
 
       # visual information of where cursor is when jumping around
       (pkgs.vimUtils.buildVimPlugin {
-        name = "beacon";
+        name = "flare.nvim";
         src = pkgs.fetchFromGitHub {
-          owner = "cxwx";
-          repo = "specs.nvim";
-          rev = "4a2f6f71eaa054a9355a2f424b4723e68f7ce22c";
-          hash = "sha256-rXBkSrusTGH5LUFu/vZwUt4yNCl7zI0ZB/urpYuJ5u4=";
+          owner = "stonelasley";
+          repo = "flare.nvim";
+          rev = "08eddc77b02415fe7480d84cfbc4f8a7bd1b3d82";
+          hash = "sha256-GSNjPAfrbpWo3W1gLJBv04o3CGKfika/OHkHyRoQtcE=";
         };
       })
 
