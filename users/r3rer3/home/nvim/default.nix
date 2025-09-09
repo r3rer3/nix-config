@@ -156,10 +156,10 @@
       (pkgs.vimUtils.buildVimPlugin {
         name = "beacon";
         src = pkgs.fetchFromGitHub {
-          owner = "DanilaMihailov";
-          repo = "beacon.nvim";
-          rev = "098ff96c33874339d5e61656f3050dbd587d6bd5";
-          hash = "sha256-x/79mRkwwT+sNrnf8QqocsaQtM+Rx6BUvVj5Nnv5JDY=";
+          owner = "cxwx";
+          repo = "specs.nvim";
+          rev = "4a2f6f71eaa054a9355a2f424b4723e68f7ce22c";
+          hash = "sha256-rXBkSrusTGH5LUFu/vZwUt4yNCl7zI0ZB/urpYuJ5u4=";
         };
       })
 
@@ -220,9 +220,6 @@
         nvimSkipModules = oldAttrs.nvimSkipModules ++ ["avante.providers.ollama" "avante.providers.vertex_claude" "avante.providers.vertex" "avante.providers.gemini"];
       }))
       mcphub-nvim."${pkgs.system}".default
-
-      # preview markdown
-      glow-nvim
 
       # indentation info
       pkgs-unstable.vimPlugins.indent-blankline-nvim

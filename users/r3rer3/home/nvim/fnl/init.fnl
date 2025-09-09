@@ -23,7 +23,6 @@
 (require :plugins.copilot)
 (require :plugins.avante)
 (require :plugins.cmp)
-(require :plugins.glow)
 (require :plugins.indent-blankline)
 (require :plugins.marks)
 (require :plugins.numb)

@@ -1,5 +1,5 @@
 (let [telescope (require :telescope)]
-  (telescope.setup {:defaults {:file_ignore_patterns [:tmp :undodir :bin]}
+  (telescope.setup {:defaults {:file_ignore_patterns [:tmp :undodir]}
                     :extensions {:fzf {:fuzzy true
                                        :override_generic_sorter true
                                        :override_file_sorter true
