@@ -178,15 +178,12 @@
       navic (require :nvim-navic)
       get-default-settings (fn [server]
                              (. vim.lsp.config server :cmd :settings))
-                                
       lsp-binary-exists? (fn [server]
                            (let [conf (. vim.lsp.config server)]
-                             (if (= nil conf)
-                                 false
-                                 (= nil (. conf :cmd))
-                                 false
+                             (if (= nil conf) false
+                                 (= nil (. conf :cmd)) false
                                  (let [binary (. conf :cmd 1)]
-                                  (= 1 (vim.fn.executable binary))))))
+                                   (= 1 (vim.fn.executable binary))))))
       linter-binary-exists? (fn [builtin]
                               (let [cmd builtin._opts.command]
                                 (if (= nil cmd) false
