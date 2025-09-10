@@ -78,6 +78,9 @@
       intermodal
       transmission_4
 
+      # gameing
+      retroarch-full
+
       # utilities
       (pkgs.rustPlatform.buildRustPackage {
         pname = "ttypr";
@@ -93,6 +96,15 @@
         cargoHash = "sha256-AInQub8TfmqqqG0Jq1dYXoiLwQ7nps+als0Vsq4z/NA=";
       })
       pkgs-unstable.sshs
+      pkgs-unstable.lazygit
+      pkgs-unstable.lazydocker
+      pkgs-unstable.btop-cuda
+      pkgs-unstable.fastfetch
+      pkgs-unstable.neofetch
+      pkgs-unstable.pinta
+      pkgs-unstable.localsend
+      pkgs-unstable.mpv-unwrapped
+      pkgs-unstable.tailscale
       http-server
       ffmpeg_6
       neohtop
@@ -114,7 +126,6 @@
       httpie
       xh
       asciinema
-      neofetch
       pgcli
       rainfrog
       iredis
