@@ -101,7 +101,7 @@
                 {1 :terraformls}
                 {1 :tflint}
                 {1 :ts_ls}
-                ; {1 :ty}
+                {1 :ty}
                 {1 :tinymist}
                 {1 :vale_ls}
                 {1 :veryl_ls}
@@ -171,30 +171,22 @@
 
 (let [map vim.keymap.set
       {: nvim_create_user_command : nvim_create_autocmd} vim.api
-      lspconfig (require :lspconfig)
       cmp-nvim-lsp (require :cmp_nvim_lsp)
       gotop (require :goto-preview)
       lspsaga (require :lspsaga)
       telescope (require :telescope.builtin)
       navic (require :nvim-navic)
-      root_pattern_exclude (fn [opt]
-                             (let [lsputil (require :lspconfig.util)]
-                               (fn [fname]
-                                 (let [excluded_root ((lsputil.root_pattern opt.exclude) fname)
-                                       included_root ((lsputil.root_pattern opt.root) fname)]
-                                   (if excluded_root
-                                       nil
-                                       included_root)))))
       get-default-settings (fn [server]
-                             (. lspconfig server :document_config
-                                :default_config :settings))
+                             (. vim.lsp.config server :cmd :settings))
+                                
       lsp-binary-exists? (fn [server]
-                           (let [cmd (. lspconfig server :document_config
-                                        :default_config :cmd)]
-                             (if (= nil cmd)
+                           (let [conf (. vim.lsp.config server)]
+                             (if (= nil conf)
                                  false
-                                 (let [binary (. cmd 1)]
-                                   (= 1 (vim.fn.executable binary))))))
+                                 (= nil (. conf :cmd))
+                                 false
+                                 (let [binary (. conf :cmd 1)]
+                                  (= 1 (vim.fn.executable binary))))))
       linter-binary-exists? (fn [builtin]
                               (let [cmd builtin._opts.command]
                                 (if (= nil cmd) false
@@ -260,8 +252,7 @@
   (let [lsp-cond (fn [filetype]
                    (fn [server]
                      (let [name (. server 1)
-                           filetypes (. lspconfig name :document_config
-                                        :default_config :filetypes)]
+                           filetypes (. vim.lsp.config name :filetypes)]
                        (has-value? filetypes filetype))))
         linter-cond (fn [filetype]
                       (fn [linter]
@@ -320,14 +311,8 @@
                           (base-on-attach client bufnr)
                           (server.on-attach client bufnr)))
           config {: settings : capabilities :on_attach on-attach}]
-      (match name
-        :denols (set config.root_dir (lspconfig.util.root_pattern :deno.json))
-        :ts_ls (do
-                 (set config.root_dir
-                      (root_pattern_exclude {:root [:package.json]
-                                             :exclude [:deno.json :deno.jsonc]}))
-                 (set config.single_file_support false)))
-      ((. lspconfig name :setup) config)))
+      ((. vim.lsp.config) name config)
+      ((. vim.lsp.enable) name)))
   (null-ls.setup {:sources available-linters})
   ((. (require :go) :setup))
   ((. (require :lean) :setup) {:mappings true :lsp {:on_attach base-on-attach}})
