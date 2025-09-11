@@ -67,6 +67,7 @@
       pkgs-unstable.aichat
       pkgs-unstable.claude-code
       pkgs-unstable.gemini-cli
+      pkgs-unstable.geminicommit
       pkgs-unstable.codex
       pkgs-unstable.opencode
       pkgs-unstable.cursor-cli
