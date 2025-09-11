@@ -51,6 +51,15 @@
 
       # lsp
       pkgs-unstable.vimPlugins.nvim-lspconfig
+      (pkgs.vimUtils.buildVimPlugin {
+        name = "nvim-lspconfig";
+        src = pkgs.fetchFromGitHub {
+          owner = "neovim";
+          repo = "nvim-lspconfig";
+          rev = "c8b90ae5cbe21d547b342b05c9266dcb8ca0de8f";
+          hash = "sha256-ADnSGO1R+RBGkKzu5S/DGdTIe8Fu84nEUHiLIQuq08I=";
+        };
+      })
       pkgs-unstable.vimPlugins.lspsaga-nvim
       goto-preview
       (pkgs.vimUtils.buildVimPlugin {
