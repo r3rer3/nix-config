@@ -38,8 +38,8 @@
                 {1 :cssmodules_ls}
                 {1 :dafny}
                 {1 :dhall_lsp_server}
-                {1 :denols
-                 :settings {:deno {:enable true :lint true :fmt true}}}
+                ; {1 :denols
+                ;  :settings {:deno {:enable true :lint true :fmt true}}}
                 {1 :docker_compose_language_service}
                 {1 :dockerls}
                 {1 :dotls}
@@ -198,7 +198,6 @@
       base-on-attach (fn [client bufnr]
                        (when client.server_capabilities.documentSymbolProvider
                          (navic.attach client bufnr))
-                       ((. (require :illuminate) :on_attach) client)
                        (when (and (not= nil client.resolved_capabilities)
                                   (client.resolved_capabilities.code_lens))
                          (let [codelens (vim.api.nvim_create_augroup :LSPCodeLens
@@ -302,24 +301,23 @@
           settings (if (= nil server.settings)
                        (get-default-settings name)
                        server.settings)
-          on-attach (if (= nil server.on-attach)
-                        base-on-attach
-                        (fn [client bufnr]
-                          (base-on-attach client bufnr)
-                          (server.on-attach client bufnr)))
-          config {: settings : capabilities :on_attach on-attach}]
+          config {: settings : capabilities}]
       ((. vim.lsp.config) name config)
       ((. vim.lsp.enable) name)))
+  (nvim_create_autocmd :LspAttach
+                       {:callback (fn [args]
+                                    (let [client (vim.lsp.get_client_by_id args.data.client_id)
+                                          bufnr args.buf]
+                                      (base-on-attach client bufnr)))})
   (null-ls.setup {:sources available-linters})
   ((. (require :go) :setup))
-  ((. (require :lean) :setup) {:mappings true :lsp {:on_attach base-on-attach}})
+  ((. (require :lean) :setup) {:mappings true})
   ((. (require :clangd_extensions) :setup) {})
   (set vim.g.haskell_tools
        {:hls {:on_attach (fn [client bufnr ht]
                            (let [opts {:silent true
                                        :buffer bufnr
                                        :noremap true}]
-                             (base-on-attach client bufnr)
                              (map :n :<localleader>hs
                                   ht.hoogle.hoogle_signature opts)
                              (map :n :K vim.lsp.buf.hover opts)
@@ -331,7 +329,6 @@
                              (map :n :<leader>rq ht.repl.quit opts)
                              nil))}})
   (set vim.g.rustaceanvim {:server {:on_attach (fn [client bufnr]
-                                                 (base-on-attach client bufnr)
                                                  (map :n :<leader>rr
                                                       (fn []
                                                         (vim.cmd.RustLsp :runnables))
@@ -406,6 +403,7 @@
                               (vim.lsp.inlay_hint.enable (not (vim.lsp.inlay_hint.is_enabled))))
                             {})
   ((. (require :fidget) :setup) {})
+  ((. (require :illuminate) :configure) {})
   (map :n :<leader>3 :<cmd>Outline<CR> {:desc "Toggle Outline"})
   ((. (require :outline) :setup) {})
   (var is-vista-open false)
