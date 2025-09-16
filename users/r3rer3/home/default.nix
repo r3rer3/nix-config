@@ -96,6 +96,22 @@
 
         cargoHash = "sha256-AInQub8TfmqqqG0Jq1dYXoiLwQ7nps+als0Vsq4z/NA=";
       })
+      (pkgs-unstable.rustPlatform.buildRustPackage {
+        pname = "rustnet";
+        version = "0.8.0";
+
+        buildInputs = [pkgs-unstable.libpcap];
+
+        src = fetchFromGitHub {
+          owner = "domcyrus";
+          repo = "rustnet";
+          rev = "47d9748fba4cc3543a199f17f51007284ef2a9ef";
+          hash = "sha256-3WicHg3HVBKFLA9gO6vkeezXWTqz0MiBJzTLcX1mWg8=";
+        };
+
+        cargoHash = "sha256-DUndt9c8UF4H/duQWMKN1eF5ibaaVrpyRDJginpiOrE=";
+        doCheck = false;
+      })
       pkgs-unstable.sshs
       pkgs-unstable.lazygit
       pkgs-unstable.lazydocker
