@@ -71,6 +71,7 @@
       pkgs-unstable.codex
       pkgs-unstable.opencode
       pkgs-unstable.cursor-cli
+      pkgs-unstable.crush
 
       # virtual machines or related
       qemu
