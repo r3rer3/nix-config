@@ -116,6 +116,7 @@
       pkgs-unstable.sshs
       pkgs-unstable.lazygit
       pkgs-unstable.lazydocker
+      pkgs-unstable.gpg-tui
       pkgs-unstable.btop-cuda
       pkgs-unstable.fastfetch
       pkgs-unstable.neofetch
