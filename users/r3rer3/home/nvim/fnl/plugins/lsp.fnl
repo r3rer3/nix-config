@@ -145,7 +145,7 @@
                 null-ls.builtins.formatting.elm_format
                 null-ls.builtins.formatting.ocamlformat
                 null-ls.builtins.formatting.fnlfmt
-                null-ls.builtins.formatting.prettier
+                null-ls.builtins.formatting.prettierd
                 null-ls.builtins.formatting.rubyfmt
                 null-ls.builtins.formatting.sql_formatter
                 null-ls.builtins.formatting.sqlfmt
@@ -194,22 +194,10 @@
                                                         servers)
       [available-linters non-available-linters] (split-filter linter-binary-exists?
                                                               linters)
-      capabilities (cmp-nvim-lsp.default_capabilities (vim.lsp.protocol.make_client_capabilities))
+      capabilities (cmp-nvim-lsp.default_capabilities)
       base-on-attach (fn [client bufnr]
                        (when client.server_capabilities.documentSymbolProvider
-                         (navic.attach client bufnr))
-                       (when (and (not= nil client.resolved_capabilities)
-                                  (client.resolved_capabilities.code_lens))
-                         (let [codelens (vim.api.nvim_create_augroup :LSPCodeLens
-                                                                     {:clear true})]
-                           (nvim_create_autocmd [:BufEnter
-                                                 :InsertLeave
-                                                 :CursorHold]
-                                                {:group codelens
-                                                 :callback (fn []
-                                                             (vim.lsp.codelens.refresh))
-                                                 :buffer bufnr})))
-                       ; lsp maps for buffers
+                         (navic.attach client bufnr)) ; ; lsp maps for buffers
                        (map :n :gpi (fn [] (gotop.goto_preview_implementation))
                             {:desc "Preview implementation" :buffer bufnr})
                        (map :n :gP (fn [] (gotop.close_all_win))
