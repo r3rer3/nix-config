@@ -211,40 +211,41 @@
                                                  :buffer bufnr})))
                        ; lsp maps for buffers
                        (map :n :gpi (fn [] (gotop.goto_preview_implementation))
-                            {:desc "Preview implementation" :buffer true})
+                            {:desc "Preview implementation" :buffer bufnr})
                        (map :n :gP (fn [] (gotop.close_all_win))
                             {:desc "Closes all floating LSP windows"
-                             :buffer true})
+                             :buffer bufnr})
                        (map :n :gr (fn [] (telescope.lsp_references))
-                            {:desc "Go to references" :buffer true})
+                            {:desc "Go to references" :buffer bufr})
                        (map :n :gpd
                             (fn []
                               (vim.api.nvim_command "Lspsaga peek_definition"))
-                            {:desc "Preview definition" :buffer true})
+                            {:desc "Preview definition" :buffer bufr})
                        (map :n :gpt
                             (fn []
                               (vim.api_nvim_command "Lspsaga peek_type_definition"))
-                            {:desc "Preview type definition" :buffer true})
+                            {:desc "Preview type definition" :buffer bufr})
                        (map :n :gd (fn [] (vim.lsp.buf.definition))
-                            {:desc "Go to definition" :buffer true})
+                            {:desc "Go to definition" :buffer bufr})
                        (map :n :gt
                             (fn []
                               (vim.api.nvim_command "Lspsaga goto_type_definition"))
-                            {:desc "Go to type definition" :buffer true})
+                            {:desc "Go to type definition" :buffer bufr})
                        (map :n :gD (fn [] (vim.lsp.buf.declaration))
-                            {:desc "Go to declaration" :buffer true})
+                            {:desc "Go to declaration" :buffer bufr})
                        (map :n :go
                             (fn [] (vim.api.nvim_command "Lspsaga outline"))
-                            {:desc :Outline :buffer true})
+                            {:desc :Outline :buffer bufnr})
                        (map :n :gF
                             (fn [] (vim.api.nvim_command "Lspsaga finder"))
                             {:desc "Find where word under the cursor is used"
-                             :buffer true})
+                             :buffer bufnr})
                        (map :n :K
                             (fn [] (vim.api.nvim_command "Lspsaga hover_doc"))
-                            {:desc "Hover to get info" :buffer true})
+                            {:desc "Hover to get info" :buffer bufnr})
                        (map :n :gi (fn [] (vim.lsp.buf.implementation))
-                            {:desc "Go to implementation" :buffer true}))]
+                            {:desc "Go to implementation" :buffer bufnr})
+                       nil)]
   (let [lsp-cond (fn [filetype]
                    (fn [server]
                      (let [name (. server 1)
