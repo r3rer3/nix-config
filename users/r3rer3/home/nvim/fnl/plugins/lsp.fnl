@@ -145,7 +145,7 @@
                 null-ls.builtins.formatting.elm_format
                 null-ls.builtins.formatting.ocamlformat
                 null-ls.builtins.formatting.fnlfmt
-                null-ls.builtins.formatting.prettierd
+                null-ls.builtins.formatting.prettier
                 null-ls.builtins.formatting.rubyfmt
                 null-ls.builtins.formatting.sql_formatter
                 null-ls.builtins.formatting.sqlfmt
