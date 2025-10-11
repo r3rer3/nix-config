@@ -233,6 +233,11 @@
                             {:desc "Hover to get info" :buffer bufnr})
                        (map :n :gi (fn [] (vim.lsp.buf.implementation))
                             {:desc "Go to implementation" :buffer bufnr})
+                       (map :n :<localleader>ca
+                            (fn [] (vim.lsp.buf.code_action)
+                              {:desc "Code action"}
+                              :buffer
+                              bufnr))
                        nil)]
   (let [lsp-cond (fn [filetype]
                    (fn [server]

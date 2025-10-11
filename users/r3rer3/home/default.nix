@@ -35,6 +35,9 @@
   # environment.
   home.packages = with pkgs;
     [
+      pkgs-unstable.zed-editor
+      pkgs-unstable.code-cursor
+
       # nix editor tooling
       nil
       alejandra
