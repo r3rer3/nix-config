@@ -84,6 +84,7 @@
 
       # virtual machines or related
       qemu
+      samba4Full
 
       # torrent
       intermodal
