@@ -85,6 +85,7 @@
       # virtual machines or related
       qemu
       samba4Full
+      cifs-utils
 
       # torrent
       intermodal
