@@ -67,20 +67,11 @@
 
       # ai tools
       mcphub."${pkgs.system}".default
-      pkgs-unstable.aichat
-      (pkgs-unstable.claude-code.overrideAttrs (old: rec {
-        version = "2.0.0";
-        src = fetchzip {
-          url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-${version}.tgz";
-          hash = "sha256-uHU9SZso0OZkbcroaVqqVoDvpn28rZVc6drHBrElt5M=";
-        };
-      }))
-      pkgs-unstable.gemini-cli
       pkgs-unstable.geminicommit
+      pkgs-unstable.aichat
+      pkgs-unstable.claude-code
+      pkgs-unstable.gemini-cli
       pkgs-unstable.codex
-      pkgs-unstable.opencode
-      pkgs-unstable.cursor-cli
-      pkgs-unstable.crush
 
       # virtual machines or related
       qemu
