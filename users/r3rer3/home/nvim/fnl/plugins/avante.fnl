@@ -7,8 +7,7 @@
 
 ((. (require :avante_lib) :load))
 
-((. (require :avante) :setup) {
-                               :provider :claude
+((. (require :avante) :setup) {:provider :claude
                                :providers {:claude {:model :claude-sonnet-4-5-20250929}}
                                :auto_suggestions_provider :claude
                                :behaviour {:enable_token_counting false

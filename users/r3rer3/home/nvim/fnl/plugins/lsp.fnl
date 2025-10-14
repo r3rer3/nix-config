@@ -55,6 +55,7 @@
                 {1 :gleam}
                 {1 :glsl_analyzer}
                 {1 :golangci_lint_ls}
+                {1 :gopls}
                 {1 :graphql}
                 {1 :hoon_ls}
                 {1 :html}
