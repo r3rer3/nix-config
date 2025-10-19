@@ -242,6 +242,10 @@
         nss
         cutter
         yara
+        burpsuite
+        ffuf
+        inetutils
+        thc-hydra
 
         # AI tools
         # promptfoo
