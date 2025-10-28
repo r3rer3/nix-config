@@ -29,7 +29,7 @@
                 {1 :autotools_ls}
                 {1 :awk_ls}
                 {1 :bashls}
-                {1 :biome}
+                {1 :biome 2 :biome}
                 {1 :clangd}
                 {1 :cmake}
                 {1 :coq_lsp}
@@ -179,20 +179,25 @@
       telescope (require :telescope.builtin)
       navic (require :nvim-navic)
       get-default-settings (fn [server]
-                             (. vim.lsp.config server :cmd :settings))
-      lsp-binary-exists? (fn [server]
-                           (let [conf (. vim.lsp.config server)]
+                             (let [cmd (. vim.lsp.config server :cmd)]
+                               (if (= :function (type cmd))
+                                   {}
+                                   (. cmd :settings))))
+      lsp-binary-exists? (fn [server-info]
+                           (let [server (. server-info 1)
+                                 conf (. vim.lsp.config server)]
                              (if (= nil conf) false
                                  (= nil (. conf :cmd)) false
-                                 (let [binary (. conf :cmd 1)]
+                                 (let [binary (if (= nil (. server-info 2))
+                                                  (. conf :cmd 1)
+                                                  (. server-info 2))]
                                    (= 1 (vim.fn.executable binary))))))
       linter-binary-exists? (fn [builtin]
                               (let [cmd builtin._opts.command]
                                 (if (= nil cmd) false
                                     (= 1 (vim.fn.executable cmd)))))
-      [available-lsps non-available-lsps] (split-filter (fn [server]
-                                                          (lsp-binary-exists? (. server
-                                                                                 1)))
+      [available-lsps non-available-lsps] (split-filter (fn [server-info]
+                                                          (lsp-binary-exists? server-info))
                                                         servers)
       [available-linters non-available-linters] (split-filter linter-binary-exists?
                                                               linters)
@@ -252,8 +257,8 @@
                           (has-value? filetypes filetype))))]
     (nvim_create_user_command :InfoLsps
                               (fn []
-                                (let [available-lsps-for-filetype (filter (lsp-cond vim.bo.filetype)
-                                                                          available-lsps)
+                                (let [available-lsps-for-filetype (filter (lsp-cond vim.bo.filetype
+                                                                                    available-lsps))
                                       non-available-lsps-for-filetype (filter (lsp-cond vim.bo.filetype)
                                                                               non-available-lsps)]
                                   (print "****** Available LSPs ******")
