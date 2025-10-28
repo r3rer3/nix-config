@@ -29,6 +29,7 @@
                 {1 :autotools_ls}
                 {1 :awk_ls}
                 {1 :bashls}
+                {1 :biome}
                 {1 :clangd}
                 {1 :cmake}
                 {1 :coq_lsp}
