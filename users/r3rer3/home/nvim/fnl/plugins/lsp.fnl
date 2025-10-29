@@ -86,6 +86,7 @@
                                               :pycodestyle {:enabled false}
                                               :yapf {:enabled false}}}}}
                 {1 :pyrefly}
+                {1 :pyright}
                 {1 :racket_langserver}
                 {1 :ruby_lsp}
                 {1 :ruff}
