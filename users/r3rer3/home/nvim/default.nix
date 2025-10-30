@@ -50,7 +50,6 @@
       pkgs-unstable.vimPlugins.rainbow-delimiters-nvim
 
       # lsp
-      pkgs-unstable.vimPlugins.nvim-lspconfig
       (pkgs.vimUtils.buildVimPlugin {
         name = "nvim-lspconfig";
         src = pkgs.fetchFromGitHub {
