@@ -106,7 +106,7 @@
           owner = "nvimtools";
           repo = "none-ls.nvim";
           rev = "main";
-          hash = "sha256-T/MG/4Y0oV6GKmNg1FdDQTavSQd+HMJIPpWkaJd6DL8=";
+          hash = "sha256-aV0xQc7ap9jDHwwAwe19+9QruCM3wE8dxqL8aj5THbM=";
         };
       })
 
@@ -370,7 +370,7 @@
           owner = "whonore";
           repo = "Coqtail";
           rev = "main";
-          hash = "sha256-ZJkW5h2d+zoF5aP5o8pMyWtH0kcp/X57y9doyPJO2tI=";
+          hash = "sha256-i5ft2IQHGISsRO9/zl4Np/JBw3L+N/CAZuSaVbVIGCU=";
         };
       })
 
@@ -381,7 +381,7 @@
           owner = "agda";
           repo = "cornelis";
           rev = "master";
-          hash = "sha256-eL6C5vkWDkpWardA84XwjTdd8BzFpYFJAkIa9OpuSk0=";
+          hash = "sha256-HC/pEz5NQ/seKcbDxV2YxTnLk5bt4vpjgviSEaLdps4=";
         };
       })
 

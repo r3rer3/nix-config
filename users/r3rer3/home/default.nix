@@ -280,8 +280,8 @@
         onionshare
         pkgs-unstable.trezor-suite
         pkgs-unstable.trezor-udev-rules
-        electrum
-        sparrow
+        # electrum
+        # sparrow
         wasabiwallet
         kubo
 
