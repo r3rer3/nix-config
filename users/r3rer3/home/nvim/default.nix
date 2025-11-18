@@ -369,8 +369,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "whonore";
           repo = "Coqtail";
-          rev = "main";
-          hash = "sha256-i5ft2IQHGISsRO9/zl4Np/JBw3L+N/CAZuSaVbVIGCU=";
+          rev = "b3ed3e79c32421ba0e8bed215cc2566da8e56e8a";
+          hash = "sha256-j2IoCWDEYQsUcJqv1CHiQunIVHfJJDSzobkUqHAyLMk=";
         };
       })
 
