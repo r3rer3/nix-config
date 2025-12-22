@@ -99,6 +99,7 @@
         };
 
         cargoHash = "sha256-AInQub8TfmqqqG0Jq1dYXoiLwQ7nps+als0Vsq4z/NA=";
+        doCheck = false;
       })
       (pkgs-unstable.rustPlatform.buildRustPackage {
         pname = "rustnet";
@@ -250,7 +251,6 @@
 
         # AI tools
         # promptfoo
-        private-gpt
         gptcommit
 
         # audio
@@ -462,8 +462,6 @@
   programs.ssh = {
     enable = true;
 
-    addKeysToAgent = "no";
-
     extraConfig = ''
       IdentitiesOnly yes
       PreferredAuthentications publickey,password
@@ -473,10 +471,12 @@
       "r3rer3-sourcehut" = {
         host = "*sr.ht";
         identityFile = ["~/.ssh/r3rer3-sourcehut"];
+        addKeysToAgent = "no";
       };
       "r3rer3-github" = {
         host = "github.com";
         identityFile = ["~/.ssh/r3rer3-github"];
+        addKeysToAgent = "no";
       };
     };
   };
@@ -489,7 +489,7 @@
   services.gpg-agent = {
     enable = true;
 
-    pinentryPackage = pkgs.pinentry-curses;
+    pinentry.package = pkgs.pinentry-curses;
     defaultCacheTtl = 43200;
   };
 

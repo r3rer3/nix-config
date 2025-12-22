@@ -106,7 +106,7 @@
           owner = "nvimtools";
           repo = "none-ls.nvim";
           rev = "main";
-          hash = "sha256-aV0xQc7ap9jDHwwAwe19+9QruCM3wE8dxqL8aj5THbM=";
+          hash = "sha256-lHwzOCYH/L5HmyG7A3ocaHIhkSvh/EP3yNLl6T1uQLM=";
         };
       })
 
@@ -347,7 +347,7 @@
           owner = "p00f";
           repo = "clangd_extensions.nvim";
           rev = "main";
-          hash = "sha256-nQFsciO8LgAtawU96Q8wWJjF5K8Fbm6Uepw9jSlLMyE=";
+          hash = "sha256-+7x567W7ky/rchm10hSh72cOUWfs2umw87+K4++n3YM=";
         };
       })
 

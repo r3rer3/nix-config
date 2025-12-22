@@ -12,37 +12,43 @@
     enable = true;
   };
 
+  programs.delta = {
+    enable = false;
+  };
+
+  programs.diff-so-fancy = {
+    enable = false;
+  };
+
+  programs.difftastic = {
+    enable = true;
+  };
+
   programs.git = {
     enable = true;
-
-    userEmail = "r3rer3@startmail.com";
-    userName = "r3rer3";
 
     signing = {
       key = "64AD34EE9F81A26316380DE08C8AA931EB03536D";
       signByDefault = true;
     };
 
-    aliases = {
-      cm = "commit";
-      i = "init";
-      cl = "clone";
-      st = "status";
-      br = "branch";
-      last = "log -1 HEAD";
-      unstage = "reset HEAD --";
-      visual = "!gitk";
-    };
+    settings = {
+      user = {
+        email = "r3rer3@startmail.com";
+        name = "r3rer3";
+      };
 
-    ignores = [
-      "*~"
-      "*.swp"
-      ".DS_Store"
-      "build"
-      "node_modules"
-    ];
+      alias = {
+        cm = "commit";
+        i = "init";
+        cl = "clone";
+        st = "status";
+        br = "branch";
+        last = "log -1 HEAD";
+        unstage = "reset HEAD --";
+        visual = "!gitk";
+      };
 
-    extraConfig = {
       core = {
         editor = "nvim";
         autocrlg = "input";
@@ -72,17 +78,13 @@
       };
     };
 
-    delta = {
-      enable = false;
-    };
-
-    diff-so-fancy = {
-      enable = false;
-    };
-
-    difftastic = {
-      enable = true;
-    };
+    ignores = [
+      "*~"
+      "*.swp"
+      ".DS_Store"
+      "build"
+      "node_modules"
+    ];
 
     lfs = {
       enable = true;

@@ -115,7 +115,7 @@
     ++ (with pkgs; [
       inter
       monaspace
-      noto-fonts-emoji
+      noto-fonts-color-emoji
       roboto
       newcomputermodern
       eb-garamond
