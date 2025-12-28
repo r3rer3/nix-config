@@ -146,7 +146,7 @@
                 null-ls.builtins.formatting.cmake_format
                 ; null-ls.builtins.formatting.clang_format
                 null-ls.builtins.formatting.elm_format
-                null-ls.builtins.formatting.ocamlformat
+                ; null-ls.builtins.formatting.ocamlformat
                 null-ls.builtins.formatting.fnlfmt
                 null-ls.builtins.formatting.prettier
                 null-ls.builtins.formatting.rubyfmt
