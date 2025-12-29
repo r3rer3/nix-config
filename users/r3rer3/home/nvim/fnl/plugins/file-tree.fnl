@@ -14,7 +14,7 @@
                     (tree-api.tree.toggle))
                   {:desc "Open/Close file tree"}))
 
-(vim.keymap.set :n :<leader>r
+(vim.keymap.set :n :<leader>rt
                 (fn []
                   (vim.api.nvim_command :NvimTreeRefresh))
                 {:desc "Refreshes file tree"})
