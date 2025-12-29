@@ -70,7 +70,7 @@
       pkgs-unstable.geminicommit
       pkgs-unstable.aichat
       pkgs-unstable.claude-code
-      pkgs-unstable.gemini-cli
+      pkgs-unstable.gemini-cli-bin
       pkgs-unstable.codex
       # pkgs-unstable.opencode
 

@@ -7,8 +7,7 @@
 
 ((. (require :avante_lib) :load))
 
-((. (require :avante) :setup) {:provider :claude
-                               :providers {:claude {:model :claude-sonnet-4-5-20250929}}
+((. (require :avante) :setup) {:provider :gemini-cli
                                :auto_suggestions_provider :claude
                                :behaviour {:enable_token_counting false
                                            :auto_approve_tool_permissions false}

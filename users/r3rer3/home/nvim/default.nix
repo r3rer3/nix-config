@@ -55,8 +55,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "neovim";
           repo = "nvim-lspconfig";
-          rev = "cbd1e91296189a765094810de1b71a04e2597579";
-          hash = "sha256-rSqlgawAkk8BKhO8/UTO9BHmsI0cZY65oULzMKkAKfY=";
+          rev = "d696e36d5792daf828f8c8e8d4b9aa90c1a10c2a";
+          hash = "sha256-R9SjpxYawdrwfXy6XBumy249P3MSWS77yXtdM/oY6GI=";
         };
       })
       pkgs-unstable.vimPlugins.lspsaga-nvim
@@ -124,7 +124,7 @@
 
       # comments
       comment-nvim
-      todo-comments-nvim
+      pkgs-unstable.vimPlugins.todo-comments-nvim
 
       # session manager
       pkgs-unstable.vimPlugins.auto-session
@@ -334,8 +334,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "hrsh7th";
           repo = "cmp-nvim-lsp";
-          rev = "main";
-          hash = "sha256-iaihXNCF5bB5MdeoosD/kc3QtpA/QaIDZVLiLIurBSM=";
+          rev = "cbc7b02bb99fae35cb42f514762b89b5126651ef";
+          hash = "sha256-CYZdfAsJYQyW413fRvNbsS5uayuc6fKDvDLZ2Y7j3ZQ=";
         };
       })
       pkgs-unstable.vimPlugins.cmp-nvim-lsp-signature-help
