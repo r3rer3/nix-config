@@ -124,7 +124,16 @@
 
       # comments
       comment-nvim
-      pkgs-unstable.vimPlugins.todo-comments-nvim
+      (pkgs.vimUtils.buildVimPlugin {
+        name = "todo-comments-nvim";
+        src = pkgs.fetchFromGitHub {
+          owner = "folke";
+          repo = "todo-comments.nvim";
+          rev = "411503d3bedeff88484de572f2509c248e499b38";
+          hash = "sha256-VE7n/yoYPEkp4WQ89ftscspnijPrEMroPg5qVYyVcbM=";
+        };
+        doCheck = false;
+      })
 
       # session manager
       pkgs-unstable.vimPlugins.auto-session

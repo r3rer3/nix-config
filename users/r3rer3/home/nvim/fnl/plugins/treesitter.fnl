@@ -1,5 +1,5 @@
 (let [conf {:highlight {:enable true :additional_vim_regex_highlighting false}
-            :indent {:enable true}
+            :indent {:enable true :disable [:ocaml :ocamlinterface]}
             :matchup {:enable true :disable_virtual_text true}
             :textobjects {:select {:enable true
                                    :lookahead true
