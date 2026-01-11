@@ -10,6 +10,7 @@
 ((. (require :avante) :setup) {:provider :gemini-cli
                                :auto_suggestions_provider :claude
                                :behaviour {:enable_token_counting false
+                                           :confirmation_ui_style :popup
                                            :auto_approve_tool_permissions false}
                                :system_prompt (fn []
                                                 (let [hub ((. (require :mcphub)
