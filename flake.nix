@@ -5,6 +5,9 @@
     substituters = [
       "https://cache.nixos.org"
     ];
+    trusted-public-keys = [
+      "nvim-treesitter-main.cachix.org-1:cbwE6blfW5+BkXXyeAXoVSu1gliqPLHo2m98E4hWfZQ="
+    ];
   };
 
   inputs = {
@@ -30,6 +33,8 @@
 
     mcphub-nvim.url = "github:ravitemer/mcphub.nvim";
     mcphub.url = "github:ravitemer/mcp-hub";
+
+    nvim-treesitter-main.url = "github:iofq/nvim-treesitter-main";
   };
 
   outputs = {
