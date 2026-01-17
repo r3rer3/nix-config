@@ -16,8 +16,8 @@
   (cmp.setup {:snippet {:expand (fn [args]
                                   (luasnip.lsp_expand args.body)
                                   nil)}
-              :window {:completion (cmp.config.window.bordered)
-                       :documentation (cmp.config.window.bordered)}
+              :window {:completion (cmp.config.window.bordered {:border :rounded})
+                       :documentation (cmp.config.window.bordered {:border :rounded})}
               :preselect cmp.PreselectMode.None
               :mapping {:<C-b> (cmp.mapping.scroll_docs -4)
                         :<C-f> (cmp.mapping.scroll_docs 4)
@@ -47,7 +47,10 @@
                          :priority 2
                          :group_index 1}
                         {:name :path :priority 3 :group_index 1}
-                        {:name :buffer :priority 1 :group_index 2 :keyword_length 4}
+                        {:name :buffer
+                         :priority 1
+                         :group_index 2
+                         :keyword_length 4}
                         {:name :rg :priority 2 :group_index 2}]
               :formatting {:format (lspkind.cmp_format {:mode :symbol_text
                                                         :maxwidth 50

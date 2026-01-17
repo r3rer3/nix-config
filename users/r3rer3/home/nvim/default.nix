@@ -55,8 +55,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "neovim";
           repo = "nvim-lspconfig";
-          rev = "d696e36d5792daf828f8c8e8d4b9aa90c1a10c2a";
-          hash = "sha256-R9SjpxYawdrwfXy6XBumy249P3MSWS77yXtdM/oY6GI=";
+          rev = "92ee7d42320edfbb81f3cad851314ab197fa324a";
+          hash = "sha256-AOn+afoh9yJUEcF8kJR3Nm1D6cT6fDCQ+wTFwPXwFRA=";
         };
       })
       pkgs-unstable.vimPlugins.lspsaga-nvim
@@ -75,8 +75,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "onsails";
           repo = "lspkind.nvim";
-          rev = "master";
-          hash = "sha256-OCvKUBGuzwy8OWOL1x3Z3fo+0+GyBMI9TX41xSveqvE=";
+          rev = "53374a2dbcb959f1d0d5d3cf6c47c4b029151c6e";
+          hash = "sha256-I4mKAFk0qcaSfKOZHWiWHWRspP0pc9SpDI2Fk4LgBic=";
         };
       })
       (pkgs-unstable.vimUtils.buildVimPlugin {
