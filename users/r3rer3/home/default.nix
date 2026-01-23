@@ -72,7 +72,7 @@
       pkgs-unstable.claude-code
       pkgs-unstable.gemini-cli-bin
       pkgs-unstable.codex
-      # pkgs-unstable.opencode
+      pkgs-unstable.opencode
 
       # virtual machines or related
       qemu
