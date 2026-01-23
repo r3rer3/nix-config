@@ -83,8 +83,9 @@
       intermodal
       transmission_4
 
-      # gameing
+      # games
       retroarch-full
+      prismlauncher
 
       # utilities
       (pkgs.rustPlatform.buildRustPackage {
