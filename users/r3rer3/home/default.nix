@@ -68,7 +68,6 @@
       # ai tools
       mcphub."${pkgs.system}".default
       pkgs-unstable.geminicommit
-      pkgs-unstable.aichat
       pkgs-unstable.claude-code
       pkgs-unstable.gemini-cli-bin
       pkgs-unstable.codex
