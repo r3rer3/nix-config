@@ -35,9 +35,6 @@
   # environment.
   home.packages = with pkgs;
     [
-      pkgs-unstable.zed-editor
-      pkgs-unstable.code-cursor
-
       # nix editor tooling
       nil
       alejandra
@@ -128,6 +125,7 @@
       pkgs-unstable.localsend
       pkgs-unstable.mpv-unwrapped
       pkgs-unstable.tailscale
+      pkgs-unstable.google-chrome
       http-server
       ffmpeg_6
       neohtop
