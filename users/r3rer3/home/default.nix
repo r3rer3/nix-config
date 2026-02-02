@@ -82,6 +82,9 @@
       # games
       retroarch-full
       prismlauncher
+      steam
+      gamescope
+      gamescope-wsi
 
       # utilities
       (pkgs.rustPlatform.buildRustPackage {
