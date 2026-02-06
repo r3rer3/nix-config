@@ -66,9 +66,17 @@
       mcphub."${pkgs.system}".default
       pkgs-unstable.geminicommit
       pkgs-unstable.claude-code
-      pkgs-unstable.gemini-cli-bin
+      pkgs-unstable.gemini-cli
       pkgs-unstable.codex
-      pkgs-unstable.opencode
+      (pkgs-unstable.opencode.overrideAttrs (final: old: {
+        version = "1.1.53";
+        src = old.src.override {
+          hash = "sha256-VddWpvtoDJlbbesJL6VlP99/NJqkHbN8Rdv1XccNRZM=";
+        };
+        node_modules = old.node_modules.overrideAttrs {
+          outputHash = "sha256-S69x2yRym+h0hbc6wHFOeTxYi9nbBgEJGaZKhUbmdxI=";
+        };
+      }))
 
       # virtual machines or related
       qemu
