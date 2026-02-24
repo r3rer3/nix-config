@@ -302,7 +302,7 @@
         ngspice
 
         # virtual machines or related
-        quickemu
+        pkgs-unstable.quickemu
         wineWowPackages.stable
 
         # utilities
