@@ -68,6 +68,7 @@
                                   :completion {:callSnippet :Replace}}}}
                 {1 :marksman}
                 {1 :mdx_analyzer}
+                {1 :mlir_lsp_server}
                 {1 :nixd
                  :settings {:nixd {:nixpkgs {:expr "import <nixpkgs> { }"}
                                    :formatting {:command {1 :alejandra}}
