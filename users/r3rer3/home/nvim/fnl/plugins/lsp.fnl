@@ -111,6 +111,7 @@
                 {1 :veryl_ls}
                 {1 :vimls}
                 {1 :vls}
+                {1 :vue_ls}
                 {1 :wgsl_analyzer}
                 {1 :yamlls
                  :settings {:yaml {:schemaStore {:enable true}
