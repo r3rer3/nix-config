@@ -43,7 +43,7 @@
       # communication
       weechat
       pkgs-unstable.discord-canary
-      telegram-desktop
+      pkgs-unstable.telegram-desktop
       pkgs-unstable.zoom-us
       rainbowstream
       redlib
@@ -69,12 +69,12 @@
       pkgs-unstable.gemini-cli
       pkgs-unstable.codex
       (pkgs-unstable.opencode.overrideAttrs (final: old: {
-        version = "1.2.15";
+        version = "1.2.21";
         src = old.src.override {
-          hash = "sha256-26MV9TbyAF0KFqZtIHPYu6wqJwf0pNPdW/D3gDQEUlQ=";
+          hash = "sha256-XCf0ijRZZjp16YS9V65ZMoQzTWYRUrle3L4vWIxvy3M=";
         };
         node_modules = old.node_modules.overrideAttrs {
-          outputHash = "sha256-Diu/C8b5eKUn7MRTFBcN5qgJZTp0szg0ECkgEaQZ87Y=";
+          outputHash = "sha256-twywrmswEl687u5mqWgVVzOeWOheNGuW3e4L5tq/Qbw=";
         };
       }))
 
@@ -88,7 +88,7 @@
       transmission_4
 
       # games
-      retroarch-full
+      # retroarch-full
       prismlauncher
       steam
       gamescope
@@ -103,10 +103,10 @@
           owner = "hotellogical05";
           repo = "ttypr";
           rev = "main";
-          hash = "sha256-KWzxbJ7rOI1mFMF9rsZY8dMChsHn8FwoAhqLpbXci4s=";
+          hash = "sha256-XZSUXGuwEbrUYhdaTUDmtQRTUlIolURw4yoXYF9x33c=";
         };
 
-        cargoHash = "sha256-AInQub8TfmqqqG0Jq1dYXoiLwQ7nps+als0Vsq4z/NA=";
+        cargoHash = "sha256-bmwvirAbjzD5NJDHJgbPhnNqTdfo8CWJ2JWgFEBz+2Y=";
         doCheck = false;
       })
       (pkgs-unstable.rustPlatform.buildRustPackage {
@@ -131,7 +131,6 @@
       pkgs-unstable.gpg-tui
       pkgs-unstable.btop-cuda
       pkgs-unstable.fastfetch
-      pkgs-unstable.neofetch
       pkgs-unstable.pinta
       pkgs-unstable.localsend
       pkgs-unstable.mpv-unwrapped

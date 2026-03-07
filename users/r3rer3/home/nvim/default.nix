@@ -43,10 +43,10 @@
       vim-surround
 
       # tree sitter and tree sitter plugins
-      nvim-treesitter.withAllGrammars
-      nvim-treesitter-textobjects
-      nvim-ts-context-commentstring
-      nvim-ts-autotag
+      pkgs-unstable.vimPlugins.nvim-treesitter.withAllGrammars
+      pkgs-unstable.vimPlugins.nvim-treesitter-textobjects
+      pkgs-unstable.vimPlugins.nvim-ts-context-commentstring
+      pkgs-unstable.vimPlugins.nvim-ts-autotag
       pkgs-unstable.vimPlugins.rainbow-delimiters-nvim
 
       # lsp
@@ -106,8 +106,9 @@
           owner = "nvimtools";
           repo = "none-ls.nvim";
           rev = "main";
-          hash = "sha256-jMUCgRJhwQJFmKcHwZaXHKMlDRkT2miX1MRkK4yjYQ8=";
+          hash = "sha256-x/x3eQwc9HrdYvpqOkvhiXvO6i/NbutFrAPGl2VcVkY=";
         };
+        doCheck = false;
       })
 
       # highlight uses of word under the cursor
@@ -289,7 +290,7 @@
           owner = "Vigemus";
           repo = "iron.nvim";
           rev = "master";
-          hash = "sha256-KZQlpJYWWFCO2YzdRfuB6w98X+oArxZXx6daZIcQnZU=";
+          hash = "sha256-I2o1H9iRgGHmLA0v2U508hKWFCFrvZxXGWUOLtke7Do=";
         };
       })
 
@@ -356,7 +357,7 @@
           owner = "p00f";
           repo = "clangd_extensions.nvim";
           rev = "main";
-          hash = "sha256-x4VaY5ZvkvBSMpvnExlJJvf+ZelGXFc4irrwsiJ+oZE=";
+          hash = "sha256-JWo5yY/ei21np71Qmhs7vxST5fy9VnhlFOKClCOdnhg=";
         };
       })
 
@@ -390,7 +391,7 @@
           owner = "agda";
           repo = "cornelis";
           rev = "master";
-          hash = "sha256-HC/pEz5NQ/seKcbDxV2YxTnLk5bt4vpjgviSEaLdps4=";
+          hash = "sha256-Z/2hBW/bRb8wtJqBUT8tqgoXg4XqGNvp8L6xw+zHDaU=";
         };
       })
 
