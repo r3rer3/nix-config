@@ -89,7 +89,7 @@
                 {1 :pyrefly}
                 {1 :pyright}
                 {1 :racket_langserver}
-                {1 :ruby_lsp}
+                ; {1 :ruby_lsp}
                 {1 :ruff}
                 {1 :reason_ls}
                 {1 :rescriptls}

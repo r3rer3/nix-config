@@ -55,8 +55,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "neovim";
           repo = "nvim-lspconfig";
-          rev = "92ee7d42320edfbb81f3cad851314ab197fa324a";
-          hash = "sha256-AOn+afoh9yJUEcF8kJR3Nm1D6cT6fDCQ+wTFwPXwFRA=";
+          rev = "2163c54bb6cfec53e3e555665ada945b8c8331b9";
+          hash = "sha256-WengoBOPLPPbisq7oosZ2aG8ATHwuSLxYeIT24/C9po=";
         };
       })
       pkgs-unstable.vimPlugins.lspsaga-nvim
