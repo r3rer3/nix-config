@@ -68,7 +68,7 @@ in rec {
                 import ./users/${user} {username = user;}
               )
               .home);
-
+          
           home-manager.extraSpecialArgs = {
             inherit inputs;
             outputs = self.outputs;
@@ -120,6 +120,8 @@ in rec {
                 import ./users/${user} {username = user;}
               )
               .home);
+
+          home-manager.backupFileExtension = "backup";
 
           home-manager.extraSpecialArgs = {
             inherit inputs;

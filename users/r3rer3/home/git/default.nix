@@ -28,8 +28,15 @@
     enable = true;
 
     signing = {
-      key = "64AD34EE9F81A26316380DE08C8AA931EB03536D";
       signByDefault = true;
+      key =
+        if pkgs.stdenv.isLinux
+        then "64AD34EE9F81A26316380DE08C8AA931EB03536D"
+        else "~/.ssh/r3rer3-github.pub";
+      format =
+        if pkgs.stdenv.isLinux
+        then "openpgp"
+        else "ssh";
     };
 
     settings = {

@@ -25,4 +25,8 @@ r3rer3-nixos:
 
 [macos]
 r3rer3-darwin:
-    darwin-rebuild switch --flake .#r3rer3s-MacBook-Pro
+    darwin-rebuild switch --flake .#r3rer3s-macbook-pro
+
+[macos]
+r3rer3-darwin-air:
+    sudo darwin-rebuild switch --flake .#r3rer3s-MacBook-Air

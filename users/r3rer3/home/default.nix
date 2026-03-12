@@ -42,12 +42,8 @@
 
       # communication
       weechat
-      pkgs-unstable.discord-canary
-      pkgs-unstable.telegram-desktop
-      pkgs-unstable.zoom-us
       rainbowstream
       redlib
-      element-desktop
 
       # organization
       pkgs-unstable.obsidian
@@ -81,18 +77,10 @@
       # virtual machines or related
       qemu
       samba4Full
-      cifs-utils
 
       # torrent
       intermodal
       transmission_4
-
-      # games
-      # retroarch-full
-      prismlauncher
-      steam
-      gamescope
-      gamescope-wsi
 
       # utilities
       (pkgs.rustPlatform.buildRustPackage {
@@ -109,29 +97,12 @@
         cargoHash = "sha256-bmwvirAbjzD5NJDHJgbPhnNqTdfo8CWJ2JWgFEBz+2Y=";
         doCheck = false;
       })
-      (pkgs-unstable.rustPlatform.buildRustPackage {
-        pname = "rustnet";
-        version = "0.8.0";
-
-        buildInputs = [pkgs-unstable.libpcap];
-
-        src = fetchFromGitHub {
-          owner = "domcyrus";
-          repo = "rustnet";
-          rev = "47d9748fba4cc3543a199f17f51007284ef2a9ef";
-          hash = "sha256-3WicHg3HVBKFLA9gO6vkeezXWTqz0MiBJzTLcX1mWg8=";
-        };
-
-        cargoHash = "sha256-DUndt9c8UF4H/duQWMKN1eF5ibaaVrpyRDJginpiOrE=";
-        doCheck = false;
-      })
       pkgs-unstable.sshs
       pkgs-unstable.lazygit
       pkgs-unstable.lazydocker
       pkgs-unstable.gpg-tui
       pkgs-unstable.btop-cuda
       pkgs-unstable.fastfetch
-      pkgs-unstable.pinta
       pkgs-unstable.localsend
       pkgs-unstable.mpv-unwrapped
       pkgs-unstable.tailscale
@@ -232,9 +203,16 @@
 
         # messaging
         signal-desktop
+        element-desktop
+        pkgs-unstable.discord-canary
+        pkgs-unstable.telegram-desktop
+        pkgs-unstable.zoom-us
 
         # terminals
         pkgs-unstable.ghostty
+
+        # virtual machines or related
+        cifs-utils
 
         # reverse engineering and security
         ghidra
@@ -300,6 +278,13 @@
         kicad
         ngspice
 
+        # games
+        # retroarch-full
+        steam
+        prismlauncher
+        gamescope
+        gamescope-wsi
+
         # virtual machines or related
         pkgs-unstable.quickemu
         wineWowPackages.stable
@@ -318,6 +303,23 @@
         kubernetes
         warp
         aflplusplus
+        pkgs-unstable.pinta
+        (pkgs-unstable.rustPlatform.buildRustPackage {
+          pname = "rustnet";
+          version = "0.8.0";
+
+          buildInputs = [pkgs-unstable.libpcap];
+
+          src = fetchFromGitHub {
+            owner = "domcyrus";
+            repo = "rustnet";
+            rev = "47d9748fba4cc3543a199f17f51007284ef2a9ef";
+            hash = "sha256-3WicHg3HVBKFLA9gO6vkeezXWTqz0MiBJzTLcX1mWg8=";
+          };
+
+          cargoHash = "sha256-DUndt9c8UF4H/duQWMKN1eF5ibaaVrpyRDJginpiOrE=";
+          doCheck = false;
+        })
 
         # kde packages
         kdePackages.kalgebra

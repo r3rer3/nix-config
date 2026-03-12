@@ -31,7 +31,7 @@
                                                 :delete_dir
                                                 :rename_dir
                                                 :bash]
-                               :rag_service {:enabled true
+                               :rag_service {:enabled false
                                              :host_mount (.. (os.getenv :HOME)
                                                              :/Projects)}
                                :file_selector {:provider :telescope}})

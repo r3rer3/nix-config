@@ -95,6 +95,12 @@
         system = darwinSystem;
         users = getUsers hostname;
       }
+
+      rec {
+        hostname = "r3rer3s-MacBook-Air";
+        system = darwinSystem;
+        users = getUsers hostname;
+      }
     ];
 
     devShells = forAllSystems (system: let
