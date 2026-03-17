@@ -85,7 +85,12 @@
 (add-new :nix :nix)
 
 ; Coq
-(add-new :coq :coq)
+(add-new :coq :coq nil
+         (fn []
+           (set vim.bo.tabstop 2)
+           (set vim.bo.shiftwidth 2)
+           (map :i :<Space> :<Space> {:buffer true :desc "Disable space keymaps in insert mode"})
+           (map :i :<BS> :<BS> {:buffer true :desc "Disable backspace keymaps in insert mode"})))
 ; TODO do Coq colors
 ;vim.cmd [[
 ;augroup CoqtailHighlights
