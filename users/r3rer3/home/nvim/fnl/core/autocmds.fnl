@@ -89,8 +89,11 @@
          (fn []
            (set vim.bo.tabstop 2)
            (set vim.bo.shiftwidth 2)
-           (map :i :<Space> :<Space> {:buffer true :desc "Disable space keymaps in insert mode"})
-           (map :i :<BS> :<BS> {:buffer true :desc "Disable backspace keymaps in insert mode"})))
+           (vim.schedule
+             (fn []
+               (each [_ km (ipairs (vim.api.nvim_buf_get_keymap 0 :i))]
+                 (when (= (string.sub km.lhs 1 1) " ")
+                   (vim.api.nvim_buf_del_keymap 0 :i km.lhs)))))))
 ; TODO do Coq colors
 ;vim.cmd [[
 ;augroup CoqtailHighlights
