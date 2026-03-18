@@ -474,7 +474,6 @@
 
     extraConfig = ''
       IdentityAgent ~/.1password/agent.sock
-      IdentitiesOnly yes
       PreferredAuthentications publickey,password
     '';
 
