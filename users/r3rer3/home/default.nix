@@ -105,7 +105,6 @@
       pkgs-unstable.fastfetch
       pkgs-unstable.localsend
       pkgs-unstable.mpv-unwrapped
-      pkgs-unstable.tailscale
       pkgs-unstable.google-chrome
       http-server
       ffmpeg_6

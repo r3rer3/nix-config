@@ -325,6 +325,8 @@
     package = pkgs.mullvad-vpn;
   };
 
+  services.tailscale.enable = true;
+
   services.udev = {
     enable = true;
   };
