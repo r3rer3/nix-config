@@ -65,12 +65,12 @@
       pkgs-unstable.gemini-cli
       pkgs-unstable.codex
       (pkgs-unstable.opencode.overrideAttrs (final: old: {
-        version = "1.2.21";
+        version = "1.2.27";
         src = old.src.override {
-          hash = "sha256-XCf0ijRZZjp16YS9V65ZMoQzTWYRUrle3L4vWIxvy3M=";
+          hash = "sha256-JUlFfILzcUCME3mOxdxDbcCXphNVEfVGIKhwAwtJPl8=";
         };
         node_modules = old.node_modules.overrideAttrs {
-          outputHash = "sha256-twywrmswEl687u5mqWgVVzOeWOheNGuW3e4L5tq/Qbw=";
+          outputHash = "sha256-byKXLpfvidfKl8PshUsW0grrRYRoVAYYlid0N6/ke2c=";
         };
       }))
 
