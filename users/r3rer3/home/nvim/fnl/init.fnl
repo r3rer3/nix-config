@@ -21,7 +21,6 @@
 (require :plugins.git)
 (require :plugins.beacon)
 (require :plugins.copilot)
-(require :plugins.avante)
 (require :plugins.cmp)
 (require :plugins.indent-blankline)
 (require :plugins.marks)

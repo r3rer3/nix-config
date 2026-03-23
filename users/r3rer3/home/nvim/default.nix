@@ -227,16 +227,6 @@
 
       # AI
       pkgs-unstable.vimPlugins.copilot-vim
-      (pkgs-unstable.vimPlugins.avante-nvim.overrideAttrs (oldAttrs: {
-        src = pkgs.fetchFromGitHub {
-          owner = "yetone";
-          repo = "avante.nvim";
-          rev = "e89eb79abf5754645e20aa6074da10ed20bba33c";
-          hash = "sha256-jxbDBvaVtgC0L/MSyoZjGjBxvRUdNofRsiUHwntab7c=";
-        };
-
-        nvimSkipModules = oldAttrs.nvimSkipModules ++ ["avante.providers.ollama" "avante.providers.vertex_claude" "avante.providers.vertex" "avante.providers.gemini"];
-      }))
       mcphub-nvim."${pkgs.system}".default
 
       # indentation info
