@@ -331,6 +331,7 @@
                                     (ht.repl.toggle (vim.api.nvim_buf_get_name 0)))
                                   opts)
                              (map :n :<leader>rq ht.repl.quit opts)
+                             (map :n :K (fn [] (vim.cmd.Haskell [:hover])) opts)
                              nil))}})
   (set vim.g.rustaceanvim {:server {:on_attach (fn [client bufnr]
                                                  (map :n :<leader>rr

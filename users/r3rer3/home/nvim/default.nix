@@ -55,8 +55,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "neovim";
           repo = "nvim-lspconfig";
-          rev = "2163c54bb6cfec53e3e555665ada945b8c8331b9";
-          hash = "sha256-WengoBOPLPPbisq7oosZ2aG8ATHwuSLxYeIT24/C9po=";
+          rev = "841c6d4139aedb8a3f2baf30cef5327371385b93";
+          hash = "sha256-1wmf28UMTt0ZTD8w66OieP+YYkht3n4bOkoNa4dD6/0=";
         };
       })
       pkgs-unstable.vimPlugins.lspsaga-nvim
@@ -67,7 +67,7 @@
           owner = "j-hui";
           repo = "fidget.nvim";
           rev = "main";
-          hash = "sha256-o0za2NxFtzHZa7PRIm9U/P1/fwJrxS1G79ukdGLhJ4Q=";
+          hash = "sha256-Zap4UVicIvCaPqCMgdlnEAGbMzq1xM4uGpVqZL1iju0=";
         };
       })
       (pkgs.vimUtils.buildVimPlugin {
@@ -75,8 +75,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "onsails";
           repo = "lspkind.nvim";
-          rev = "53374a2dbcb959f1d0d5d3cf6c47c4b029151c6e";
-          hash = "sha256-I4mKAFk0qcaSfKOZHWiWHWRspP0pc9SpDI2Fk4LgBic=";
+          rev = "c7274c48137396526b59d86232eabcdc7fed8a32";
+          hash = "sha256-aIopYLm/x1CgCKpcsu9pxpqL0SXXhHDPTM8DKUwGeRw=";
         };
       })
       (pkgs-unstable.vimUtils.buildVimPlugin {
@@ -86,7 +86,7 @@
           owner = "hedyhli";
           repo = "outline.nvim";
           rev = "main";
-          hash = "sha256-U8FmA7dJIV9T6Uose7Q9xATfB73H6PPQAGLw3FEsk9Y=";
+          hash = "sha256-+jN6VV7McqszRLHPx7sYme2mq3BzaOr5IOHbF+uZPrc=";
         };
       })
       (pkgs.vimUtils.buildVimPlugin {
@@ -106,7 +106,7 @@
           owner = "nvimtools";
           repo = "none-ls.nvim";
           rev = "main";
-	  hash = "sha256-PmDYh9VqfpxNzIepTiNzXKrighUN9e6Ug5pCD3XCGd4=";
+          hash = "sha256-PmDYh9VqfpxNzIepTiNzXKrighUN9e6Ug5pCD3XCGd4=";
         };
         doCheck = false;
       })
@@ -152,7 +152,7 @@
           owner = "akinsho";
           repo = "git-conflict.nvim";
           rev = "main";
-          hash = "sha256-SablEni7+VYXUs5lkgpZBqzIBWDE2p3f+R4vXrzF+oE=";
+          hash = "sha256-CmSgmpg5K3ySXYrDjg8yTAojeLWJdSHP8uNVFyrkNhc=";
         };
       })
 
@@ -166,7 +166,7 @@
           owner = "gpanders";
           repo = "nvim-parinfer";
           rev = "master";
-          hash = "sha256-diwLtmch8LzaX7FIwBNy78n3iY7VnqMC1n0ep8k5kWE=";
+          hash = "sha256-hzm+VF669NpILT6P540PriXDuOCjPq3D7YKxLv5EsQU=";
         };
       })
 
@@ -220,8 +220,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "MeanderingProgrammer";
           repo = "render-markdown.nvim";
-          rev = "ba6253d9673daf0cf394b87b2c2ecb7630944c7d";
-          hash = "sha256-Tw3lf9DJx/f+/GtlLA7FKPdd+fxzgFffhY3OotN+AFs=";
+          rev = "e3c18ddd27a853f85a6f513a864cf4f2982b9f26";
+          hash = "sha256-7O8V8XDYn4ITF9VfvV1OSkto+piIm/DpwtEe+vJcE2g=";
         };
       })
 
@@ -306,8 +306,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "echasnovski";
           repo = "mini.nvim";
-          rev = "v0.13.0";
-          hash = "sha256-dB+v1kJYyCEzC5N5s6Sbf05ZEU2MJnFrkV3w5b2ZuYY=";
+          rev = "v0.17.0";
+          hash = "sha256-xmNZrQDptaNcECHSGtjownFyR1qxsP7lge8OAIFe8BU=";
         };
       })
 
@@ -325,7 +325,7 @@
           owner = "akinsho";
           repo = "toggleterm.nvim";
           rev = "main";
-          hash = "sha256-G+sU7e9EyASEYzdIfBRI2BF5R2upFfOFClU6ERlfp3A=";
+          hash = "sha256-fytbX+L12TK45YKFU9K+iFJcDrwboKabihc2LtX29J4=";
         };
       })
 
@@ -379,8 +379,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "whonore";
           repo = "Coqtail";
-          rev = "b3ed3e79c32421ba0e8bed215cc2566da8e56e8a";
-          hash = "sha256-j2IoCWDEYQsUcJqv1CHiQunIVHfJJDSzobkUqHAyLMk=";
+          rev = "d470fff7591bf826ca10090a14ccf2e1dc8199db";
+          hash = "sha256-gXTXaCGIXyZfRfz9c29FG1kWD6E1sFXfB4Ar7wXr4H4=";
         };
       })
 
