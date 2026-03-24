@@ -398,6 +398,9 @@
           hash = "sha256-X0N4iqc/m03wrgV4Lyn2ICBw8u1Vm8CilUxXkwHknFY=";
         };
       })
+
+      # obsidian
+      pkgs-unstable.vimPlugins.obsidian-nvim
     ];
   };
 
