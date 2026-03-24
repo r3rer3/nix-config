@@ -324,7 +324,6 @@
                                        :noremap true}]
                              (map :n :<localleader>hs
                                   ht.hoogle.hoogle_signature opts)
-                             (map :n :K vim.lsp.buf.hover opts)
                              (map :n :<localleader>hr ht.repl.toggle opts)
                              (map :n :<localleader>hf
                                   (fn []
