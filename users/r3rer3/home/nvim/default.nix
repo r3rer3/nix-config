@@ -401,6 +401,9 @@
 
       # obsidian
       pkgs-unstable.vimPlugins.obsidian-nvim
+
+      # images
+      pkgs-unstable.vimPlugins.snacks-nvim
     ];
   };
 

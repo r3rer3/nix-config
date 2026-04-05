@@ -28,6 +28,8 @@
 (require :plugins.autopairs)
 (require :plugins.colorizer)
 (require :plugins.range-highlight)
+(require :plugins.obsidian)
+(require :plugins.snacks)
 (require :plugins.sessions)
 (require :plugins.terminal)
 (require :plugins.wilder)
