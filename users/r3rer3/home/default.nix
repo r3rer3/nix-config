@@ -51,6 +51,9 @@
       # music
       spotify
 
+      # email
+      thunderbird-latest-unwrapped
+
       # fonts
       freetype
 
