@@ -67,7 +67,7 @@
           owner = "j-hui";
           repo = "fidget.nvim";
           rev = "main";
-          hash = "sha256-Zap4UVicIvCaPqCMgdlnEAGbMzq1xM4uGpVqZL1iju0=";
+          hash = "sha256-LQIqkEf6mH7LViyHKTFXm6y28/tLjxMGDP1oIHq8LkI=";
         };
       })
       (pkgs.vimUtils.buildVimPlugin {
@@ -86,7 +86,7 @@
           owner = "hedyhli";
           repo = "outline.nvim";
           rev = "main";
-          hash = "sha256-+jN6VV7McqszRLHPx7sYme2mq3BzaOr5IOHbF+uZPrc=";
+          hash = "sha256-xKu05IgOpgtt2W+WqXuTUjX66ffDrU8BDi8z7M6M1q4=";
         };
       })
       (pkgs.vimUtils.buildVimPlugin {
@@ -106,7 +106,7 @@
           owner = "nvimtools";
           repo = "none-ls.nvim";
           rev = "main";
-          hash = "sha256-PmDYh9VqfpxNzIepTiNzXKrighUN9e6Ug5pCD3XCGd4=";
+          hash = "sha256-43aW6ajA73oV3Dpm6QENHEwP0G4oitY14VaKpGiGK1w=";
         };
         doCheck = false;
       })
@@ -347,7 +347,7 @@
           owner = "p00f";
           repo = "clangd_extensions.nvim";
           rev = "main";
-          hash = "sha256-JWo5yY/ei21np71Qmhs7vxST5fy9VnhlFOKClCOdnhg=";
+          hash = "sha256-KpYGuk+xA2Fk2DrsmGA2U8lsyaDow86Q7cKSx8YLIR8=";
         };
       })
 

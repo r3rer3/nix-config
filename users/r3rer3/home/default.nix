@@ -68,12 +68,12 @@
       pkgs-unstable.gemini-cli
       pkgs-unstable.codex
       (pkgs-unstable.opencode.overrideAttrs (final: old: {
-        version = "1.2.27";
+        version = "1.4.10";
         src = old.src.override {
-          hash = "sha256-JUlFfILzcUCME3mOxdxDbcCXphNVEfVGIKhwAwtJPl8=";
+          hash = "sha256-L2oiB7YwAaB07ZSEjxOUobX3fZW4noluUbo/FFPDYl4=";
         };
         node_modules = old.node_modules.overrideAttrs {
-          outputHash = "sha256-byKXLpfvidfKl8PshUsW0grrRYRoVAYYlid0N6/ke2c=";
+          outputHash = "sha256-rF+l0Hho0QEvMS5jaImhMlhKjjf1R66X20R6lEZcZeg=";
         };
       }))
 
@@ -94,7 +94,7 @@
           owner = "hotellogical05";
           repo = "ttypr";
           rev = "main";
-          hash = "sha256-XZSUXGuwEbrUYhdaTUDmtQRTUlIolURw4yoXYF9x33c=";
+          hash = "sha256-y6FXkNfd+4Nkus+Z6Ah2AJX9iWeXQnIDeKmuLFUZDdQ=";
         };
 
         cargoHash = "sha256-bmwvirAbjzD5NJDHJgbPhnNqTdfo8CWJ2JWgFEBz+2Y=";
