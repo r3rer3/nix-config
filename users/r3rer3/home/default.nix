@@ -49,7 +49,7 @@
       pkgs-unstable.obsidian
 
       # music
-      spotify
+      pkgs-unstable.spotify-qt
 
       # email
       thunderbird-latest-unwrapped
@@ -68,12 +68,12 @@
       pkgs-unstable.gemini-cli
       pkgs-unstable.codex
       (pkgs-unstable.opencode.overrideAttrs (final: old: {
-        version = "1.4.10";
+        version = "1.14.31";
         src = old.src.override {
-          hash = "sha256-L2oiB7YwAaB07ZSEjxOUobX3fZW4noluUbo/FFPDYl4=";
+          hash = "sha256-VHznPS2OuJ8urQqGK3K0ysQLCk+O8JV7/UCDdFyqafQ=";
         };
         node_modules = old.node_modules.overrideAttrs {
-          outputHash = "sha256-rF+l0Hho0QEvMS5jaImhMlhKjjf1R66X20R6lEZcZeg=";
+          outputHash = "sha256-f/cWCr6Oqnq21u9+UyhwE5PGqE9X5K+NtjEGbZ4ORPg=";
         };
       }))
 
@@ -206,7 +206,7 @@
         # messaging
         signal-desktop
         element-desktop
-        pkgs-unstable.discord-canary
+        pkgs-unstable.discord
         pkgs-unstable.telegram-desktop
         pkgs-unstable.zoom-us
 
