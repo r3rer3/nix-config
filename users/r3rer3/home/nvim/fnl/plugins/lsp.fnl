@@ -199,6 +199,8 @@
                               (let [cmd builtin._opts.command]
                                 (if (= nil cmd) false
                                     (= 1 (vim.fn.executable cmd)))))
+      [available-linters non-available-linters] (split-filter linter-binary-exists?
+                                                              linters)
       capabilities (cmp-nvim-lsp.default_capabilities)
       base-on-attach (fn [client bufnr]
                        (when client.server_capabilities.documentSymbolProvider
@@ -271,7 +273,7 @@
                                     (let [client (vim.lsp.get_client_by_id args.data.client_id)
                                           bufnr args.buf]
                                       (base-on-attach client bufnr)))})
-  (null-ls.setup {:sources linters})
+  (null-ls.setup {:sources available-linters})
   ((. (require :go) :setup))
   ((. (require :lean) :setup) {:mappings true})
   ((. (require :clangd_extensions) :setup) {})
