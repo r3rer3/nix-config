@@ -199,11 +199,6 @@
                               (let [cmd builtin._opts.command]
                                 (if (= nil cmd) false
                                     (= 1 (vim.fn.executable cmd)))))
-      [available-lsps non-available-lsps] (split-filter (fn [server-info]
-                                                          (lsp-binary-exists? server-info))
-                                                        servers)
-      [available-linters non-available-linters] (split-filter linter-binary-exists?
-                                                              linters)
       capabilities (cmp-nvim-lsp.default_capabilities)
       base-on-attach (fn [client bufnr]
                        (when client.server_capabilities.documentSymbolProvider
@@ -249,43 +244,6 @@
                               :buffer
                               bufnr))
                        nil)]
-  (let [lsp-cond (fn [filetype]
-                   (fn [server]
-                     (let [name (. server 1)
-                           filetypes (. vim.lsp.config name :filetypes)]
-                       (has-value? filetypes filetype))))
-        linter-cond (fn [filetype]
-                      (fn [linter]
-                        (let [{: filetypes} linter]
-                          (has-value? filetypes filetype))))]
-    (nvim_create_user_command :InfoLsps
-                              (fn []
-                                (let [available-lsps-for-filetype (filter (lsp-cond vim.bo.filetype
-                                                                                    available-lsps))
-                                      non-available-lsps-for-filetype (filter (lsp-cond vim.bo.filetype)
-                                                                              non-available-lsps)]
-                                  (print "****** Available LSPs ******")
-                                  (each [_ server (ipairs available-lsps-for-filetype)]
-                                    (print (. server 1)))
-                                  (print "\n\n\n")
-                                  (print "****** Non-available LSPs ******")
-                                  (each [_ server (ipairs non-available-lsps-for-filetype)]
-                                    (print (. server 1)))))
-                              {})
-    (nvim_create_user_command :InfoLinters
-                              (fn []
-                                (let [available-linters-for-filetype (filter (linter-cond vim.bo.filetype)
-                                                                             available-linters)
-                                      non-available-linters-for-filetype (filter (linter-cond vim.bo.filetype)
-                                                                                 non-available-linters)]
-                                  (print "****** Available Linters ******")
-                                  (each [_ linter (ipairs available-linters-for-filetype)]
-                                    (print (. linter :name)))
-                                  (print "\n\n\n")
-                                  (print "****** Non-available Linters ******")
-                                  (each [_ linter (ipairs non-available-linters-for-filetype)]
-                                    (print (. linter :name)))))
-                              {}))
   (gotop.setup [])
   (lspsaga.setup {:lightbulb {:enable_in_insert false :virtual_text false}
                   :code_action {:keys {:quit :<C-c>}}
@@ -300,7 +258,7 @@
   (map :n :<leader>rn (fn [] (vim.lsp.buf.rename)) {:desc "Rename node"})
   (map :n :<leader>ca (fn [] (vim.api.nvim_command "Lspsaga code_action"))
        {:desc "Displays code action menu"})
-  (each [_ server (ipairs available-lsps)]
+  (each [_ server (ipairs servers)]
     (let [name (. server 1)
           settings (if (= nil server.settings)
                        (get-default-settings name)
@@ -313,7 +271,7 @@
                                     (let [client (vim.lsp.get_client_by_id args.data.client_id)
                                           bufnr args.buf]
                                       (base-on-attach client bufnr)))})
-  (null-ls.setup {:sources available-linters})
+  (null-ls.setup {:sources linters})
   ((. (require :go) :setup))
   ((. (require :lean) :setup) {:mappings true})
   ((. (require :clangd_extensions) :setup) {})
