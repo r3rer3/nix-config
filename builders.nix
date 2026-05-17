@@ -22,6 +22,27 @@
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
 
+      inputs.nvim-treesitter-main.overlays.default
+      (final: prev: {
+        vimPlugins = prev.vimPlugins.extend (
+          f: p: {
+            nvim-treesitter = p.nvim-treesitter.withAllGrammars;
+            nvim-treesitter-textobjects = p.nvim-treesitter-textobjects.overrideAttrs {
+              dependencies = [ f.nvim-treesitter ];
+            };
+            nvim-ts-context-commentstring = p.nvim-ts-context-commentstring.overrideAttrs {
+              dependencies = [ f.nvim-treesitter ];
+            };
+            nvim-ts-autotag = p.nvim-ts-autotag.overrideAttrs {
+              dependencies = [ f.nvim-treesitter ];
+            };
+            rainbow-delimiters-nvim = p.rainbow-delimiters-nvim.overrideAttrs {
+              dependencies = [ f.nvim-treesitter ];
+            };
+          }
+        );
+      })
+
       # You can also add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
 
@@ -68,7 +89,7 @@ in rec {
                 import ./users/${user} {username = user;}
               )
               .home);
-          
+
           home-manager.extraSpecialArgs = {
             inherit inputs;
             outputs = self.outputs;
