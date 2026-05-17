@@ -47,7 +47,6 @@
       pkgs-unstable.vimPlugins.nvim-treesitter-textobjects
       pkgs-unstable.vimPlugins.nvim-ts-context-commentstring
       pkgs-unstable.vimPlugins.nvim-ts-autotag
-      pkgs-unstable.vimPlugins.rainbow-delimiters-nvim
       (pkgs.vimUtils.buildVimPlugin {
         name = "rainbow-delimiters-nvim";
         doCheck = false;
