@@ -48,6 +48,16 @@
       pkgs-unstable.vimPlugins.nvim-ts-context-commentstring
       pkgs-unstable.vimPlugins.nvim-ts-autotag
       pkgs-unstable.vimPlugins.rainbow-delimiters-nvim
+      (pkgs.vimUtils.buildVimPlugin {
+        name = "rainbow-delimiters-nvim";
+        doCheck = false;
+        src = pkgs.fetchFromGitHub {
+          owner = "HiPhish";
+          repo = "rainbow-delimiters.nvim";
+          rev = "08783ec022e7ddefe0f12a16f1ac4968f55478b0";
+          hash = "sha256-bXKeb4ZXfbcekYwiDBwEr6EhvkMM0o+GHBCjlrZudj8=";
+        };
+      })
 
       # lsp
       (pkgs.vimUtils.buildVimPlugin {
@@ -220,8 +230,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "MeanderingProgrammer";
           repo = "render-markdown.nvim";
-          rev = "e3c18ddd27a853f85a6f513a864cf4f2982b9f26";
-          hash = "sha256-7O8V8XDYn4ITF9VfvV1OSkto+piIm/DpwtEe+vJcE2g=";
+          rev = "629eb9533ec989d9d5c6cab8f3ad5372422c24e0";
+          hash = "sha256-IBqQmerjJz9g0QR/Elym7WsNuk1scLaeI9isvjcCFqw=";
         };
       })
 
