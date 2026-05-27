@@ -76,7 +76,7 @@
           owner = "j-hui";
           repo = "fidget.nvim";
           rev = "main";
-          hash = "sha256-LQIqkEf6mH7LViyHKTFXm6y28/tLjxMGDP1oIHq8LkI=";
+          hash = "sha256-hoGnf30SiK1MCcOBrJmBOSngC6IIPee/ZninEXAAeD0=";
         };
       })
       (pkgs.vimUtils.buildVimPlugin {
@@ -115,7 +115,7 @@
           owner = "nvimtools";
           repo = "none-ls.nvim";
           rev = "main";
-          hash = "sha256-43aW6ajA73oV3Dpm6QENHEwP0G4oitY14VaKpGiGK1w=";
+          hash = "sha256-gMncplPHwy6MgQQRU/Niqh4YR3vfas34Ehz6p1PUOBQ=";
         };
         doCheck = false;
       })
