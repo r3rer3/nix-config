@@ -2,7 +2,6 @@
   config,
   pkgs,
   pkgs-unstable,
-  mcphub-nvim,
   ...
 }: {
   programs.neovim = {
@@ -236,7 +235,6 @@
 
       # AI
       pkgs-unstable.vimPlugins.copilot-vim
-      mcphub-nvim."${pkgs.system}".default
 
       # indentation info
       pkgs-unstable.vimPlugins.indent-blankline-nvim

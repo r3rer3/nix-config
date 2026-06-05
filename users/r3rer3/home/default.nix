@@ -3,7 +3,6 @@
   pkgs,
   pkgs-unstable,
   pkgs-mozilla,
-  mcphub,
   ...
 }: {
   # You can import other home-manager modules here
@@ -62,7 +61,6 @@
       luajitPackages.fennel
 
       # ai tools
-      mcphub."${pkgs.system}".default
       pkgs-unstable.geminicommit
       pkgs-unstable.claude-code
       pkgs-unstable.gemini-cli

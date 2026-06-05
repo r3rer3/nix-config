@@ -3,6 +3,4 @@
                                            :drag_and_drop {:insert_mode true}
                                            :use_absolute_path true}})
 
-((. (require :render-markdown) :setup) {:file_types [:markdown]})
-
-((. (require :mcphub) :setup) {:auto_approve false})
+((. (require :render-markdown) :setup) {:file_types [:markdown :Avante]})

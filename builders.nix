@@ -82,9 +82,6 @@ in rec {
 
             pkgs-mozilla = inputs.nixpkgs-mozilla.packages;
 
-            mcphub-nvim = inputs.mcphub-nvim.packages;
-            mcphub = inputs.mcphub.packages;
-
             lib = pkgs.lib.extend (_: _: inputs.home-manager.lib);
           };
         }
@@ -132,9 +129,6 @@ in rec {
               inherit system;
               nix-pkgs = inputs.nixpkgs-unstable;
             };
-
-            mcphub-nvim = inputs.mcphub-nvim.packages;
-            mcphub = inputs.mcphub.packages;
 
             lib = pkgs.lib.extend (_: _: inputs.home-manager.lib);
           };
