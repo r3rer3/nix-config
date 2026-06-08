@@ -145,6 +145,7 @@
       sad
       sd
       hyperfine
+      samply
       flyctl
       fzy
       gnuplot
