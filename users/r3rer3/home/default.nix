@@ -48,7 +48,7 @@
       pkgs-unstable.obsidian
 
       # music
-      pkgs-unstable.spotify-qt
+      pkgs-unstable.spotify
 
       # email
       thunderbird-latest-unwrapped
