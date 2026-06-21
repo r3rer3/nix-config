@@ -78,6 +78,7 @@
       # virtual machines or related
       qemu
       samba4Full
+      remmina
 
       # torrent
       intermodal
