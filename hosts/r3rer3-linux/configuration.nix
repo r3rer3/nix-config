@@ -216,6 +216,25 @@
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
     #media-session.enable = true;
+
+    wireplumber.extraConfig = {
+      "99-nvidia-hdmi-output" = {
+        "monitor.alsa.rules" = [
+          {
+            matches = [
+              {"node.name" = "~alsa_output.pci-0000_01_00.1.hdmi.*";}
+            ];
+            actions = {
+              update-props = {
+                "session.suspend-timeout-seconds" = 0;
+                "node.always-process" = true;
+                "priority.session" = 2000;
+              };
+            };
+          }
+        ];
+      };
+    };
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
