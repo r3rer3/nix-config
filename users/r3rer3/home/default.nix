@@ -61,17 +61,15 @@
       luajitPackages.fennel
 
       # ai tools
-      pkgs-unstable.geminicommit
       pkgs-unstable.claude-code
-      pkgs-unstable.gemini-cli
       pkgs-unstable.codex
       (pkgs-unstable.opencode.overrideAttrs (final: old: {
-        version = "1.17.7";
+        version = "1.17.18";
         src = old.src.override {
-          hash = "sha256-rTeJuwqc11r6Xiksfg5IoTezK2ZtG3GlenQCxTW04P4=";
+          hash = "sha256-Y0rcO6r9yqhYux8IS5oAtgzcMXfJE8I1Lre4HdJ5nBg=";
         };
         node_modules = old.node_modules.overrideAttrs {
-          outputHash = "sha256-DntnRo2N32nhjv8YxedIbRMtEkSsXAOrpFmK6six/g4=";
+          outputHash = "sha256-kXdXw264JQdlNoZPv5GUyWZvb/A8h2CTRdiX79jyvys=";
         };
       }))
 
