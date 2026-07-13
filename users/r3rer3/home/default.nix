@@ -63,15 +63,6 @@
       # ai tools
       pkgs-unstable.claude-code
       pkgs-unstable.codex
-      (pkgs-unstable.opencode.overrideAttrs (final: old: {
-        version = "1.17.18";
-        src = old.src.override {
-          hash = "sha256-Y0rcO6r9yqhYux8IS5oAtgzcMXfJE8I1Lre4HdJ5nBg=";
-        };
-        node_modules = old.node_modules.overrideAttrs {
-          outputHash = "sha256-kXdXw264JQdlNoZPv5GUyWZvb/A8h2CTRdiX79jyvys=";
-        };
-      }))
 
       # virtual machines or related
       qemu
