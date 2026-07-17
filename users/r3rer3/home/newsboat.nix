@@ -87,6 +87,26 @@
         title = "Unchained";
         url = "https://unchainedcrypto.substack.com/feed";
       }
+      {
+        title = "Epoch AI";
+        url = "https://epochai.substack.com/feed";
+      }
+      {
+        title = "Interconnects AI";
+        url = "https://www.interconnects.ai/feed";
+      }
+      {
+        title = "Mindful Modeler";
+        url = "https://mindfulmodeler.substack.com/feed";
+      }
+      {
+        title = "Jam with AI";
+        url = "https://jamwithai.substack.com/feed";
+      }
+      {
+        title = "Ahead of AI";
+        url = "https://magazine.sebastianraschka.com/feed";
+      }
     ];
   };
 }
