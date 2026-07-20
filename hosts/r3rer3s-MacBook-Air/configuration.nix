@@ -43,7 +43,8 @@
       "docker"
       "ghostty"
       "zoom"
-     "telegram"
+      "telegram"
+      "tailscale"
     ];
   };
 

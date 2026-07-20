@@ -95,7 +95,7 @@
       pkgs-unstable.btop-cuda
       pkgs-unstable.fastfetch
       pkgs-unstable.localsend
-      pkgs-unstable.mpv-unwrapped
+      mpv-unwrapped
       pkgs-unstable.google-chrome
       http-server
       ffmpeg_6
