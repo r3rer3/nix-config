@@ -1,4 +1,5 @@
 {username}: {
+  inputs,
   lib,
   pkgs,
   pkgs-unstable,
@@ -63,6 +64,7 @@
       # ai tools
       pkgs-unstable.claude-code
       pkgs-unstable.codex
+      inputs.kimi-code.packages.${pkgs.stdenv.hostPlatform.system}.kimi-code
 
       # virtual machines or related
       qemu

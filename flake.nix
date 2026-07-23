@@ -13,6 +13,8 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     # also see the 'unstable-packages' overlay at 'overlays/default.nix'.
 
+    kimi-code.url = "github:MoonshotAI/kimi-code";
+
     nixpkgs-mozilla = {
       url = "github:nix-community/flake-firefox-nightly";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
