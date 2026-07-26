@@ -64,6 +64,11 @@
       # ai tools
       pkgs-unstable.claude-code
       pkgs-unstable.codex
+      pkgs-unstable.opencode
+      pkgs-unstable.amp-cli
+      pkgs-unstable.cursor-cli
+      pkgs-unstable.code-cursor
+      pkgs-unstable.pi-coding-agent
       inputs.kimi-code.packages.${pkgs.stdenv.hostPlatform.system}.kimi-code
 
       # virtual machines or related
