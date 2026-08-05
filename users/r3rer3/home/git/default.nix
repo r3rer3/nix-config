@@ -13,11 +13,7 @@
   };
 
   programs.delta = {
-    enable = false;
-  };
-
-  programs.diff-so-fancy = {
-    enable = false;
+    enable = true;
   };
 
   programs.difftastic = {
@@ -54,6 +50,19 @@
         last = "log -1 HEAD";
         unstage = "reset HEAD --";
         visual = "!gitk";
+
+        # Difftastic aliases, so `git dlog -p` is `git log -p`
+        # with difftastic and likewise for the other subcommands.
+        dlog = "-c diff.external=difft log --ext-diff";
+        dshow = "-c diff.external=difft show --ext-diff";
+        ddiff = "-c diff.external=difft diff";
+
+        # `git log` with patches shown with difftastic.
+        dl = "-c diff.external=difft log -p --ext-diff";
+        # Show the most recent commit with difftastic.
+        ds = "-c diff.external=difft show --ext-diff";
+        # `git diff` with difftastic.
+        dft = "-c diff.external=difft diff";
       };
 
       core = {
