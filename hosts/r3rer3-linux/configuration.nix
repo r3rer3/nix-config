@@ -92,7 +92,7 @@
   };
 
   # Set your time zone.
-  time.timeZone = "America/New_York";
+  time.timeZone = "America/Los_Angeles";
 
   # i18n
   i18n = {
@@ -131,6 +131,9 @@
     graphics = {
       enable = true;
       enable32Bit = true;
+
+      # VA-API on NVIDIA so browsers can hardware-decode video
+      extraPackages = [pkgs.nvidia-vaapi-driver];
     };
 
     nvidia-container-toolkit.enable = true;
@@ -275,6 +278,8 @@
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   environment.sessionVariables.WLR_NO_HARDWARE_CURSORS = "1";
+  environment.sessionVariables.LIBVA_DRIVER_NAME = "nvidia";
+  environment.sessionVariables.NVD_BACKEND = "direct";
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

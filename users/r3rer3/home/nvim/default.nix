@@ -22,7 +22,7 @@
       require('aniseed.env').init()
     '';
 
-    plugins = with pkgs.vimPlugins; [
+    plugins = with pkgs-unstable.vimPlugins; [
       # fennel integration
       aniseed
 
@@ -46,7 +46,7 @@
       pkgs-unstable.vimPlugins.nvim-treesitter-textobjects
       pkgs-unstable.vimPlugins.nvim-ts-context-commentstring
       pkgs-unstable.vimPlugins.nvim-ts-autotag
-      (pkgs.vimUtils.buildVimPlugin {
+      (pkgs-unstable.vimUtils.buildVimPlugin {
         name = "rainbow-delimiters-nvim";
         doCheck = false;
         src = pkgs.fetchFromGitHub {
@@ -58,7 +58,7 @@
       })
 
       # lsp
-      (pkgs.vimUtils.buildVimPlugin {
+      (pkgs-unstable.vimUtils.buildVimPlugin {
         name = "nvim-lspconfig";
         src = pkgs.fetchFromGitHub {
           owner = "neovim";
@@ -69,16 +69,16 @@
       })
       pkgs-unstable.vimPlugins.lspsaga-nvim
       goto-preview
-      (pkgs.vimUtils.buildVimPlugin {
+      (pkgs-unstable.vimUtils.buildVimPlugin {
         name = "fidget-nvim";
         src = pkgs.fetchFromGitHub {
           owner = "j-hui";
           repo = "fidget.nvim";
           rev = "main";
-          hash = "sha256-hoGnf30SiK1MCcOBrJmBOSngC6IIPee/ZninEXAAeD0=";
+          hash = "sha256-8ppKGGga4NYOmSs8bZImYAf/yNcscJjyAilvA7ZfGFM=";
         };
       })
-      (pkgs.vimUtils.buildVimPlugin {
+      (pkgs-unstable.vimUtils.buildVimPlugin {
         name = "lspkind";
         src = pkgs.fetchFromGitHub {
           owner = "onsails";
@@ -97,7 +97,7 @@
           hash = "sha256-4kvDnzLYFDDqcnpPWuNv3uXKDOHZjFLFTYtRGmP7rsc=";
         };
       })
-      (pkgs.vimUtils.buildVimPlugin {
+      (pkgs-unstable.vimUtils.buildVimPlugin {
         name = "vista";
         src = pkgs.fetchFromGitHub {
           owner = "liuchengxu";
@@ -108,13 +108,13 @@
       })
 
       # linting
-      (pkgs.vimUtils.buildVimPlugin {
+      (pkgs-unstable.vimUtils.buildVimPlugin {
         name = "none-ls";
         src = pkgs.fetchFromGitHub {
           owner = "nvimtools";
           repo = "none-ls.nvim";
           rev = "main";
-          hash = "sha256-gMncplPHwy6MgQQRU/Niqh4YR3vfas34Ehz6p1PUOBQ=";
+          hash = "sha256-Amz3UFxET/+poFUm+ldyPEdl9u9/DDMarvgF+AleC/U=";
         };
         doCheck = false;
       })
@@ -133,7 +133,7 @@
 
       # comments
       comment-nvim
-      (pkgs.vimUtils.buildVimPlugin {
+      (pkgs-unstable.vimUtils.buildVimPlugin {
         name = "todo-comments-nvim";
         src = pkgs.fetchFromGitHub {
           owner = "folke";
@@ -154,7 +154,7 @@
       # git
       vim-fugitive
       git-blame-nvim
-      (pkgs.vimUtils.buildVimPlugin {
+      (pkgs-unstable.vimUtils.buildVimPlugin {
         name = "git-conflict";
         src = pkgs.fetchFromGitHub {
           owner = "akinsho";
@@ -168,7 +168,7 @@
       range-highlight-nvim
 
       # better parenthesis for Lisp-like languages
-      (pkgs.vimUtils.buildVimPlugin {
+      (pkgs-unstable.vimUtils.buildVimPlugin {
         name = "nvim-parinfer";
         src = pkgs.fetchFromGitHub {
           owner = "gpanders";
@@ -179,7 +179,7 @@
       })
 
       # visual information of where cursor is when jumping around
-      (pkgs.vimUtils.buildVimPlugin {
+      (pkgs-unstable.vimUtils.buildVimPlugin {
         name = "flare.nvim";
         src = pkgs.fetchFromGitHub {
           owner = "stonelasley";
@@ -190,7 +190,7 @@
       })
 
       # improve the default vim.ui interfaces
-      (pkgs.vimUtils.buildVimPlugin {
+      (pkgs-unstable.vimUtils.buildVimPlugin {
         name = "dressing.nvim";
         src = pkgs.fetchFromGitHub {
           owner = "stevearc";
@@ -201,7 +201,7 @@
       })
 
       # UI Component Library for Neovim.
-      (pkgs.vimUtils.buildVimPlugin {
+      (pkgs-unstable.vimUtils.buildVimPlugin {
         name = "nui.nvim";
         src = pkgs.fetchFromGitHub {
           owner = "MunifTanjim";
@@ -212,7 +212,7 @@
       })
 
       # embed images into any markup language
-      (pkgs.vimUtils.buildVimPlugin {
+      (pkgs-unstable.vimUtils.buildVimPlugin {
         name = "img-clip.nvim";
         src = pkgs.fetchFromGitHub {
           owner = "HakonHarnes";
@@ -223,7 +223,7 @@
       })
 
       # improve viewing Markdown files in Neovim
-      (pkgs.vimUtils.buildVimPlugin {
+      (pkgs-unstable.vimUtils.buildVimPlugin {
         name = "render-markdown.nvim";
         src = pkgs.fetchFromGitHub {
           owner = "MeanderingProgrammer";
@@ -243,7 +243,7 @@
       pkgs-unstable.vimPlugins.trouble-nvim
 
       # colorizer / color highlighter
-      (pkgs.vimUtils.buildVimPlugin {
+      (pkgs-unstable.vimUtils.buildVimPlugin {
         name = "colorizer";
         src = pkgs.fetchFromGitHub {
           owner = "norcalli";
@@ -266,7 +266,7 @@
       nvim-yarp
 
       # fzy lua native
-      (pkgs.vimUtils.buildVimPlugin {
+      (pkgs-unstable.vimUtils.buildVimPlugin {
         name = "fzy-lua-native";
 
         src = pkgs.fetchFromGitHub {
@@ -280,14 +280,14 @@
       })
 
       # repl
-      (pkgs.vimUtils.buildVimPlugin {
+      (pkgs-unstable.vimUtils.buildVimPlugin {
         name = "iron.nvim";
 
         src = pkgs.fetchFromGitHub {
           owner = "Vigemus";
           repo = "iron.nvim";
           rev = "master";
-          hash = "sha256-I2o1H9iRgGHmLA0v2U508hKWFCFrvZxXGWUOLtke7Do=";
+          hash = "sha256-E9Jwx8jSd9dyQWB2Z1QMIGBQU3PuaL5RMGpui9gHjQI=";
         };
       })
 
@@ -298,7 +298,7 @@
       pkgs-unstable.vimPlugins.vim-matchup
 
       # collection of modules
-      (pkgs.vimUtils.buildVimPlugin {
+      (pkgs-unstable.vimUtils.buildVimPlugin {
         name = "mini.nvim";
         src = pkgs.fetchFromGitHub {
           owner = "echasnovski";
@@ -316,7 +316,7 @@
 
       # terminal
       pkgs-unstable.vimPlugins.asyncrun-vim
-      (pkgs.vimUtils.buildVimPlugin {
+      (pkgs-unstable.vimUtils.buildVimPlugin {
         name = "toggleterm";
         src = pkgs.fetchFromGitHub {
           owner = "akinsho";
@@ -327,7 +327,7 @@
       })
 
       # snippets
-      luasnip
+      pkgs-unstable.vimPlugins.luasnip
 
       # completion
       pkgs-unstable.vimPlugins.nvim-cmp
@@ -336,7 +336,7 @@
       pkgs-unstable.vimPlugins.cmp-path
       pkgs-unstable.vimPlugins.cmp-under-comparator
       pkgs-unstable.vimPlugins.cmp_luasnip
-      (pkgs.vimUtils.buildVimPlugin {
+      (pkgs-unstable.vimUtils.buildVimPlugin {
         name = "cmp-nvim-lsp";
         src = pkgs.fetchFromGitHub {
           owner = "hrsh7th";
@@ -348,7 +348,7 @@
       pkgs-unstable.vimPlugins.cmp-nvim-lsp-signature-help
 
       # clang
-      (pkgs.vimUtils.buildVimPlugin {
+      (pkgs-unstable.vimUtils.buildVimPlugin {
         name = "clangd-extensions";
         src = pkgs.fetchFromGitHub {
           owner = "p00f";
@@ -359,7 +359,7 @@
       })
 
       # futhark
-      pkgs.vimPlugins.futhark-vim
+      pkgs-unstable.vimPlugins.futhark-vim
 
       # rust
       pkgs-unstable.vimPlugins.rustaceanvim
@@ -371,7 +371,7 @@
       pkgs-unstable.vimPlugins.haskell-tools-nvim
 
       # coq
-      (pkgs.vimUtils.buildVimPlugin {
+      (pkgs-unstable.vimUtils.buildVimPlugin {
         name = "coqtail";
         src = pkgs.fetchFromGitHub {
           owner = "whonore";
@@ -382,13 +382,13 @@
       })
 
       # agda
-      (pkgs.vimUtils.buildVimPlugin {
+      (pkgs-unstable.vimUtils.buildVimPlugin {
         name = "cornelis";
         src = pkgs.fetchFromGitHub {
           owner = "agda";
           repo = "cornelis";
           rev = "master";
-          hash = "sha256-Z/2hBW/bRb8wtJqBUT8tqgoXg4XqGNvp8L6xw+zHDaU=";
+          hash = "sha256-OQlTqhs7ZwLbiby5v96upm2xQqQWLKqRMzoDynnM1BQ=";
         };
       })
 
@@ -396,7 +396,7 @@
       pkgs-unstable.vimPlugins.lean-nvim
 
       # brainfuck
-      (pkgs.vimUtils.buildVimPlugin {
+      (pkgs-unstable.vimUtils.buildVimPlugin {
         name = "brainfuck";
         src = pkgs.fetchFromGitHub {
           owner = "q60";

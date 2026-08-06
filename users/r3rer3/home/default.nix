@@ -5,7 +5,17 @@
   pkgs-unstable,
   pkgs-mozilla,
   ...
-}: {
+}: let
+  # GPU rasterization + VA-API video decode for Chromium-based browsers.
+  # Hardware decode needs nvidia-vaapi-driver installed at the host level
+  # (hosts/r3rer3-linux); native Wayland is already handled by NIXOS_OZONE_WL.
+  chromiumPerfFlags = [
+    "--ignore-gpu-blocklist"
+    "--enable-gpu-rasterization"
+    "--enable-zero-copy"
+    "--enable-features=VaapiVideoDecodeLinuxGL,VaapiIgnoreDriverChecks"
+  ];
+in {
   # You can import other home-manager modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
@@ -163,7 +173,7 @@
       tree
       pstree
       rlwrap
-      dogdns
+      doggo
       tokei
       scc
       ccache
@@ -215,8 +225,8 @@
         # reverse engineering and security
         ghidra
         charles
-        iaito
-        radare2
+        pkgs-unstable.iaito
+        pkgs-unstable.radare2
         # ida-free
         imhex
         qFlipper
@@ -247,7 +257,9 @@
         vlc
         handbrake
         inkscape
-        conjure
+        # hiPrio: imagemagick also ships a legacy `bin/conjure` (MSL interpreter)
+        # that collides with this package's binary
+        (lib.hiPrio conjure)
         imagemagick
         termshot
 
@@ -393,10 +405,33 @@
       "privacy.clearOnShutdown.history" = false;
       "privacy.clearOnShutdown.downloads" = false;
       "webgl.disabled" = false;
+
+      # performance
+      "gfx.webrender.all" = true;
+      "media.ffmpeg.vaapi.enabled" = true;
+      "media.hardware-video-decoding.force-enabled" = true;
+      "gfx.canvas.accelerated.cache-items" = 4096;
+      "gfx.canvas.accelerated.cache-size" = 512;
+      "gfx.content.skia-font-cache-size" = 20;
+      "image.mem.decode_bytes_at_a_time" = 32768;
+      "media.memory_cache_max_size" = 65536;
+      "network.http.max-connections" = 1800;
+      "network.http.max-persistent-connections-per-server" = 10;
+      "network.buffer.cache.size" = 262144;
+      "network.buffer.cache.count" = 128;
+      "browser.sessionstore.interval" = 60000;
     };
   };
 
-  programs.chromium.enable = pkgs.stdenv.isLinux;
+  programs.chromium = {
+    enable = pkgs.stdenv.isLinux;
+    commandLineArgs = chromiumPerfFlags;
+  };
+
+  programs.brave = {
+    enable = pkgs.stdenv.isLinux;
+    commandLineArgs = chromiumPerfFlags;
+  };
 
   programs.tmux = {
     enable = true;
