@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   pkgs-unstable,
   ...
@@ -18,7 +19,7 @@
     withPython3 = true;
     withRuby = false;
 
-    extraLuaConfig = ''
+    initLua = ''
       require('aniseed.env').init()
     '';
 
@@ -58,15 +59,10 @@
       })
 
       # lsp
-      (pkgs-unstable.vimUtils.buildVimPlugin {
-        name = "nvim-lspconfig";
-        src = pkgs.fetchFromGitHub {
-          owner = "neovim";
-          repo = "nvim-lspconfig";
-          rev = "f9349d4d99e7d66403ae8bf4fbd357b154dca7a7";
-          hash = "sha256-C6+maop+hKjkAocb+7jZ/J6gO/wvDvvWCytETId68ds=";
-        };
-      })
+      # use the nixpkgs plugin (not a custom build): other plugins pull it in
+      # as a dependency, and a custom build would get linked alongside it,
+      # putting two different lspconfig versions on the runtimepath
+      pkgs-unstable.vimPlugins.nvim-lspconfig
       pkgs-unstable.vimPlugins.lspsaga-nvim
       goto-preview
       (pkgs-unstable.vimUtils.buildVimPlugin {
@@ -421,4 +417,10 @@
       ${pkgs.neovim}/bin/nvim --headless -c "lua require(\"aniseed.env\").init()" -c "q"
     '';
   };
+
+  # remote plugins (e.g. wilder) register functions through a generated
+  # manifest that goes stale whenever plugin store paths change
+  home.activation.nvimUpdateRemotePlugins = lib.hm.dag.entryAfter ["linkGeneration"] ''
+    run ${config.programs.neovim.finalPackage}/bin/nvim --headless +UpdateRemotePlugins +qa || true
+  '';
 }

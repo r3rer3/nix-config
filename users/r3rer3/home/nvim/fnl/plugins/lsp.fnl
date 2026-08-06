@@ -46,7 +46,7 @@
                 {1 :dotls}
                 {1 :elixirls}
                 {1 :elmls}
-                {1 :erlangls}
+                {1 :elp}
                 {1 :eslint
                  :settings {:codeActionOnSave {:enable true :mode :all}}}
                 {1 :fennel_language_server
@@ -184,17 +184,21 @@
       telescope (require :telescope.builtin)
       navic (require :nvim-navic)
       get-default-settings (fn [server]
-                             (let [cmd (. vim.lsp.config server :cmd)]
-                               (if (= :function (type cmd))
-                                   {}
+                             (let [conf (. vim.lsp.config server)
+                                   cmd (when conf (. conf :cmd))]
+                               (if (= nil cmd) {}
+                                   (= :function (type cmd)) {}
                                    (. cmd :settings))))
       lsp-binary-exists? (fn [server-info]
                            (let [server (. server-info 1)
-                                 conf (. vim.lsp.config server)]
-                             (if (= nil conf) false
-                                 (= nil (. conf :cmd)) false
+                                 conf (. vim.lsp.config server)
+                                 cmd (when conf (. conf :cmd))]
+                             (if (= nil cmd) false
+                                 ; cmd can be a function; no binary to check
+                                 (and (= :function (type cmd))
+                                      (= nil (. server-info 2))) true
                                  (let [binary (if (= nil (. server-info 2))
-                                                  (. conf :cmd 1)
+                                                  (. cmd 1)
                                                   (. server-info 2))]
                                    (= 1 (vim.fn.executable binary))))))
       linter-binary-exists? (fn [builtin]
@@ -263,13 +267,19 @@
   (map :n :<leader>ca (fn [] (vim.api.nvim_command "Lspsaga code_action"))
        {:desc "Displays code action menu"})
   (each [_ server (ipairs servers)]
-    (let [name (. server 1)
-          settings (if (= nil server.settings)
-                       (get-default-settings name)
-                       server.settings)
-          config {: settings : capabilities}]
-      ((. vim.lsp.config) name config)
-      ((. vim.lsp.enable) name)))
+    (let [name (. server 1)]
+      (if (= nil (. vim.lsp.config name))
+          (vim.notify (.. "lsp.fnl: no lspconfig config for " name)
+                      vim.log.levels.WARN)
+          (lsp-binary-exists? server)
+          (let [settings (if (= nil server.settings)
+                             (get-default-settings name)
+                             server.settings)
+                config {: settings
+                        : capabilities
+                        :filetypes server.filetypes}]
+            ((. vim.lsp.config) name config)
+            ((. vim.lsp.enable) name)))))
   (nvim_create_autocmd :LspAttach
                        {:callback (fn [args]
                                     (let [client (vim.lsp.get_client_by_id args.data.client_id)

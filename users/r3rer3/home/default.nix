@@ -297,7 +297,7 @@ in {
 
         # virtual machines or related
         pkgs-unstable.quickemu
-        wineWowPackages.stable
+        wineWow64Packages.stable
 
         # utilities
         exfat
@@ -504,22 +504,34 @@ in {
 
   programs.ssh = {
     enable = true;
+    enableDefaultConfig = false;
 
-    extraConfig = ''
-      IdentityAgent ~/.1password/agent.sock
-      PreferredAuthentications publickey,password
-    '';
+    settings = {
+      "*" = {
+        # previous programs.ssh default values
+        ForwardAgent = false;
+        AddKeysToAgent = "no";
+        Compression = false;
+        ServerAliveInterval = 0;
+        ServerAliveCountMax = 3;
+        HashKnownHosts = false;
+        UserKnownHostsFile = "~/.ssh/known_hosts";
+        ControlMaster = "no";
+        ControlPath = "~/.ssh/master-%r@%n:%p";
+        ControlPersist = "no";
 
-    matchBlocks = {
-      "r3rer3-sourcehut" = {
-        host = "*sr.ht";
-        identityFile = ["~/.ssh/r3rer3-sourcehut"];
-        addKeysToAgent = "no";
+        IdentityAgent = "~/.1password/agent.sock";
+        PreferredAuthentications = "publickey,password";
       };
-      "r3rer3-github" = {
-        host = "github.com";
-        identityFile = ["~/.ssh/r3rer3-github"];
-        addKeysToAgent = "no";
+
+      "*sr.ht" = {
+        IdentityFile = ["~/.ssh/r3rer3-sourcehut"];
+        AddKeysToAgent = "no";
+      };
+
+      "github.com" = {
+        IdentityFile = ["~/.ssh/r3rer3-github"];
+        AddKeysToAgent = "no";
       };
     };
   };
