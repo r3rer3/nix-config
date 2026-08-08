@@ -95,6 +95,7 @@
                 {1 :rescriptls}
                 {1 :solargraph}
                 {1 :solc}
+                {1 :solidity_ls}
                 {1 :solidity_ls_nomicfoundation}
                 {1 :sorbet}
                 {1 :sqlls}
