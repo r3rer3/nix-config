@@ -243,7 +243,7 @@
                             {:desc "Find where word under the cursor is used"
                              :buffer bufnr})
                        (map :n :K
-                            (fn [] (vim.api.nvim_command "Lspsaga hover_doc"))
+                            (fn [] (vim.lsp.buf.hover {:border :rounded}))
                             {:desc "Hover to get info" :buffer bufnr})
                        (map :n :gi (fn [] (vim.lsp.buf.implementation))
                             {:desc "Go to implementation" :buffer bufnr})
