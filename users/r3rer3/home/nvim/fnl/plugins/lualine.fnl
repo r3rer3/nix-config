@@ -1,4 +1,5 @@
-(let [navic (require :nvim-navic)
+(let [colors ((. (require :catppuccin.palettes) :get_palette) :mocha)
+      navic (require :nvim-navic)
       lualine (require :lualine)
       window (fn [] (vim.api.nvim_win_get_number 0))]
   (lualine.setup {:options {:theme :catppuccin}
@@ -24,4 +25,9 @@
                                                           :NvimTree :NvimTree
                                                           :fzf :FZF
                                                           :alpha :Alpha}}]
-                            :lualine_z [:tabs]}}))
+                            :lualine_z [{1 :tabs
+                                         :tabs_color {:active {:bg colors.mauve
+                                                               :fg colors.base
+                                                               :gui :bold}
+                                                      :inactive {:bg colors.surface0
+                                                                 :fg colors.overlay1}}}]}}))
