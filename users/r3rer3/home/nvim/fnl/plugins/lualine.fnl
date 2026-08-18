@@ -20,14 +20,16 @@
                              :lualine_z [{1 :location :color {:gui :none}}]}
                   :tabline {:lualine_a [{1 :buffers
                                          :mode 4
-                                         :buffers_color {:active {:gui :none}}
+                                         :buffers_color {:active {:bg colors.blue
+                                                                  :fg colors.base}
+                                                         :inactive {:bg colors.surface0
+                                                                    :fg colors.overlay1}}
                                          :filetype_names {:TelescopePrompt :Telescope
                                                           :NvimTree :NvimTree
                                                           :fzf :FZF
                                                           :alpha :Alpha}}]
                             :lualine_z [{1 :tabs
                                          :tabs_color {:active {:bg colors.mauve
-                                                               :fg colors.base
-                                                               :gui :bold}
+                                                               :fg colors.base}
                                                       :inactive {:bg colors.surface0
                                                                  :fg colors.overlay1}}}]}}))
