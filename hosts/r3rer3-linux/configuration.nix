@@ -358,6 +358,12 @@
 
   services.udev = {
     enable = true;
+
+    extraRules = ''
+      # Sipeed Tang docks (BL702 emulating FT2232) — JTAG + UART
+      SUBSYSTEM=="usb", ATTR{idVendor}=="0403", ATTR{idProduct}=="6010", MODE="0660", TAG+="uaccess"
+      SUBSYSTEM=="usb", ATTR{idVendor}=="0403", ATTR{idProduct}=="6014", MODE="0660", TAG+="uaccess"
+    '';
   };
 
   # Open ports in the firewall.
