@@ -111,6 +111,8 @@
                 {1 :ty}
                 {1 :tinymist}
                 {1 :vale_ls}
+                {1 :veridian}
+                {1 :verible}
                 {1 :veryl_ls}
                 {1 :vimls}
                 {1 :vls}
