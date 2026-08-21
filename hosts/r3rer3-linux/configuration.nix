@@ -359,11 +359,17 @@
   services.udev = {
     enable = true;
 
-    extraRules = ''
-      # Sipeed Tang docks (BL702 emulating FT2232) — JTAG + UART
-      SUBSYSTEM=="usb", ATTR{idVendor}=="0403", ATTR{idProduct}=="6010", MODE="0660", TAG+="uaccess"
-      SUBSYSTEM=="usb", ATTR{idVendor}=="0403", ATTR{idProduct}=="6014", MODE="0660", TAG+="uaccess"
-    '';
+    packages = [
+      (pkgs.writeTextFile {
+         name = "sipeed-udev-rules";
+         destination = "/etc/udev/rules.d/70-sipeed.rules";
+         text = ''
+           SUBSYSTEM=="usb", ATTR{idVendor}=="0403", ATTR{idProduct}=="6010", TAG+="uaccess"
+           SUBSYSTEM=="usb", ATTR{idVendor}=="0403", ATTR{idProduct}=="6014", TAG+="uaccess"
+           SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6010", TAG+="uaccess"
+         '';
+      })
+    ];
   };
 
   # Open ports in the firewall.
