@@ -32,6 +32,9 @@
 ; Gleam
 (add-new :gleam :gleam)
 
+; SystemVerilog
+(add-new :systemverilog :systemverilog)
+
 ; Javascript and Typescript
 (add-new :js_ts [:*.ts :*.js :*.jsx :*.tsx] [:BufRead :BufNewFile])
 
