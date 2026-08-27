@@ -48,16 +48,8 @@
         url = "https://fintechbusinessweekly.substack.com/feed";
       }
       {
-        title = "Matt Brown's Notes";
-        url = "https://notes.mtb.xyz/feed";
-      }
-      {
         title = "Neo News";
         url = "https://neo.substack.com/feed";
-      }
-      {
-        title = "Pope Head Post";
-        url = "https://popehead.substack.com/feed";
       }
       {
         title = "Read Rust - All";
