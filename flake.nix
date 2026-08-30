@@ -15,6 +15,8 @@
 
     kimi-code.url = "github:MoonshotAI/kimi-code";
 
+    hermes-agent.url = "github:NousResearch/hermes-agent";
+
     nixpkgs-mozilla = {
       url = "github:nix-community/flake-firefox-nightly";
       inputs.nixpkgs.follows = "nixpkgs-unstable";

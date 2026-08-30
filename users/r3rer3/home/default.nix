@@ -27,6 +27,7 @@ in {
     # You can also split up your configuration and import pieces of it here:
     ./alacritty
     ./git
+    ./hermes
     ./newsboat.nix
     ./nvim
     ./shell
@@ -76,9 +77,13 @@ in {
       pkgs-unstable.codex
       pkgs-unstable.opencode
       pkgs-unstable.amp-cli
+      pkgs-unstable.antigravity-cli
+      pkgs-unstable.antigravity-ide
       pkgs-unstable.cursor-cli
       pkgs-unstable.code-cursor
       pkgs-unstable.pi-coding-agent
+      pkgs-unstable.devin-cli
+      pkgs-unstable.devin-desktop
       inputs.kimi-code.packages.${pkgs.stdenv.hostPlatform.system}.kimi-code
 
       # virtual machines or related
@@ -243,9 +248,10 @@ in {
         inetutils
         thc-hydra
 
-        # AI tools
-        # promptfoo
-        gptcommit
+        # ai tools
+        # from our pkgs/ overlay; the .deb only ships for Linux
+        claude-desktop
+        prime-agent
 
         # audio
         ardour

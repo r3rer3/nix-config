@@ -2,6 +2,8 @@
 # You can build them using 'nix build .#example'
 pkgs: {
   # example = pkgs.callPackage ./example { };
+  claude-desktop = pkgs.callPackage ./claude-desktop {};
+  prime-agent = pkgs.callPackage ./prime-agent {};
   fhs-env = (
     let
       base = pkgs.appimageTools.defaultFhsEnvArgs;
