@@ -78,7 +78,6 @@ in {
       pkgs-unstable.opencode
       pkgs-unstable.amp-cli
       pkgs-unstable.antigravity-cli
-      pkgs-unstable.antigravity-ide
       pkgs-unstable.cursor-cli
       pkgs-unstable.code-cursor
       pkgs-unstable.pi-coding-agent

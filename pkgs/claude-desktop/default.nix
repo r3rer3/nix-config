@@ -40,14 +40,14 @@
 }:
 stdenv.mkDerivation rec {
   pname = "claude-desktop";
-  version = "1.40609.0";
+  version = "1.40609.1";
 
   # Anthropic only ships amd64/arm64 .deb packages; bump the version together
   # with the hash from the apt index:
   # https://downloads.claude.ai/claude-desktop/apt/stable/dists/stable/main/binary-amd64/Packages
   src = fetchurl {
     url = "https://downloads.claude.ai/claude-desktop/apt/stable/pool/main/c/claude-desktop/claude-desktop_${version}_amd64.deb";
-    hash = "sha256-qW6W/4601Nf/p4Wrp/wj+GhLEqyD7S70Bg8PCfQXepg=";
+    hash = "sha256-gBguhRHGu+5t4mx+4iX70qmroidO8UBaHYnNj+ejgNw=";
   };
 
   nativeBuildInputs = [
@@ -113,6 +113,12 @@ stdenv.mkDerivation rec {
     mkdir -p $out/bin $out/lib $out/share
     cp -r usr/lib/claude-desktop $out/lib/claude-desktop
     cp -r usr/share/applications usr/share/icons $out/share/
+
+    # The claude:// login callback is spawned via this desktop file by the
+    # browser, whose process may have no usable PATH (LibreWolf under Plasma
+    # runs without one), so the bare `Exec=claude-desktop` never resolves.
+    substituteInPlace $out/share/applications/*.desktop \
+      --replace-fail "Exec=claude-desktop" "Exec=$out/bin/claude-desktop"
 
     runHook postInstall
   '';
