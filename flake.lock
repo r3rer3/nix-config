@@ -125,11 +125,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1788439989,
-        "narHash": "sha256-s4M/suApur2izpOfaH6Z1PQ556nCHe87r1RFoixXXbY=",
+        "lastModified": 1788536182,
+        "narHash": "sha256-QuhpnF6bmfN6srK0bEN/MelNUwjmPZ0HV8B003UoclI=",
         "owner": "MoonshotAI",
         "repo": "kimi-code",
-        "rev": "523d35b54b25a0b4589388a2b6c8c4261f1ef7db",
+        "rev": "f9ca33376604ae91ea35a4ac1d6f1d4425a5aead",
         "type": "github"
       },
       "original": {
@@ -233,11 +233,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1788372231,
-        "narHash": "sha256-7aqErvrAEz/5OcPA5p3M+tVOqeYc4oJXkNIPXfCqxAw=",
+        "lastModified": 1788400875,
+        "narHash": "sha256-JIHQ6xNAN53cdo6zZ72LRcQ9lpvnABCnNE4hldJ5uZU=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "9387b3fcc0c23c86661636da63faabad4235a0a6",
+        "rev": "5545adfad2e98de106a5544ca7067e03010410bd",
         "type": "github"
       },
       "original": {
