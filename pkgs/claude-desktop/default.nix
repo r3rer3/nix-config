@@ -40,14 +40,14 @@
 }:
 stdenv.mkDerivation rec {
   pname = "claude-desktop";
-  version = "1.46388.2";
+  version = "1.52386.3";
 
   # Anthropic only ships amd64/arm64 .deb packages; bump the version together
   # with the hash from the apt index:
   # https://downloads.claude.ai/claude-desktop/apt/stable/dists/stable/main/binary-amd64/Packages
   src = fetchurl {
     url = "https://downloads.claude.ai/claude-desktop/apt/stable/pool/main/c/claude-desktop/claude-desktop_${version}_amd64.deb";
-    hash = "sha256-mL9U6F5JFgaMQoFFmw8EMdj/aANHc/PumDEdcgZWarE=";
+    hash = "sha256-eXWUzoHBnT9rU3P9uAFpnHVwFvVgBxX6F1HsNOhohFY=";
   };
 
   nativeBuildInputs = [
