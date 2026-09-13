@@ -53,8 +53,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "HiPhish";
           repo = "rainbow-delimiters.nvim";
-          rev = "08783ec022e7ddefe0f12a16f1ac4968f55478b0";
-          hash = "sha256-bXKeb4ZXfbcekYwiDBwEr6EhvkMM0o+GHBCjlrZudj8=";
+          rev = "3a0fc08dd39e8bf034a4cfef3f2845bd5f565a2e";
+          hash = "sha256-KO1izvODUDYozDFdNm/rSlZ/FhqWEM17yGRuoP8JXik=";
         };
       })
 
