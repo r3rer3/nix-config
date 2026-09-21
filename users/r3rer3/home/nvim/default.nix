@@ -71,7 +71,7 @@
           owner = "j-hui";
           repo = "fidget.nvim";
           rev = "main";
-          hash = "sha256-8ppKGGga4NYOmSs8bZImYAf/yNcscJjyAilvA7ZfGFM=";
+          hash = "sha256-WL10HIUCtjFbrMbi+qo1D8nkSQSyxqIdKPBpxhn+ygA=";
         };
       })
       (pkgs-unstable.vimUtils.buildVimPlugin {
@@ -283,7 +283,7 @@
           owner = "Vigemus";
           repo = "iron.nvim";
           rev = "master";
-          hash = "sha256-59+/yLkvBsAVmYt7HfQYn0A2oPAewAQcNx3XneyKVaQ=";
+          hash = "sha256-2oQ4CGcdxVJpubxv+NQLbVk3cW38iP45xX3rAL1ZOl4=";
         };
       })
 

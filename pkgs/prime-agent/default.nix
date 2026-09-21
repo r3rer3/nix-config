@@ -7,11 +7,11 @@
 }:
 buildNpmPackage rec {
   pname = "prime-agent";
-  version = "0.9.4";
+  version = "0.9.5";
 
   src = fetchurl {
     url = "https://github.com/PrimeIntellect-ai/prime-agent/releases/download/v${version}/prime-agent-${version}.tgz";
-    hash = "sha256-uNdSpT0RqMmnWA4ftfwk9850zK2XnH5uaqiID8OtkLA=";
+    hash = "sha256-NJ8WgseQlVCELxsEpxupWBQ0GxNkdK3nNt+T+OwAaHY=";
   };
 
   # The release tarball ships no lockfile; this one was generated against it
@@ -21,7 +21,7 @@ buildNpmPackage rec {
     cp ${./package-lock.json} package-lock.json
   '';
 
-  npmDepsHash = "sha256-PCllq9SXHoQBOYBn62a5ckZmCCsfAsep7ymA1jKUsj4=";
+  npmDepsHash = "sha256-d80Hd8CFOLNUrBuZfzZMNN6OiBnXn2XqziHEy3ooN6o=";
 
   # dist/ is prebuilt; postinstall only bootstraps the Python kernel runtime,
   # which prime-agent re-runs on demand at first launch (into ~/.prime-agent)
