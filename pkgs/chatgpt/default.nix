@@ -4,7 +4,7 @@
   fetchurl,
   dpkg,
   autoPatchelfHook,
-  makeWrapper,
+  makeShellWrapper,
   wrapGAppsHook3,
   alsa-lib,
   at-spi2-atk,
@@ -52,7 +52,7 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [
     dpkg
     autoPatchelfHook
-    makeWrapper
+    makeShellWrapper
     wrapGAppsHook3
   ];
 
@@ -132,8 +132,11 @@ stdenv.mkDerivation rec {
     runHook postInstall
   '';
 
+  # Same trap as in ../claude-desktop: wrapGAppsHook3 propagates makeBinaryWrapper,
+  # which shadows `makeWrapper` and embeds the ${NIXOS_OZONE_WL:+...} expression
+  # below as literal argv entries instead of letting a shell expand it at launch.
   postFixup = ''
-    makeWrapper $out/lib/chatgpt/ChatGPT $out/bin/chatgpt \
+    makeShellWrapper $out/lib/chatgpt/ChatGPT $out/bin/chatgpt \
       "''${gappsWrapperArgs[@]}" \
       --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform-hint=auto --enable-features=WaylandWindowDecorations}}"
   '';

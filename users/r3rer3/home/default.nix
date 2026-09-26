@@ -74,7 +74,8 @@ in {
 
       # ai tools
       pkgs-unstable.claude-code
-      pkgs-unstable.codex
+      # from pkgs/: upstream complete package, so the shared app-server daemon works
+      codex
       pkgs-unstable.opencode
       pkgs-unstable.amp-cli
       pkgs-unstable.antigravity-cli

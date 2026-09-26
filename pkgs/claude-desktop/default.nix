@@ -4,7 +4,7 @@
   fetchurl,
   dpkg,
   autoPatchelfHook,
-  makeWrapper,
+  makeShellWrapper,
   wrapGAppsHook3,
   alsa-lib,
   at-spi2-atk,
@@ -53,7 +53,7 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [
     dpkg
     autoPatchelfHook
-    makeWrapper
+    makeShellWrapper
     wrapGAppsHook3
   ];
 
@@ -123,8 +123,16 @@ stdenv.mkDerivation rec {
     runHook postInstall
   '';
 
+  # wrapGAppsHook3 propagates makeBinaryWrapper, whose setup hook redefines the
+  # `makeWrapper` shell function after make-wrapper.sh has defined it. The binary
+  # wrapper embeds --add-flags verbatim, so the ${NIXOS_OZONE_WL:+...} expression
+  # below reached Electron as two literal argv entries instead of being expanded
+  # by a shell at launch. The app takes the first argv entry that does not start
+  # with "-" as the deep link to open, so that literal text shadowed the claude://
+  # login callback handed over by the browser and login never completed. Call the
+  # shell wrapper by its unambiguous name so the expression is expanded at runtime.
   postFixup = ''
-    makeWrapper $out/lib/claude-desktop/claude-desktop $out/bin/claude-desktop \
+    makeShellWrapper $out/lib/claude-desktop/claude-desktop $out/bin/claude-desktop \
       "''${gappsWrapperArgs[@]}" \
       --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform-hint=auto --enable-features=WaylandWindowDecorations}}"
   '';

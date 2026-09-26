@@ -4,6 +4,7 @@ pkgs: {
   # example = pkgs.callPackage ./example { };
   chatgpt = pkgs.callPackage ./chatgpt {};
   claude-desktop = pkgs.callPackage ./claude-desktop {};
+  codex = pkgs.callPackage ./codex {};
   prime-agent = pkgs.callPackage ./prime-agent {};
   fhs-env = (
     let
