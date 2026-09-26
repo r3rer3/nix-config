@@ -5,6 +5,7 @@ pkgs: {
   chatgpt = pkgs.callPackage ./chatgpt {};
   claude-desktop = pkgs.callPackage ./claude-desktop {};
   codex = pkgs.callPackage ./codex {};
+  grok-bot = pkgs.callPackage ./grok-bot {};
   prime-agent = pkgs.callPackage ./prime-agent {};
   fhs-env = (
     let

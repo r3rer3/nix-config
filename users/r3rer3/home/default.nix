@@ -252,6 +252,7 @@ in {
         # from our pkgs/ overlay; the .deb only ships for Linux
         chatgpt
         claude-desktop
+        grok-bot
         prime-agent
 
         # audio
