@@ -1,0 +1,53 @@
+Build libbitcoin-network 3.8.0 (made for Boost <= 1.75) against Boost 1.86:
+
+boost::system::error_code became implicitly constructible from std error code
+enums, so proxy::stop(error::...) is ambiguous between the public
+stop(const code&) and the private stop(const boost_code&) forwarder. Drop the
+forwarder and convert at its two call sites instead.
+
+diff --git a/include/bitcoin/network/proxy.hpp b/include/bitcoin/network/proxy.hpp
+index ce497df..4409909 100644
+--- a/include/bitcoin/network/proxy.hpp
++++ b/include/bitcoin/network/proxy.hpp
+@@ -104,7 +104,6 @@ private:
+     static config::authority authority_factory(socket::ptr socket);
+ 
+     void do_close();
+-    void stop(const boost_code& ec);
+ 
+     void read_heading();
+     void handle_read_heading(const boost_code& ec, size_t payload_size);
+diff --git a/src/proxy.cpp b/src/proxy.cpp
+index 3d1e381..3c072de 100644
+--- a/src/proxy.cpp
++++ b/src/proxy.cpp
+@@ -140,7 +140,7 @@ void proxy::handle_read_heading(const boost_code& ec, size_t)
+         LOG_DEBUG(LOG_NETWORK)
+             << "Heading read failure [" << authority() << "] "
+             << code(error::boost_to_error_code(ec)).message();
+-        stop(ec);
++        stop(error::boost_to_error_code(ec));
+         return;
+     }
+ 
+@@ -201,7 +201,7 @@ void proxy::handle_read_payload(const boost_code& ec, size_t payload_size,
+         LOG_DEBUG(LOG_NETWORK)
+             << "Payload read failure [" << authority() << "] "
+             << code(error::boost_to_error_code(ec)).message();
+-        stop(ec);
++        stop(error::boost_to_error_code(ec));
+         return;
+     }
+ 
+@@ -331,11 +331,6 @@ void proxy::stop(const code& ec)
+     socket_->stop();
+ }
+ 
+-void proxy::stop(const boost_code& ec)
+-{
+-    stop(error::boost_to_error_code(ec));
+-}
+-
+ bool proxy::stopped() const
+ {
+     return stopped_;

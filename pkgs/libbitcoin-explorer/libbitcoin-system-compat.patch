@@ -1,0 +1,151 @@
+Build libbitcoin-system 3.8.0 (made for Boost <= 1.75) against Boost 1.86 and
+secp256k1 0.7:
+
+- Boost.Interprocess dropped detail/posix_time_types_wrk.hpp; include the
+  posix_time header it wrapped directly.
+- Boost.Log's file::collector interface changed: scan_for_files() now returns
+  a scan_result carrying the last counter in use instead of writing the next
+  one through a pointer, and is_in_storage() became pure virtual. Both are
+  ported from Boost 1.86's own file_collector.
+- secp256k1 removed the deprecated secp256k1_ec_privkey_tweak_* aliases; call
+  the secp256k1_ec_seckey_tweak_* functions they pointed to.
+
+diff --git a/include/bitcoin/system/log/file_collector.hpp b/include/bitcoin/system/log/file_collector.hpp
+index 0a312ec..adcf20e 100644
+--- a/include/bitcoin/system/log/file_collector.hpp
++++ b/include/bitcoin/system/log/file_collector.hpp
+@@ -67,9 +67,13 @@ public:
+     //! The function stores the specified file in the storage
+     void store_file(boost::filesystem::path const& src_path) override;
+ 
++    //! The function checks if the specified path refers to an existing file in the storage
++    bool is_in_storage(boost::filesystem::path const& src_path) const override;
++
+     //! Scans the target directory for the files that have already been stored
+-    uintmax_t scan_for_files(boost::log::sinks::file::scan_method method,
+-        boost::filesystem::path const& pattern, unsigned int* counter) override;
++    boost::log::sinks::file::scan_result scan_for_files(
++        boost::log::sinks::file::scan_method method,
++        boost::filesystem::path const& pattern) override;
+ 
+     //! The function updates storage restrictions
+     void update(size_t max_size, size_t min_free_space, size_t max_files);
+diff --git a/include/bitcoin/system/unicode/file_lock.hpp b/include/bitcoin/system/unicode/file_lock.hpp
+index a25278b..3fcdc92 100644
+--- a/include/bitcoin/system/unicode/file_lock.hpp
++++ b/include/bitcoin/system/unicode/file_lock.hpp
+@@ -19,7 +19,7 @@
+ #include <boost/interprocess/exceptions.hpp>
+ #include <boost/interprocess/detail/os_file_functions.hpp>
+ #include <boost/interprocess/detail/os_thread_functions.hpp>
+-#include <boost/interprocess/detail/posix_time_types_wrk.hpp>
++#include <boost/date_time/posix_time/posix_time_types.hpp>
+ #include <boost/interprocess/sync/detail/common_algorithms.hpp>
+ #include <boost/interprocess/sync/detail/locks.hpp>
+ #include <boost/move/move.hpp>
+diff --git a/src/log/file_collector.cpp b/src/log/file_collector.cpp
+index ef01390..8650062 100644
+--- a/src/log/file_collector.cpp
++++ b/src/log/file_collector.cpp
+@@ -356,12 +356,31 @@ void file_collector::store_file(filesystem::path const& src_path)
+ }
+ 
+ 
++//! The function checks if the specified path refers to an existing file in the storage
++bool file_collector::is_in_storage(filesystem::path const& src_path) const
++{
++    const filesystem::path file_name_path = src_path.filename();
++    const filesystem::path trg_path = storage_dir_ / file_name_path;
++
++    boost::system::error_code ec;
++    const filesystem::path src_dir = src_path.has_parent_path() ?
++        filesystem::absolute(src_path.parent_path(), base_path_) : base_path_;
++
++    const filesystem::file_status status = filesystem::status(trg_path, ec);
++    if (ec || status.type() != filesystem::regular_file)
++        return false;
++
++    const bool equivalent = filesystem::equivalent(src_dir / file_name_path,
++        trg_path, ec);
++    return !ec && equivalent;
++}
++
+ //! Scans the target directory for the files that have already been stored
+-uintmax_t file_collector::scan_for_files(
++boost::log::sinks::file::scan_result file_collector::scan_for_files(
+     boost::log::sinks::file::scan_method method,
+-    filesystem::path const& pattern, unsigned int* counter)
++    filesystem::path const& pattern)
+ {
+-    uintmax_t file_count = 0;
++    boost::log::sinks::file::scan_result result;
+     if (method != boost::log::sinks::file::no_scan)
+     {
+         filesystem::path dir = storage_dir_;
+@@ -372,18 +391,11 @@ uintmax_t file_collector::scan_for_files(
+             if (pattern.has_parent_path())
+                 dir = make_absolute(pattern.parent_path());
+         }
+-        else
+-        {
+-            counter = NULL;
+-        }
+ 
+         if (filesystem::exists(dir) && filesystem::is_directory(dir))
+         {
+             BOOST_LOG_EXPR_IF_MT(boost::lock_guard<boost::mutex> lock(mutex_);)
+ 
+-            if (counter)
+-                *counter = 0;
+-
+             file_list files;
+             filesystem::directory_iterator it(dir), end;
+             uintmax_t total_size = 0;
+@@ -414,10 +426,13 @@ uintmax_t file_collector::scan_for_files(
+                             total_size += info.size;
+                             info.timestamp = filesystem::last_write_time(info.path);
+                             files.push_back(info);
+-                            ++file_count;
++                            ++result.found_count;
+ 
+-                            if (counter && file_number >= *counter)
+-                                *counter = file_number + 1;
++                            // Report the last counter in use, not the next.
++                            if (method == boost::log::sinks::file::scan_matching &&
++                                (!result.last_file_counter ||
++                                file_number > *result.last_file_counter))
++                                result.last_file_counter = file_number;
+                         }
+                     }
+                 }
+@@ -430,7 +445,7 @@ uintmax_t file_collector::scan_for_files(
+         }
+     }
+ 
+-    return file_count;
++    return result;
+ }
+ 
+ 
+diff --git a/src/math/elliptic_curve.cpp b/src/math/elliptic_curve.cpp
+index 4b97e59..cb67a49 100644
+--- a/src/math/elliptic_curve.cpp
++++ b/src/math/elliptic_curve.cpp
+@@ -137,7 +137,7 @@ bool ec_add(ec_uncompressed& point, const ec_secret& secret)
+ bool ec_add(ec_secret& left, const ec_secret& right)
+ {
+     const auto context = verification.context();
+-    return secp256k1_ec_privkey_tweak_add(context, left.data(),
++    return secp256k1_ec_seckey_tweak_add(context, left.data(),
+         right.data()) == 1;
+ }
+ 
+@@ -156,7 +156,7 @@ bool ec_multiply(ec_uncompressed& point, const ec_secret& secret)
+ bool ec_multiply(ec_secret& left, const ec_secret& right)
+ {
+     const auto context = verification.context();
+-    return secp256k1_ec_privkey_tweak_mul(context, left.data(),
++    return secp256k1_ec_seckey_tweak_mul(context, left.data(),
+         right.data()) == 1;
+ }
+ 
