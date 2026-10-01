@@ -2,4 +2,6 @@
                                                   (local api
                                                          (require :obsidian.api))
                                                   (when (api.path_is_note path)
-                                                    (api.resolve_attachment_path src)))}})
+                                                    (api.resolve_attachment_path src)))
+                                       ; render-markdown renders latex math
+                                       :math {:enabled false}}})

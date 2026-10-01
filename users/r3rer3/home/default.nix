@@ -72,6 +72,12 @@ in {
       luajit
       luajitPackages.fennel
 
+      # latex to unicode converters (render-markdown.nvim renders math with these)
+      # from pkgs/: provides utftex
+      libtexprintf
+      # provides latex2text
+      (python3Packages.toPythonApplication python3Packages.pylatexenc)
+
       # ai tools
       pkgs-unstable.claude-code
       # from pkgs/: upstream complete package, so the shared app-server daemon works

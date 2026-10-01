@@ -224,8 +224,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "MeanderingProgrammer";
           repo = "render-markdown.nvim";
-          rev = "629eb9533ec989d9d5c6cab8f3ad5372422c24e0";
-          hash = "sha256-IBqQmerjJz9g0QR/Elym7WsNuk1scLaeI9isvjcCFqw=";
+          rev = "640a3ec6d538bad17c328be373c7cad0293d9589";
+          hash = "sha256-pG8lAo4qucIu+gAwrEaK79VkDFTLcuuPBYhq3sg951E=";
         };
       })
 

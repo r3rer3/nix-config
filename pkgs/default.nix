@@ -8,6 +8,7 @@ pkgs: {
   codex = pkgs.callPackage ./codex {};
   grok-bot = pkgs.callPackage ./grok-bot {};
   libbitcoin-explorer = pkgs.callPackage ./libbitcoin-explorer {};
+  libtexprintf = pkgs.callPackage ./libtexprintf {};
   prime-agent = pkgs.callPackage ./prime-agent {};
   fhs-env = (
     let
