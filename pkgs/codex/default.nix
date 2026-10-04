@@ -16,11 +16,11 @@
   targets = {
     x86_64-linux = {
       triple = "x86_64-unknown-linux-musl";
-      hash = "sha256-L7AzLFDNzt07vElalobO84IZt7kyeNsycQi483kTyxw=";
+      hash = "sha256-yYoAA/HIWGdsUvIMk/ODJ2HImeMxxE6hXY4gY0YmpMI=";
     };
     aarch64-darwin = {
       triple = "aarch64-apple-darwin";
-      hash = "sha256-v+hkSNi+SKUv6Z7GFCZIZpBb0nohATn1nAVRwsOI7Wo=";
+      hash = "sha256-2SBnWMJS8QpMxR/MpF0zIfXjhrV8NlfRHKr2HF09XOI=";
     };
   };
 
@@ -32,7 +32,7 @@
 in
   stdenvNoCC.mkDerivation (finalAttrs: {
     pname = "codex";
-    version = "0.159.3";
+    version = "0.160.0";
 
     # Why not nixpkgs' codex: since 0.157.0 the interactive CLI auto-starts a
     # shared app-server daemon, which it installs by copying the "complete
