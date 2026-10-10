@@ -28,6 +28,7 @@
   nspr,
   nss,
   pango,
+  pipewire,
   systemd,
   vulkan-loader,
   libx11,
@@ -40,14 +41,14 @@
 }:
 stdenv.mkDerivation rec {
   pname = "claude-desktop";
-  version = "2.9939.4";
+  version = "2.31226.1";
 
   # Anthropic only ships amd64/arm64 .deb packages; bump the version together
   # with the hash from the apt index:
   # https://downloads.claude.ai/claude-desktop/apt/stable/dists/stable/main/binary-amd64/Packages
   src = fetchurl {
     url = "https://downloads.claude.ai/claude-desktop/apt/stable/pool/main/c/claude-desktop/claude-desktop_${version}_amd64.deb";
-    hash = "sha256-PP3bI78pEeBeJ7TtOFa455XflGQ7LDW1nesxfPmVvKA=";
+    hash = "sha256-Wpvr38sd9s44dns3Pzp/q/dxVqLd2KP10Elh2lveMF4=";
   };
 
   nativeBuildInputs = [
@@ -77,6 +78,8 @@ stdenv.mkDerivation rec {
     nspr
     nss
     pango
+    # linked (DT_NEEDED) by the bundled claude-native-binding.node
+    pipewire
     stdenv.cc.cc.lib
     libx11
     libxcb

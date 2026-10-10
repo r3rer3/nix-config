@@ -1,48 +1,85 @@
 {
   lib,
   stdenv,
-  buildNpmPackage,
   fetchurl,
   autoPatchelfHook,
-}:
-buildNpmPackage rec {
-  pname = "prime-agent";
-  version = "0.9.8";
-
-  src = fetchurl {
-    url = "https://github.com/PrimeIntellect-ai/prime-agent/releases/download/v${version}/prime-agent-${version}.tgz";
-    hash = "sha256-17cnhRGe/Ci/vKjsSn9Hofzc9H/NjOvbYL/6p54+EnQ=";
+  versionCheckHook,
+}: let
+  # 0.10.0 replaced the TypeScript npm package with a Rust build. The npm
+  # tarball is now only a migration shim that downloads that build into
+  # ~/.local at first launch, so package upstream's per-platform release
+  # payload instead. Bump `version` and every hash together; SHA256SUMS on the
+  # release lists them (convert with `nix-hash --to-sri --type sha256 <hex>`):
+  # https://github.com/PrimeIntellect-ai/prime-agent/releases
+  targets = {
+    x86_64-linux = {
+      platform = "linux-x64";
+      hash = "sha256-wWvSr153tT9JuRSkR0LEz2pnxe1QAAQUMLeNvUw7y+w=";
+    };
+    aarch64-linux = {
+      platform = "linux-arm64";
+      hash = "sha256-88qzUwpNfKQ9vvgyG/E/Jg0boF2LXd4FcWWiC9T2dcQ=";
+    };
+    x86_64-darwin = {
+      platform = "darwin-x64";
+      hash = "sha256-r0hmtbqC80GblkKQ4/Aj3bm5mVionhbuhWliuQHsD8Y=";
+    };
+    aarch64-darwin = {
+      platform = "darwin-arm64";
+      hash = "sha256-5Bi99i/LAAJ3e/OsQ7zBNlErJnY/KrXFAHkvJuNylOU=";
+    };
   };
 
-  # The release tarball ships no lockfile; this one was generated against it
-  # with `npm install --package-lock-only --ignore-scripts`. Regenerate it and
-  # npmDepsHash on every version bump.
-  postPatch = ''
-    cp ${./package-lock.json} package-lock.json
-  '';
+  target =
+    targets.${stdenv.hostPlatform.system}
+    or (throw "prime-agent: no release payload for ${stdenv.hostPlatform.system}");
+in
+  stdenv.mkDerivation (finalAttrs: {
+    pname = "prime-agent";
+    version = "0.10.0";
 
-  npmDepsHash = "sha256-0iaeZleeCFpMQ4Tw0+Kzf9DBJweXtOR1FyvjRtTtyQ8=";
+    src = fetchurl {
+      url = "https://github.com/PrimeIntellect-ai/prime-agent/releases/download/v${finalAttrs.version}/prime-agent-${finalAttrs.version}-${target.platform}.tar.gz";
+      inherit (target) hash;
+    };
 
-  # dist/ is prebuilt; postinstall only bootstraps the Python kernel runtime,
-  # which prime-agent re-runs on demand at first launch (into ~/.prime-agent)
-  dontNpmBuild = true;
-  npmFlags = ["--ignore-scripts"];
+    # the tarball has no top-level directory
+    sourceRoot = ".";
 
-  # koffi ships prebuilt addon.node binaries that need patching on NixOS
-  nativeBuildInputs = lib.optionals stdenv.isLinux [autoPatchelfHook];
-  buildInputs = lib.optionals stdenv.isLinux [stdenv.cc.cc.lib];
+    # glibc-linked on Linux, needing only libgcc_s beyond libc
+    nativeBuildInputs = lib.optionals stdenv.isLinux [autoPatchelfHook];
+    buildInputs = lib.optionals stdenv.isLinux [stdenv.cc.cc.lib];
 
-  # prebuilds for other OSes/libcs are dead weight and unresolvable for
-  # autoPatchelf; the loaders pick the build for the running platform anyway
-  postInstall = lib.optionalString stdenv.isLinux ''
-    rm -rf $out/lib/node_modules/prime-agent/node_modules/koffi/build/koffi/{openbsd,freebsd,musl,win32,darwin}_*
-  '';
+    dontConfigure = true;
+    dontBuild = true;
+    # symbols are kept for upstream's crash decoder (the release's *.debug.gz)
+    dontStrip = true;
 
-  meta = {
-    description = "Self-improving RLM agent for coding workflows and long-running autonomous tasks";
-    homepage = "https://github.com/PrimeIntellect-ai/prime-agent";
-    license = lib.licenses.mit;
-    platforms = lib.platforms.linux ++ lib.platforms.darwin;
-    mainProgram = "prime-agent";
-  };
-}
+    # The binary resolves prime-agent-runtime/, skills/, the bundled model and
+    # MCP catalogs etc. next to its own (symlink-resolved) path, so keep the
+    # payload together and mirror the installer's ~/.local layout. The Python
+    # kernel is still bootstrapped on first launch into the user's data dir,
+    # using uv from PATH (or offering to install it, as before).
+    installPhase = ''
+      runHook preInstall
+
+      mkdir -p $out/bin $out/share
+      cp -r . $out/share/prime-agent
+      ln -s ../share/prime-agent/prime-agent $out/bin/prime-agent
+
+      runHook postInstall
+    '';
+
+    doInstallCheck = true;
+    nativeInstallCheckInputs = [versionCheckHook];
+
+    meta = {
+      description = "Self-improving RLM agent for coding workflows and long-running autonomous tasks";
+      homepage = "https://github.com/PrimeIntellect-ai/prime-agent";
+      changelog = "https://github.com/PrimeIntellect-ai/prime-agent/releases/tag/v${finalAttrs.version}";
+      license = lib.licenses.mit;
+      sourceProvenance = [lib.sourceTypes.binaryNativeCode];
+      platforms = builtins.attrNames targets;
+      mainProgram = "prime-agent";
+    };
+  })
