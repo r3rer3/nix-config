@@ -2,6 +2,7 @@
   lib,
   stdenv,
   fetchurl,
+  asar,
   dpkg,
   autoPatchelfHook,
   makeShellWrapper,
@@ -50,6 +51,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [
+    asar
     dpkg
     autoPatchelfHook
     makeShellWrapper
@@ -115,6 +117,22 @@ stdenv.mkDerivation rec {
     runHook preUnpack
     dpkg-deb --fsys-tarfile $src | tar -x --no-same-permissions --no-same-owner
     runHook postUnpack
+  '';
+
+  # The git repo watcher loads @parcel/watcher in a worker, whose detect-libc
+  # finds no /usr/bin/ldd and only reads the first 2 KiB of /proc/self/exe,
+  # where autoPatchelf's relocated PT_INTERP no longer is. It then falls back
+  # to process.report.getReport(), which SIGILLs this Electron build and takes
+  # the whole app down a few seconds after launch. Without the report it asks
+  # getconf/ldd instead, and @parcel/watcher defaults to glibc either way.
+  # Only *.node files live in app.asar.unpacked, so repacking keeps that split.
+  postPatch = ''
+    asar extract usr/lib/chatgpt/resources/app.asar app
+    substituteInPlace app/node_modules/@parcel/watcher/node_modules/detect-libc/lib/process.js \
+      --replace-fail "report = process.report.getReport();" "report = {};"
+    asar pack app app.asar --unpack '*.node'
+    mv app.asar usr/lib/chatgpt/resources/app.asar
+    rm -rf app app.asar.unpacked
   '';
 
   installPhase = ''
