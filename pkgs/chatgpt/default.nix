@@ -126,10 +126,30 @@ stdenv.mkDerivation rec {
   # the whole app down a few seconds after launch. Without the report it asks
   # getconf/ldd instead, and @parcel/watcher defaults to glibc either way.
   # Only *.node files live in app.asar.unpacked, so repacking keeps that split.
+  #
+  # The app copies parts of resources/ into the user's home with fs.promises.cp,
+  # which keeps the store's read-only modes, and then writes into the copies:
+  #  - the bundled plugins go to ~/.codex/.tmp/bundled-marketplaces, where the
+  #    copied visualize/.codex-plugin/plugin.json is rewritten. That EACCES left
+  #    an undeletable staging dir behind on every launch and no bundled plugin
+  #    ever got installed, including the Chrome one whose install writes the
+  #    com.openai.codexextension native messaging manifest, so the browser
+  #    extension had no host to talk to.
+  #  - codex-app-tools goes to ~/.config/Codex/executor-plugins, where .mcp.json
+  #    is rewritten; the Work executor then fails and retries every second.
+  #  - the control-chrome skill is copied into the installed Chrome plugin and
+  #    renamed into place, which needs the moved directory to be writable.
+  # Rather than chasing each minified call site, the entry point wraps fs.cp so
+  # that copies out of the store come out owner-writable, as copies from a
+  # writable /usr would.
   postPatch = ''
     asar extract usr/lib/chatgpt/resources/app.asar app
     substituteInPlace app/node_modules/@parcel/watcher/node_modules/detect-libc/lib/process.js \
       --replace-fail "report = process.report.getReport();" "report = {};"
+    cat - app/.vite/build/early-bootstrap.js > early-bootstrap.js <<'EOF'
+    {const f=require("node:fs/promises"),p=require("node:path"),cp=f.cp,w=async d=>{const s=await f.lstat(d).catch(()=>null);if(s==null||s.isSymbolicLink())return;await f.chmod(d,s.mode|0o200);if(s.isDirectory())for(const c of await f.readdir(d))await w(p.join(d,c))};f.cp=async function(src,dest,...rest){await cp.call(this,src,dest,...rest);if(String(src).startsWith("${builtins.storeDir}/"))await w(String(dest))}}
+    EOF
+    mv early-bootstrap.js app/.vite/build/early-bootstrap.js
     asar pack app app.asar --unpack '*.node'
     mv app.asar usr/lib/chatgpt/resources/app.asar
     rm -rf app app.asar.unpacked
