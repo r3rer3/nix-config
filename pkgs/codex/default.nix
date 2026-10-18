@@ -1,13 +1,10 @@
 {
   lib,
-  stdenv,
   stdenvNoCC,
   fetchurl,
   zstd,
   installShellFiles,
   versionCheckHook,
-  patchelf,
-  ncurses,
 }: let
   # Upstream publishes one "complete package" per target. Bump `version` and
   # every hash together; the hashes are the plain sha256 of each tarball:
@@ -16,23 +13,21 @@
   targets = {
     x86_64-linux = {
       triple = "x86_64-unknown-linux-musl";
-      hash = "sha256-vSTQK+Z4iUtHvFZb0tqNR6BeOn3Qtu9mqpVymbJOyPI=";
+      hash = "sha256-3yLawfJLeSfoF+ixEwZ/vhyqWGq6dVQkf6vUlGTPnJY=";
     };
     aarch64-darwin = {
       triple = "aarch64-apple-darwin";
-      hash = "sha256-3AZ2AiW5Jhad8ekJRJhkhAN4kKhe28OviQQJepAXIro=";
+      hash = "sha256-BIEu6VYRXjAD6r+YYB6LxBxtAcplF/UWGo+iN26zQCw=";
     };
   };
 
   target =
     targets.${stdenvNoCC.hostPlatform.system}
     or (throw "codex: no complete package for ${stdenvNoCC.hostPlatform.system}");
-
-  isLinux = stdenvNoCC.hostPlatform.isLinux;
 in
   stdenvNoCC.mkDerivation (finalAttrs: {
     pname = "codex";
-    version = "0.162.1";
+    version = "0.163.0";
 
     # Why not nixpkgs' codex: since 0.157.0 the interactive CLI auto-starts a
     # shared app-server daemon, which it installs by copying the "complete
@@ -50,12 +45,10 @@ in
     # the tarball has no top-level directory
     sourceRoot = ".";
 
-    nativeBuildInputs =
-      [
-        zstd
-        installShellFiles
-      ]
-      ++ lib.optionals isLinux [patchelf];
+    nativeBuildInputs = [
+      zstd
+      installShellFiles
+    ];
 
     dontConfigure = true;
     dontBuild = true;
@@ -63,7 +56,9 @@ in
     # Keep the shipped bytes: `codex` compares a blake3 of bin/codex with the
     # running executable before installing the daemon, and verifies a
     # compile-time sha256 of codex-resources/bwrap before exec'ing it. Those
-    # are static musl binaries anyway (Mach-O on Darwin).
+    # are static musl binaries anyway (Mach-O on Darwin). Since 0.163.0 nothing
+    # glibc-linked ships besides the voice host and its gstreamer libs, which
+    # are left as shipped; voice mode is untested on NixOS.
     dontStrip = true;
     dontPatchELF = true;
     dontPatchShebangs = true;
@@ -84,18 +79,6 @@ in
         --bash <($out/bin/codex completion bash) \
         --fish <($out/bin/codex completion fish) \
         --zsh <($out/bin/codex completion zsh)
-    '';
-
-    # The bundled zsh backs the zsh-fork exec runtime (only used when the login
-    # shell is zsh). It is the one glibc-linked executable, so give it a loader
-    # and libtinfo it can find. The voice host and its gstreamer libs are left
-    # as shipped; voice mode is untested on NixOS.
-    postFixup = lib.optionalString isLinux ''
-      patchelf \
-        --set-interpreter "${stdenv.cc.bintools.dynamicLinker}" \
-        --set-rpath "${lib.makeLibraryPath [ncurses stdenv.cc.libc]}" \
-        $out/codex-resources/zsh/bin/zsh
-      $out/codex-resources/zsh/bin/zsh --version
     '';
 
     doInstallCheck = true;
