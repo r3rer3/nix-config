@@ -31,6 +31,7 @@ in {
     ./newsboat.nix
     ./nvim
     ./shell
+    ./ssh
   ];
 
   home = {
@@ -512,40 +513,6 @@ in {
       filters = {
         "application/pgp" = "gpg --decrypt";
         "text/plain" = "colorize";
-      };
-    };
-  };
-
-  programs.ssh = {
-    enable = true;
-    enableDefaultConfig = false;
-
-    settings = {
-      "*" = {
-        # previous programs.ssh default values
-        ForwardAgent = false;
-        AddKeysToAgent = "no";
-        Compression = false;
-        ServerAliveInterval = 0;
-        ServerAliveCountMax = 3;
-        HashKnownHosts = false;
-        UserKnownHostsFile = "~/.ssh/known_hosts";
-        ControlMaster = "no";
-        ControlPath = "~/.ssh/master-%r@%n:%p";
-        ControlPersist = "no";
-
-        IdentityAgent = "~/.1password/agent.sock";
-        PreferredAuthentications = "publickey,password";
-      };
-
-      "*sr.ht" = {
-        IdentityFile = ["~/.ssh/r3rer3-sourcehut"];
-        AddKeysToAgent = "no";
-      };
-
-      "github.com" = {
-        IdentityFile = ["~/.ssh/r3rer3-github"];
-        AddKeysToAgent = "no";
       };
     };
   };

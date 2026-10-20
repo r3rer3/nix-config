@@ -88,6 +88,12 @@
         system = linuxSystem;
         users = getUsers hostname;
       }
+
+      rec {
+        hostname = "r3rer3-rss";
+        system = linuxSystem;
+        users = getUsers hostname;
+      }
     ];
 
     darwinConfigurations = builders.compileDarwinSystems [

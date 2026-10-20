@@ -25,14 +25,13 @@
 
     signing = {
       signByDefault = true;
-      key =
-        if pkgs.stdenv.isLinux
-        then "64AD34EE9F81A26316380DE08C8AA931EB03536D"
-        else "~/.ssh/r3rer3-github.pub";
-      format =
-        if pkgs.stdenv.isLinux
-        then "openpgp"
-        else "ssh";
+      key = "~/.ssh/r3rer3-github.pub";
+      format = "ssh";
+      # 1Password signs with the key; there is no key file on disk
+      signer =
+        if pkgs.stdenv.isDarwin
+        then "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+        else "/run/current-system/sw/bin/op-ssh-sign";
     };
 
     settings = {
@@ -71,6 +70,10 @@
       };
 
       commit.template = "${./gitmessage.txt}";
+
+      # lets `git log --show-signature` verify my own SSH signatures
+      gpg.ssh.allowedSignersFile = "${pkgs.writeText "allowed-signers"
+        "r3rer3@startmail.com ${builtins.readFile ../ssh/keys/r3rer3-github.pub}"}";
 
       fetch.prune = true;
 

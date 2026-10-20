@@ -17,6 +17,9 @@
 
   programs.fish.enable = true;
 
+  # the `op` CLI; 1Password's app integration only accepts it at /usr/local/bin/op
+  programs._1password.enable = true;
+
   environment.shells = [pkgs.fish];
 
   users.users = lib.genAttrs users (user: {
