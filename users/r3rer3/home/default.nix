@@ -237,8 +237,8 @@ in {
         # reverse engineering and security
         ghidra
         charles
-        pkgs-unstable.iaito
-        pkgs-unstable.radare2
+        # pkgs-unstable.iaito
+        # pkgs-unstable.radare2
         # ida-free
         imhex
         qFlipper
