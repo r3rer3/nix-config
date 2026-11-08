@@ -443,11 +443,6 @@ in {
     commandLineArgs = chromiumPerfFlags;
   };
 
-  programs.brave = {
-    enable = pkgs.stdenv.isLinux;
-    commandLineArgs = chromiumPerfFlags;
-  };
-
   programs.tmux = {
     enable = true;
 

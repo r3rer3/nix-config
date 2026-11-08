@@ -40,14 +40,14 @@
 }:
 stdenv.mkDerivation rec {
   pname = "chatgpt";
-  version = "26.1027.51404";
+  version = "26.1103.60933";
 
   # OpenAI only ships amd64/arm64 .deb packages; bump the version together
   # with the hash from the apt index:
   # https://persistent.oaistatic.com/codex-app-prod/linux/deb/dists/stable/main/binary-amd64/Packages
   src = fetchurl {
     url = "https://persistent.oaistatic.com/codex-app-prod/linux/deb/pool/main/c/chatgpt/chatgpt_${version}_amd64.deb";
-    hash = "sha256-RvHiLQKGmP6e2u/VhHrs4HxFCaMNNwnhBCIHGdjBKCI=";
+    hash = "sha256-B0bpuldRgvXb4yYXuCpkXrk61XyliOWpNYaVprZa7nE=";
   };
 
   nativeBuildInputs = [
