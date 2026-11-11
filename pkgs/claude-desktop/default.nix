@@ -2,6 +2,7 @@
   lib,
   stdenv,
   fetchurl,
+  asar,
   dpkg,
   autoPatchelfHook,
   makeShellWrapper,
@@ -41,17 +42,18 @@
 }:
 stdenv.mkDerivation rec {
   pname = "claude-desktop";
-  version = "4.23118.0";
+  version = "5.1231.2";
 
   # Anthropic only ships amd64/arm64 .deb packages; bump the version together
   # with the hash from the apt index:
   # https://downloads.claude.ai/claude-desktop/apt/stable/dists/stable/main/binary-amd64/Packages
   src = fetchurl {
     url = "https://downloads.claude.ai/claude-desktop/apt/stable/pool/main/c/claude-desktop/claude-desktop_${version}_amd64.deb";
-    hash = "sha256-GtmW6MqrBcmzdGRgUcQMtrudhPNxdW8VuNNyiJdRWpc=";
+    hash = "sha256-600Wya/wppY2bYhyj3T6VRNr58/ePB/jWvQGK0WVW28=";
   };
 
   nativeBuildInputs = [
+    asar
     dpkg
     autoPatchelfHook
     makeShellWrapper
@@ -108,6 +110,32 @@ stdenv.mkDerivation rec {
     # plain `dpkg-deb -x` fails on the setuid chrome-sandbox in the nix sandbox
     dpkg-deb --fsys-tarfile $src | tar -x --no-same-permissions --no-same-owner
     runHook postUnpack
+  '';
+
+  # At startup the app narrows its own PATH to root-owned system directories
+  # (/usr/bin, /bin, ..., /run/current-system/sw/bin), so nothing it spawns can
+  # be shadowed from a user-writable directory. Every child inherits that PATH,
+  # including the xdg-open behind shell.openExternal. Under Plasma xdg-open
+  # hands the URL to KIO, which resolves the default browser's bare
+  # `Exec=librewolf` in that PATH, but home-manager installs into ~/.nix-profile,
+  # so the login page never opened ("Could not find the program 'librewolf'").
+  # Append NixOS's per-user and default profiles to that list, after the system
+  # directories so those still win. The list is duplicated in two bundles.
+  # Only the *.node files and github-mcp-server live in app.asar.unpacked. The
+  # diff makes sure the repack leaves exactly those out of the archive, and
+  # upstream's copy is kept since asar drops github-mcp-server's exec bit.
+  postPatch = ''
+    resources=usr/lib/claude-desktop/resources
+    asar extract $resources/app.asar app
+    bundles=$(grep -rlF '"/run/current-system/profile/bin"]' app/.vite/build) ||
+      { echo "claude-desktop: PATH allowlist not found, see postPatch"; exit 1; }
+    substituteInPlace $bundles --replace-fail \
+      '"/run/current-system/profile/bin"]' \
+      '"/run/current-system/profile/bin",...((h,u)=>[h&&h+"/.nix-profile/bin",h&&h+"/.local/state/nix/profile/bin",u&&"/etc/profiles/per-user/"+u+"/bin","/nix/var/nix/profiles/default/bin"])(process.env.HOME,process.env.USER).filter(p=>p&&p.startsWith("/"))]'
+    asar pack app app.asar --unpack '{*.node,github-mcp-server}'
+    diff -r $resources/app.asar.unpacked app.asar.unpacked
+    mv app.asar $resources/app.asar
+    rm -rf app app.asar.unpacked
   '';
 
   installPhase = ''
