@@ -90,7 +90,7 @@
           owner = "hedyhli";
           repo = "outline.nvim";
           rev = "main";
-          hash = "sha256-BKK5VR9QV53DD47zRNZCUQLJvWguVp3KszpDzYowfEU=";
+          hash = "sha256-Xzj4QN4n0ZK9lkuhtigexjiPJPxiz9+TtBYPEHoP18c=";
         };
       })
       (pkgs-unstable.vimUtils.buildVimPlugin {
@@ -110,7 +110,7 @@
           owner = "nvimtools";
           repo = "none-ls.nvim";
           rev = "main";
-          hash = "sha256-z+iiRl0C0aaT/vm+apyr5PL91TbzBl+FVwgXY+hJz54=";
+          hash = "sha256-5K72YseU+NWb2hzK7JZVrkRuZn9pmGKUJKGP+yWtrgE=";
         };
         doCheck = false;
       })

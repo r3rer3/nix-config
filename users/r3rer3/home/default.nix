@@ -173,7 +173,6 @@ in {
       kubernetes-helm
       hexyl
       minikube
-      localstack
       ninja
       meson
       just
