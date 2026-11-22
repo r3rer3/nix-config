@@ -14,19 +14,19 @@
   targets = {
     x86_64-linux = {
       platform = "linux-x64";
-      hash = "sha256-gR2fDsnf8AfVvanIQ1sOf0bvcEH6L8ED78ntwpXLVSg=";
+      hash = "sha256-ufZT9MMug6InDwtS7epqcse9vR97XD5kxV51FXCU87M=";
     };
     aarch64-linux = {
       platform = "linux-arm64";
-      hash = "sha256-pB2mf5GJe8MqYw+sZcwUG/g+Hyy5HsEz75GU4uipmSY=";
+      hash = "sha256-jd7l8e0aREOCmUQRdQkhLxKUq78MvtInZfim7++qJRY=";
     };
     x86_64-darwin = {
       platform = "darwin-x64";
-      hash = "sha256-CQ81xYKwxYwDij9h87+Gece2fFp1t44PG29E1xThgY8=";
+      hash = "sha256-KhlCOyHnmsRQUKJGoY1QfbZoAQckN+MhsfcGPGvPmks=";
     };
     aarch64-darwin = {
       platform = "darwin-arm64";
-      hash = "sha256-kzK6nt8BrEJ/rFvfVpClU1tM6haoxiOQoH6qmvSshkY=";
+      hash = "sha256-brCCxm9SWblTw48hxyBV0RlC+mE3Jxil6rJWAyR71Jw=";
     };
   };
 
@@ -36,7 +36,7 @@
 in
   stdenv.mkDerivation (finalAttrs: {
     pname = "prime-agent";
-    version = "0.10.3";
+    version = "0.10.5";
 
     src = fetchurl {
       url = "https://github.com/PrimeIntellect-ai/prime-agent/releases/download/v${finalAttrs.version}/prime-agent-${finalAttrs.version}-${target.platform}.tar.gz";

@@ -15,6 +15,34 @@
     "--enable-zero-copy"
     "--enable-features=VaapiVideoDecodeLinuxGL,VaapiIgnoreDriverChecks"
   ];
+
+  # nixpkgs-unstable (and master) still pin Devin Desktop 3.14.30819, whose
+  # download upstream has deleted (404), so the build fails. Take the current
+  # build from upstream's update feed instead, which gives url and sha256hash:
+  #   curl -s https://windsurf-stable.codeium.com/api/update/linux-x64/stable/latest
+  #   curl -s https://windsurf-stable.codeium.com/api/update/darwin-arm64/stable/latest
+  # Both builds are still VS Code 1.141.2, so only the source changes. The
+  # override stops applying once nixpkgs has caught up; remove it then.
+  devin-desktop = let
+    version = "3.14.30833";
+    base = "https://windsurf-stable.codeiumdata.com";
+    commit = "a165b2eb0a68542b92a3c89cc68b4700e819a409";
+    srcs = {
+      x86_64-linux = {
+        url = "${base}/linux-x64/stable/${commit}/Devin-linux-x64-${version}.tar.gz";
+        sha256 = "735f80f9a7851c043b7a19595a396a3f9352629aae388b1af5aa868064a93c6a";
+      };
+      aarch64-darwin = {
+        url = "${base}/darwin-arm64/stable/${commit}/Devin-darwin-arm64-${version}.zip";
+        sha256 = "d34cdfbda119aff9a81cc1be36344385a3f836f4c370b121ae554ec11dac9fe1";
+      };
+    };
+  in
+    pkgs-unstable.devin-desktop.overrideAttrs (old:
+      lib.optionalAttrs (lib.versionOlder old.version version) {
+        inherit version;
+        src = pkgs.fetchurl srcs.${pkgs.stdenv.hostPlatform.system};
+      });
 in {
   # You can import other home-manager modules here
   imports = [
@@ -90,7 +118,8 @@ in {
       pkgs-unstable.code-cursor
       pkgs-unstable.pi-coding-agent
       pkgs-unstable.devin-cli
-      pkgs-unstable.devin-desktop
+      # pkgs-unstable's, on a newer upstream build (see the let block above)
+      devin-desktop
       inputs.kimi-code.packages.${pkgs.stdenv.hostPlatform.system}.kimi-code
 
       # virtual machines or related

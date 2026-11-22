@@ -38,8 +38,8 @@
 }:
 stdenv.mkDerivation rec {
   pname = "grok-bot";
-  version = "1.1.0";
-  commit = "83d46d618ef4c12afa17edd8e3c29d6caf046d17";
+  version = "1.2.3";
+  commit = "a5927fa2ba82336a29f9343babd28b4c903abbb2";
 
   # xAI's Grok Bot is built and hosted by Cursor. Its apt repo
   # (https://downloads.cursor.com/aptrepo, suite grok-bot) lags behind the
@@ -48,7 +48,7 @@ stdenv.mkDerivation rec {
   #   curl -sI https://api2.cursor.sh/updates/download/stable/linux-x64/grok-bot-fb0a830618be0c54 | grep -i location
   src = fetchurl {
     url = "https://downloads.cursor.com/grokbot/stable/${commit}/linux/x64/grok-bot_${version}_amd64.deb";
-    hash = "sha256-WwL7IVED7e2U7J84GnkNcfZyfwF2gcft0bVvK4z6Vy0=";
+    hash = "sha256-WRdSFUJoCweBOkKZEfAb/dGR7GtUCf5eq2I61fvzsIo=";
   };
 
   nativeBuildInputs = [
