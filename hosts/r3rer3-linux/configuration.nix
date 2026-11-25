@@ -74,7 +74,12 @@
 
   # Bootloader
   boot.loader = {
-    systemd-boot.enable = true;
+    systemd-boot = {
+      enable = true;
+      # /boot is a 100M ESP and each generation's kernel + initrd is ~40M,
+      # so at most 2 generations fit
+      configurationLimit = 2;
+    };
     efi.canTouchEfiVariables = true;
   };
 
