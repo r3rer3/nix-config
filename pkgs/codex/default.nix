@@ -2,6 +2,7 @@
   lib,
   stdenvNoCC,
   fetchurl,
+  bubblewrap,
   zstd,
   installShellFiles,
   versionCheckHook,
@@ -62,6 +63,15 @@ in
     dontStrip = true;
     dontPatchELF = true;
     dontPatchShebangs = true;
+
+    # codex-resources/bwrap is only codex's fallback. Without a bwrap on PATH
+    # every launch warns "Codex could not find bubblewrap on PATH", and the
+    # node_repl MCP server that the ChatGPT app registers in the shared
+    # ~/.codex/config.toml fails outright: it sandboxes through the app's own
+    # codex, which has no bundled bwrap at all ("Managed execution requires a
+    # usable CODEX_CLI_PATH"). bin/codex cannot be wrapped, so the profile that
+    # installs codex links bwrap next to it instead.
+    propagatedUserEnvPkgs = lib.optionals stdenvNoCC.hostPlatform.isLinux [bubblewrap];
 
     installPhase = ''
       runHook preInstall

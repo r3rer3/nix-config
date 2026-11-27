@@ -11,6 +11,7 @@
   at-spi2-atk,
   at-spi2-core,
   atk,
+  bubblewrap,
   cairo,
   cups,
   dbus,
@@ -173,9 +174,20 @@ stdenv.mkDerivation rec {
   # Same trap as in ../claude-desktop: wrapGAppsHook3 propagates makeBinaryWrapper,
   # which shadows `makeWrapper` and embeds the ${NIXOS_OZONE_WL:+...} expression
   # below as literal argv entries instead of letting a shell expand it at launch.
+  #
+  # The bundled resources/codex sandboxes shell commands and the node_repl
+  # kernel (browser and computer use) with bubblewrap. Unlike the CLI's complete
+  # package, the .deb ships no codex-resources/bwrap and counts on the distro's
+  # bwrap being on PATH, without listing it in Depends. With none there, every
+  # sandboxed command panics with "bubblewrap is unavailable", and node_repl,
+  # whose startup probe runs `codex sandbox`, rejects each call with "Managed
+  # execution requires a usable CODEX_CLI_PATH". Suffixed, so a bwrap from the
+  # session still wins; codex skips candidates inside a writable root and falls
+  # through to this one.
   postFixup = ''
     makeShellWrapper $out/lib/chatgpt/ChatGPT $out/bin/chatgpt \
       "''${gappsWrapperArgs[@]}" \
+      --suffix PATH : ${lib.makeBinPath [bubblewrap]} \
       --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform-hint=auto --enable-features=WaylandWindowDecorations}}"
   '';
 
