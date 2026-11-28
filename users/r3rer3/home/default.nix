@@ -111,6 +111,8 @@ in {
       pkgs-unstable.claude-code
       # from pkgs/: upstream complete package, so the shared app-server daemon works
       codex
+      # from pkgs/: upstream's release build, which also ships for macOS
+      prime-agent
       pkgs-unstable.opencode
       pkgs-unstable.amp-cli
       pkgs-unstable.antigravity-cli
@@ -288,7 +290,6 @@ in {
         chatgpt
         claude-desktop
         grok-bot
-        prime-agent
 
         # audio
         ardour
