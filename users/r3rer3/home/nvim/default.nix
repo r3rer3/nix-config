@@ -90,7 +90,7 @@
           owner = "hedyhli";
           repo = "outline.nvim";
           rev = "main";
-          hash = "sha256-Xzj4QN4n0ZK9lkuhtigexjiPJPxiz9+TtBYPEHoP18c=";
+          hash = "sha256-o4dMbOiqdfcFcNdsWkAkHJTj5/dHh4wRX7FKALmJvQE=";
         };
       })
       (pkgs-unstable.vimUtils.buildVimPlugin {
